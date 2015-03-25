@@ -1,8 +1,8 @@
-#include "battleship_main.h"
+#include "board.h"
 
-struct tile values[101]; // Struct Array to hold values
+//struct tile values[101]; // Struct Array to hold values
 
-void populate(){
+void Board :: populate(){
 
 
 	string number = "1"; // Number to be combined
@@ -15,7 +15,6 @@ void populate(){
 	{
 
 		// Combines letter and number and assigns it to name in struct[i]
-
 
 		values[i].str.append(letter);
 		values[i].str.append(number);
@@ -54,9 +53,9 @@ void populate(){
 
 		}
 	}
-}
+};
 
-void print_board(tile_t param[]){
+void Board :: print_board(){
 
 	int count = 1; // keeps track of where to print line breaks
 
@@ -64,16 +63,17 @@ void print_board(tile_t param[]){
 	{
 		for (int i = 0; i < 10; i++)
 		{
-			cout << param[count].str << " ";
+			cout << values[count].str << " ";
 			count++;
 		}
 		cout << "\n";
 	}
-}
+};
 
 int main(int argc, char *argv[1]){
 
-	populate();
-	print_board(values);
+	Board test;;
+	test.populate();
+	test.print_board();
 
 }
