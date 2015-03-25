@@ -72,7 +72,7 @@ void Board :: print_board(){
 
 int main(int argc, char *argv[1]){
 
-	Board test;;
+	Board test;
 	test.populate();
 	test.print_board();
 
