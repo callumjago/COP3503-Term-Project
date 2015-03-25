@@ -4,7 +4,6 @@
 
 void Board :: populate(){
 
-
 	string number = "1"; // Number to be combined
 	string letter = "A"; // Letter to be combined
 
@@ -69,11 +68,3 @@ void Board :: print_board(){
 		cout << "\n";
 	}
 };
-
-int main(int argc, char *argv[1]){
-
-	Board test;
-	test.populate();
-	test.print_board();
-
-}
