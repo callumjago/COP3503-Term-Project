@@ -1,4 +1,4 @@
-#include <board.h>
+#include "board.h"
 
 class Player{
 	public:
@@ -7,10 +7,11 @@ class Player{
 
 	private:
 		Board board;
-		Ship carrier;
+		//Cannot declare ships until the ship.h file is created.
+		/*Ship carrier;
 		Ship battleship;
 		Ship submarine;
 		Ship cruiser;
-		Ship destroyer;
+		Ship destroyer;*/
 		string guessPos;
-}
+};

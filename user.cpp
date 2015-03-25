@@ -1,11 +1,11 @@
-#include "board.h"
+#include "player.h"
 
-class User: public Player{
+class User:public Player{
 	private:
-		
+
 
 	public:
 
-		
+
 
 };
