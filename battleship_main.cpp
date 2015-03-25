@@ -5,10 +5,10 @@ struct tile values[101]; // Struct Array to hold values
 void populate(){
 
 
-	string number = "0"; // Number to be combined
+	string number = "1"; // Number to be combined
 	string letter = "A"; // Letter to be combined
 
-	char num = '0'; // temporary use when converting from int to string
+	int num = 1; // temporary use when converting from int to string
 	char two = 'A';	// temporary use when converting from int to string
 
 	for (int i = 1; i < 101; i++)
@@ -16,14 +16,15 @@ void populate(){
 
 		// Combines letter and number and assigns it to name in struct[i]
 
+
 		values[i].str.append(letter);
 		values[i].str.append(number);
 		values[i].id_num = i;
 
 		// Increments number every loop 
-		int temp2 = (int)num;
+		int temp2 = num;
 		temp2++;
-		num = (char)temp2;
+		num = temp2;
 		stringstream out2;
 		out2 << num;
 		out2 >> number;
@@ -44,9 +45,9 @@ void populate(){
 			// Same as above but for numbers
 			// Takes number value back to 0 to use with new letter
 
-			int temp2 = (int)num;
+			int temp2 = num;
 			temp2 -= 10;
-			num = (char)temp2;
+			num = temp2;
 			stringstream out2;
 			out2 << num;
 			out2 >> number;
@@ -59,7 +60,7 @@ void print_board(tile_t param[]){
 
 	int count = 1; // keeps track of where to print line breaks
 
-	for (int x = 0; x < 9; x++)
+	for (int x = 0; x < 10; x++)
 	{
 		for (int i = 0; i < 10; i++)
 		{
