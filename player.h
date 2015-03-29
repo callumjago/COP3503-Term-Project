@@ -2,21 +2,21 @@
 #include "ship.h"
 
 class Player{
-	public:
-		virtual bool setShip() = 0;
-		virtual bool guess() = 0;
+public:
+	virtual bool setShip() = 0;
+	virtual bool guess() = 0;
+	virtual bool isValidPos(string desiredPos) = 0;
 
-	private:
+private:
 		
-	protected:
-		Board board;
+protected:
+	Board board;
 
-		Ship carrier;
-		Ship battleship;
-		Ship submarine;
-		Ship cruiser;
-		Ship destroyer;
+	Ship carrier;
+	Ship battleship;
+	Ship submarine;
+	Ship cruiser;
+	Ship destroyer;
 
-		string guessPos;
-
+	string guessPos;
 };
