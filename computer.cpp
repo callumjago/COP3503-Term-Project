@@ -1,26 +1,23 @@
-#include "board.h"
-#include "player.h"
-#include "ship.h"
-
-class Computer: public Player{
-	public:
-		Computer();
-};
-
-Computer::Computer():guessPos(""){
-	board = new Board();
-
-	carrier = new Ship(5);
-	battleship = new Ship(4);
-	submarine = new Ship(3);
-	cruiser = new Ship(3);
-	destroyer = new Ship(2);
-}
+#include "computer.h"
+#include <string>
+#include <stdlib.h>
 
 bool Computer::setShip(){
 	return false;
 }
 
 bool Computer::guess(){
+	int num = rand() % 10 + 1;
+	char let = 'A' + (rand() % 10);
+
+	stringstream str;
+	string guess;
+	str << let << num;
+	str >> guess;
+
 	return false;
+}
+
+int main(){
+	return 0;
 }
