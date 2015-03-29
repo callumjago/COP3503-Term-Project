@@ -1,31 +1,33 @@
-#include "player.h"
-
-class User : public Player{
-	private:
-
-	public:
-		User(){
-			board = new Board();
-
-			carrier = Ship(5);
-			battleship = Ship(4);
-			submarine = Ship(3);
-			cruiser = Ship(3);
-			destroyer = Ship(2);
-		}
-		bool setShip();
-		bool guess();
-
-};
-	
-
-bool User :: setShip(){
-	return false;
-}
+#include "user.h"
 
 bool User :: guess(){
+
+	string desPos = "";
+	cout << "Enter the coordinate of your desired carrier: ";
+	cin >> desPos;
+
+	if(isValidPosition(desPos)){
+
+	}
+	else{
+		cout << "Bad choice! Choose again";
+	}
+
+
+
 	return false;
-}
+};
+
+bool User :: isValidPosition(string desiredPose){
+	if(length == 2){
+		//Checks to see if there is enough room up, down, left, or right.
+	}
+	else if()
+
+		//Returns an array of directions that the user can oriente the ship, based on location availabilities.
+		
+};
+
 
 
 int main(){
