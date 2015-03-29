@@ -1,4 +1,4 @@
-#include "board.h"
+
 #include "ship.h"
 
 class Player{
@@ -7,8 +7,10 @@ class Player{
 		virtual bool guess() = 0;
 
 	private:
-		Board board;
 		
+	protected:
+		Board board;
+
 		Ship carrier;
 		Ship battleship;
 		Ship submarine;
@@ -16,4 +18,5 @@ class Player{
 		Ship destroyer;
 
 		string guessPos;
+
 };

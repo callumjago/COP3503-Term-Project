@@ -1,20 +1,20 @@
-#include "board.h"
 #include "player.h"
-#include "ship.h"
 
 class User : public Player{
 	private:
 
 	public:
-		Player(){
+		User(){
 			board = new Board();
 
-			carrier = new Ship(5);
-			battleship = new Ship(4);
-			submarine = new Ship(3);
-			cruiser = new Ship(3);
-			destroyer = new Ship(2);
+			carrier = Ship(5);
+			battleship = Ship(4);
+			submarine = Ship(3);
+			cruiser = Ship(3);
+			destroyer = Ship(2);
 		}
+		bool setShip();
+		bool guess();
 
 };
 	

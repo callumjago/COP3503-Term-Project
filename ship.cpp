@@ -2,11 +2,6 @@
 
 
 
-Ship::Ship(int length):length(length), status(0), isSunk(false){
-	//perhaps do something for state int* status
-	if(length < 0){ this->length = 0; }
-}
-
 bool Ship::sinkShip(){
 	if(this->isSunk){
 		//if ship is already sunk, do something here
