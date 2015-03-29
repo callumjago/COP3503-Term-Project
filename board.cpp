@@ -1,6 +1,5 @@
 #include "board.h"
 
-//struct tile values[101]; // Struct Array to hold values
 
 void Board :: populate(){
 
@@ -68,3 +67,14 @@ void Board :: print_board(){
 		cout << "\n";
 	}
 };
+
+int main(){
+
+	//Testing the board printing method.
+	Board board;
+	board.print_board();
+
+	//Testing the getId function of the board at index 1.
+	cout << "The ID at position A1 is "  << board.getId(1) << endl;  
+	return 0;
+}

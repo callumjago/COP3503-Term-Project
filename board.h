@@ -23,5 +23,11 @@ class Board{
 	public:
 		void populate();
 		void print_board();
+		string getId(int index){ return values[index].str; };
+
+		Board(){
+			populate();
+		}
+
 		
 };

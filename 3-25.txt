@@ -1,0 +1,23 @@
+TASKS 3/25
+
+John-Michael:
+- Updating between board and ship
+
+Zach:
+- Updating between board and ship
+- FIguring out how to make objects talk to each other
+
+Callum:
+- Fleshing out the ship class
+- FInd a way to store position, have a status of length
+- Make a method to interate with board class
+
+Armin:
+- Graphical interface
+
+Eion:
+- Fleshing out the AI component
+- Starting off small, with complete random implementation 
+- Implement Player interface, add a User and a Computer class 
+- Board instance, method to generate them, initialize (but not declare) ships 
+

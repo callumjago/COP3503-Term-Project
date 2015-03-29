@@ -9,7 +9,6 @@ class Computer: public Player{
 
 Computer::Computer():guessPos(""){
 	board = new Board();
-	board.populate();
 
 	carrier = new Ship(5);
 	battleship = new Ship(4);

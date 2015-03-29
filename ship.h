@@ -1,5 +1,6 @@
 #ifndef DATE_H
 #define DATE_H
+#include "board.h"
 
 
 class Ship{
