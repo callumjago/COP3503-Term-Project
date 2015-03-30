@@ -15,7 +15,7 @@ public:
 	}
 	bool setShip();		//Eion: I think these function declarations are redundant sincce they are already declared in player.h?
 	bool guess();		//""
-	bool isValidPosition(string desiredPos);	//""
+	void isValidPosition(string desiredPos, int length);	//""
 };
 	
 
