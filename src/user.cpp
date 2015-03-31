@@ -25,7 +25,7 @@ bool User :: setShip(){
 }
 
 
-void User :: isValidPosition(string desiredPose, int length){
+int User :: isValidPosition(string desiredPose, int length){
 	string direction = ""; //Can be either up, down, or right.
 	
 	bool right = true;
@@ -147,7 +147,8 @@ void User :: isValidPosition(string desiredPose, int length){
 	
 
 		//Returns an array of directions that the user can oriente the ship, based on location availabilities.
-		
+		//Eion: I changed this to return an int corresponding to the chosen orientation rather than an array of options (choose within this method)
+	return 0;	
 };
 
 
