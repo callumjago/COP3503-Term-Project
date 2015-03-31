@@ -11,7 +11,7 @@ int main(int argc, char *argv[1]){
 	cout << "\nEnter ship length: "; 
 	cin >> length;
 
-	Ship test = new Ship(length);
+	Ship test = Ship(length);
 	cout << "How long is this ship? " << test.getLength() << endl;
 	cout << "Is this ship sunk? " << test.getIsSunk() << endl;
 	cout << "Sink this ship! " << test.sinkShip() << endl;

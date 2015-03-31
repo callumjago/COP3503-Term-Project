@@ -1,3 +1,6 @@
+#ifndef BOARD_H
+#define BOARD_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,9 +17,7 @@ class Board{
 		typedef struct tile {
 			string str;
 			int id_num;
-
 			int status; //Represents the possible configurations of the board: hit, miss, empty.
- 
 		} tile_t;
 
 		struct tile values[101]; 
@@ -39,3 +40,5 @@ class Board{
 
 		
 };
+
+#endif

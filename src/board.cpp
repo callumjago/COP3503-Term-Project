@@ -1,7 +1,7 @@
 #include "../include/board.h"
 
 
-void Board :: populate(){
+void Board::populate(){
 
 	string number = "1"; // Number to be combined
 	string letter = "A"; // Letter to be combined
@@ -53,7 +53,7 @@ void Board :: populate(){
 	}
 };
 
-void Board :: print_board(){
+void Board::print_board(){
 
 	int count = 1; // keeps track of where to print line breaks
 
@@ -68,6 +68,7 @@ void Board :: print_board(){
 	}
 };
 
+/*
 int main(){
 
 	//Testing the board printing method.
@@ -75,6 +76,7 @@ int main(){
 	board.print_board();
 
 	//Testing the getId function of the board at index 1.
-	cout << "The ID at position A1 is "  << board.getId(1) << endl;  
+	cout << "The ID at position A1 is " << board.getId(1) << endl;  
 	return 0;
 }
+*/

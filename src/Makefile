@@ -1,9 +1,9 @@
 CXX = g++
-CXXFLAGS = -Wall
+CXXFLAGS = -Wall -I ~/src/
 
 SEARCH_TARGET = battleship_sim
 
-LIB = include/board.o include/ship.o
+LIB = board.o ship.o 
 
 all: $(SEARCH_TARGET)
 
