@@ -2,10 +2,12 @@
 #include "../include/ship.h"
 
 
+
 int main(int argc, char *argv[1]){
 
 	Board temp;
 	temp.print_board();
+	temp.add_tiles_to_board();
 
 	int length;
 	cout << "\nEnter ship length: "; 
@@ -16,6 +18,8 @@ int main(int argc, char *argv[1]){
 	cout << "Is this ship sunk? " << test.getIsSunk() << endl;
 	cout << "Sink this ship! " << test.sinkShip() << endl;
 	cout << "Is this ship sunk? " << test.getIsSunk() << endl << endl;
+
+	
 
 	return 0;
 }

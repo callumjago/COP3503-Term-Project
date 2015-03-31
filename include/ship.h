@@ -1,5 +1,5 @@
-#ifndef DATE_H
-#define DATE_H
+#ifndef SHIP_H
+#define SHIP_H
 #include "board.h"
 
 

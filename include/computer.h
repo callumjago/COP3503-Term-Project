@@ -4,7 +4,7 @@ class Computer : public Player{
 private:
 
 public:
-	Computer():guessPos(""){
+	Computer()::guessPos(""){
 		board = new Board();
 
 		carrier = Ship(5);

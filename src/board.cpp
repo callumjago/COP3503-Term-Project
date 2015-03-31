@@ -1,6 +1,5 @@
 #include "../include/board.h"
 
-
 void Board::populate(){
 
 	string number = "1"; // Number to be combined
@@ -67,6 +66,13 @@ void Board::print_board(){
 		cout << "\n";
 	}
 };
+
+void Board::add_tiles_to_board(){
+	board.tiles = values;
+	std::cout << "Added tiles to board\n";
+	std::cout << board.tiles;
+}
+
 
 /*
 int main(){
