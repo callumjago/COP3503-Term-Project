@@ -5,7 +5,7 @@ class Player{
 public:
 	virtual bool setShip() = 0;
 	virtual bool guess() = 0;
-	virtual bool isValidPos(string desiredPos) = 0;
+	virtual int isValidPos(string desPos, int length) = 0;
 
 private:
 		
