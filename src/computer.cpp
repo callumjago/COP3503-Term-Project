@@ -2,6 +2,18 @@
 #include <string>
 #include <stdlib.h>
 
+Computer :: Computer(){
+		board = new Board();
+
+		carrier =		new Ship(5);
+		battleship =	new Ship(4);
+		submarine =		new Ship(3);
+		cruiser =		new Ship(3);
+		destroyer =		new Ship(2);
+
+		guessPos = "";
+	}
+
 bool Computer :: guess(){
 	int num = rand() % 10 + 1;
 	char let = 'A' + (rand() % 10);
@@ -39,9 +51,9 @@ bool Computer :: setShip(){
 }
 
 int Computer :: isValidPosition(string desPos, int length){
-	char let = desPos.charAt(0);
-	int num = desPos.char(1);
-	if(num == 1 && (int)desPos.charAt(2) == 0){
+	char let = desPos.at(0);
+	int num = desPos.at(1);
+	if(num == 1 && (int)desPos.at(2) == 0){
 		num = 10;
 	}
 
@@ -58,7 +70,7 @@ int Computer :: isValidPosition(string desPos, int length){
 		return -1;
 	}
 
-	if(board.getStatus(ind) != 0){
+	if(board->getStatus(ind) != 0){
 		cout << "Error: ship already placed there." << endl;
 		return -1;
 	}
@@ -70,7 +82,7 @@ int Computer :: isValidPosition(string desPos, int length){
 
 			tempInd = ((tempLet - 'A') * 10) + tempNum;
 
-			if(board.getStatus(ind) != 0){
+			if(board->getStatus(ind) != 0){
 				up = true;
 			}
 		}
@@ -82,7 +94,7 @@ int Computer :: isValidPosition(string desPos, int length){
 		for(int i = 0; i < length; i++){
 			tempInd = ((tempLet-- - 'A') * 10) + tempNum;
 
-			if(board.getStatus(tempInd) != 0){ up = false; }
+			if(board->getStatus(tempInd) != 0){ up = false; }
 		}
 	}
 	else{ up = false; }
@@ -93,7 +105,7 @@ int Computer :: isValidPosition(string desPos, int length){
 		for(int i = 0; i < length; i++){
 			tempInd = ((tempLet++ - 'A') * 10) + tempNum;
 
-			if(board.getStatus(tempInd) != 0){ down = false; }
+			if(board->getStatus(tempInd) != 0){ down = false; }
 		}
 	}
 	else{ down = false; }
@@ -104,7 +116,7 @@ int Computer :: isValidPosition(string desPos, int length){
 		for(int i = 0; i < length; i++){
 			tempInd = ((tempLet - 'A') * 10) + tempNum--;
 
-			if(board.getStatus(tempInd) != 0){ left = false; }
+			if(board->getStatus(tempInd) != 0){ left = false; }
 		}
 	}
 	else{ left = false; }
@@ -115,15 +127,19 @@ int Computer :: isValidPosition(string desPos, int length){
 		for(int i = 0; i < length; i++){
 			tempInd = ((tempLet - 'A') * 10) + tempNum++;
 
-			if(board.getStatus(tempInd) != 0){ right = false; }
+			if(board->getStatus(tempInd) != 0){ right = false; }
 		}
 	}
 	else{ right = false; }
 
-	bool *option = {up, down, left, right};
+	bool *option = new bool[4];
+	option[0] = up;
+	option[1] = down;
+	option[2] = left;
+	option[3] = right;
 
 	int sum = 0;
-	for(bool op : option){ if(op){ sum++; } }
+	for(int i = 0; i < 4; i++){ if(option[i]){ sum++; } }
 
 	if(sum == 0){
 		cout << "Error: no orientation options." << endl;
