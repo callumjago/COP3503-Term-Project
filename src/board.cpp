@@ -74,7 +74,7 @@ void Board::add_tiles_to_board(){
 }
 
 
-/*
+
 int main(){
 
 	//Testing the board printing method.
@@ -85,4 +85,4 @@ int main(){
 	cout << "The ID at position A1 is " << board.getId(1) << endl;  
 	return 0;
 }
-*/
+

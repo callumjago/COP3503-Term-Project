@@ -23,7 +23,7 @@ bool Ship::getIsSunk(){
 int Ship::getLength(){
 	return this->length;
 }
-/*
+
 
 int main(){
 
@@ -34,4 +34,3 @@ int main(){
 	
 	return 0;
 }
-*/

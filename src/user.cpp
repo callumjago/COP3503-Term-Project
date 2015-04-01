@@ -1,5 +1,6 @@
 #include "../include/user.h"
 
+
 bool User :: guess(){
 
 	string guess = "";
@@ -9,23 +10,21 @@ bool User :: guess(){
 	return false;
 };
 
-
-
 bool User :: setShip(){
 
 	string desPose = "";
 
 	cout << "Enter the desired position of your carrier: ";
-	desPose >> cin;
+	cin >> desPose;
 
-	isValidPosition(desPose, 2);
+	isValidPos(desPose, 2);
 
 	return false;
 	//Create instances for all 5 ships, until isValidPosition is a success for all 5 ships.
 }
 
-
-int User :: isValidPosition(string desiredPose, int length){
+//Cancel the up position.
+int User :: isValidPos(string desPos, int length){
 	string direction = ""; //Can be either up, down, or right.
 	
 	bool right = true;
@@ -33,11 +32,11 @@ int User :: isValidPosition(string desiredPose, int length){
 	bool down = true;
 
 
-	char letter = desiredPose.substr(0, 1);
-	int digit = desiredPose.charAt(1); //Need to make a special case for the digit 10.
+	char letter = desPos.at(0);
+	int digit = desPos.at(1); //Need to make a special case for the digit 10.
 
 	char tempLetter = 'A';
-	int tempDIgit = 1;
+	int tempDigit = 1;
 
 	int index = ((letter - 'A') * 10) + digit; //Determines the index of the position in the board.
 	int tempIndex = 0;
@@ -50,7 +49,7 @@ int User :: isValidPosition(string desiredPose, int length){
 	}
 
 	
-	if(board.getStatus(index) == 0){
+	if(board->getStatus(index) == 0){
 		//Checks to see if up is possible.
 		if(letter - length >= 'A'){
 			for(int i = 1; i <= length; i++){
@@ -59,7 +58,7 @@ int User :: isValidPosition(string desiredPose, int length){
 
 				tempIndex = ((tempLetter - 'A') * 10) + tempDigit;
 
-				if(board.getStatus(index) == 0){
+				if(board->getStatus(index) == 0){
 				}
 				else{
 					up = false;
@@ -76,7 +75,7 @@ int User :: isValidPosition(string desiredPose, int length){
 
 				tempIndex = ((tempLetter - 'A') * 10) + tempDigit;
 
-				if(board.getStatus(index) == 0){
+				if(board->getStatus(index) == 0){
 				}
 				else{
 					down = false;
@@ -93,7 +92,7 @@ int User :: isValidPosition(string desiredPose, int length){
 
 				tempIndex = ((tempLetter - 'A') * 10) + tempDigit;
 
-				if(board.getStatus(index) == 0){
+				if(board->getStatus(index) == 0){
 				}
 				else{
 					right = false;
@@ -155,5 +154,6 @@ int User :: isValidPosition(string desiredPose, int length){
 
 int main(){
 
+	
 	return 0;
 }
