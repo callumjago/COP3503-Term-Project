@@ -1,4 +1,3 @@
-
 #include "ship.h"
 
 class Player{
@@ -17,13 +16,13 @@ public:
 private:
 		
 protected:
-	Board board;
+	Board *board;
 
-	Ship carrier;
-	Ship battleship;
-	Ship submarine;
-	Ship cruiser;
-	Ship destroyer;
+	Ship *carrier;
+	Ship *battleship;
+	Ship *submarine;
+	Ship *cruiser;
+	Ship *destroyer;
 
 	string guessPos;
 };
