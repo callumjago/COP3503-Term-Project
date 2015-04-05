@@ -70,10 +70,9 @@ void Board::print_board(){
 void Board::add_tiles_to_board(){
 	board.tiles = values;
 	std::cout << "Added tiles to board\n";
-	std::cout << board.tiles;
 }
 
-
+/*
 
 int main(){
 
@@ -86,3 +85,4 @@ int main(){
 	return 0;
 }
 
+*/

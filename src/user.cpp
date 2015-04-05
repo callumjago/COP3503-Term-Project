@@ -1,7 +1,7 @@
 #include "../include/user.h"
 
 
-bool User :: guess(){
+bool User::guess(){
 
 	string guess = "";
 	cout << "Enter your guess: ";
@@ -10,7 +10,7 @@ bool User :: guess(){
 	return false;
 };
 
-bool User :: setShip(){
+bool User::setShip(){
 
 	string desPose = "";
 
@@ -24,7 +24,7 @@ bool User :: setShip(){
 }
 
 //Cancel the up position.
-int User :: isValidPos(string desPos, int length){
+int User::isValidPos(string desPos, int length){
 	string direction = ""; //Can be either up, down, or right.
 	
 	bool right = true;
@@ -150,10 +150,3 @@ int User :: isValidPos(string desPos, int length){
 	return 0;	
 };
 
-
-
-int main(){
-
-	
-	return 0;
-}

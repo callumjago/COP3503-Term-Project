@@ -155,7 +155,3 @@ int Computer :: isValidPosition(string desPos, int length){
 
 	return --m;	// -1 means invalid or error, 0 means "up", 1 means "down", 2 means "left", 3 means "right"
 }
-
-int main(){
-	return 0;
-}

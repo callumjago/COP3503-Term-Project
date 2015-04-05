@@ -25,12 +25,3 @@ int Ship::getLength(){
 }
 
 
-int main(){
-
-	//Testing the initialization of a ship of length 5.
-	Ship test(5);
-
-	cout << "How long is this ship? " << test.getLength() << endl;
-	
-	return 0;
-}
