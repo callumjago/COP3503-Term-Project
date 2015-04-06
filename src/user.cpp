@@ -17,23 +17,104 @@ bool User::setShip(){
 	cout << "Enter the desired position of your carrier: ";
 	cin >> desPose;
 
-	isValidPos(desPose, 2);
+	if(isValidPos(desPose, 2) >= 0){
+		//Set ship based on direction and coordinates.
+	}
+	else{
+		do{
+			"Invalid position, enter a different position: ";
+			cin >> desPose;
+			if(isValidPos(desPose, 2) >= 0){
+				//Set ship based on direction and coordinates.
+			}
+		} while (isValidPos(desPose, 2) < 0);
+	}
+
+
+	cout << "Enter the desired position of your battleship: ";
+	cin >> desPose;
+
+	if(isValidPos(desPose, 3) >= 0){
+		//Set ship based on direction and coordinates.
+	}
+	else{
+		do{
+			"Invalid position, enter a different position: ";
+			cin >> desPose;
+			if(isValidPos(desPose, 3) >= 0){
+				//Set ship based on direction and coordinates.
+			}
+		} while (isValidPos(desPose, 3) < 0);
+	}
+
+
+	cout << "Enter the desired position of your submarine: ";
+	cin >> desPose;
+
+	if(isValidPos(desPose, 3) >= 0){
+		//Set ship based on direction and coordinates.
+	}
+	else{
+		do{
+			"Invalid position, enter a different position: ";
+			cin >> desPose;
+			if(isValidPos(desPose, 3) >= 0){
+				//Set ship based on direction and coordinates.
+			}
+		} while (isValidPos(desPose, 3) < 0);
+	}
+
+
+	cout << "Enter the desired position of your cruiser: ";
+	cin >> desPose;
+
+	if(isValidPos(desPose, 4) >= 0){
+		//Set ship based on direction and coordinates.
+	}
+	else{
+		do{
+			"Invalid position, enter a different position: ";
+			cin >> desPose;
+			if(isValidPos(desPose, 4) >= 0){
+				//Set ship based on direction and coordinates.
+			}
+		} while (isValidPos(desPose, 4) < 0);
+	}
+
+
+	cout << "Enter the desired position of your destroyer: ";
+	cin >> desPose;
+
+	if(isValidPos(desPose, 5) >= 0){
+		//Set ship based on direction and coordinates.
+	}
+	else{
+		do{
+			"Invalid position, enter a different position: ";
+			cin >> desPose;
+			if(isValidPos(desPose, 5) >= 0){
+				//Set ship based on direction and coordinates.
+			}
+		} while (isValidPos(desPose, 5) < 0);
+	}
+
 
 	return false;
-	//Create instances for all 5 ships, until isValidPosition is a success for all 5 ships.
-}
+};
 
-//Cancel the up position.
+
 int User::isValidPos(string desPos, int length){
 	string direction = ""; //Can be either up, down, or right.
 	
 	bool right = true;
-	bool up = true;
 	bool down = true;
 
 
 	char letter = desPos.at(0);
-	int digit = desPos.at(1); //Need to make a special case for the digit 10.
+	int digit = desPos.at(1);
+	if(digit == 1 && (int)desPos.at(2) == 0){
+		digit = 10;
+	}
 
 	char tempLetter = 'A';
 	int tempDigit = 1;
@@ -41,8 +122,10 @@ int User::isValidPos(string desPos, int length){
 	int index = ((letter - 'A') * 10) + digit; //Determines the index of the position in the board.
 	int tempIndex = 0;
 
+	int choice = -1;
 
-	if(letter >= 'A' && letter <= 'J' && digit >= 1 && digit <= 9){
+
+	if(letter >= 'A' && letter <= 'J' && digit >= 1 && digit <= 10){
 	}
 	else{
 		cout << "Invalid position choice.";
@@ -50,22 +133,6 @@ int User::isValidPos(string desPos, int length){
 
 	
 	if(board->getStatus(index) == 0){
-		//Checks to see if up is possible.
-		if(letter - length >= 'A'){
-			for(int i = 1; i <= length; i++){
-				tempLetter = letter - i;
-				tempDigit = digit;
-
-				tempIndex = ((tempLetter - 'A') * 10) + tempDigit;
-
-				if(board->getStatus(index) == 0){
-				}
-				else{
-					up = false;
-				}
-			}
-
-		}
 
 		//Checks to see if down is possible.
 		if(letter + length >= 'J'){
@@ -102,51 +169,46 @@ int User::isValidPos(string desPos, int length){
 		}
 
 		//Given the possibilities, asks the user which direction to choose.
-		if(!right && !up && !down){
+		if(!right && !down){
 			cout << "Unable to place a ship of this length there.";
-		}
-		else if(right && up && down){
-			cout << "Choose to orientate the ship right, up, or down: ";
-			cin >> direction;
-			//Set the ship coordinates based on choice.
-		}
-		else if(right && up){
-			cout << "Choose to orientate the ship right or up: ";
-			cin >> direction;
-			//Set the ship coordinates based on choice.
 		}
 		else if(right && down){
 			cout << "Choose to orientate the ship right or down: ";
 			cin >> direction;
-			//Set the ship coordinates based on choice.
-		}
-		else if(down && up){
-			cout << "Choose to orientate the ship up or down: ";
-			cin >> direction;
-			//Set the ship coordinates based on choice.
-		}
-		else if(up){
-			//Set the ship coordinates.
+			else if(direction.compare("right") == 0){
+				choice = 3;
+			}
+			else if(direction.compare("down") == 0){
+				choice = 1;
+			}
+			else{
+				do{
+					"Invalid choice. Choose again: ";
+					cin >> direction; = 0;
+					}
+					else if(direction.compare("right") == 0){
+						choice = 3;
+					}
+					else if(direction.compare("down") == 0){
+						choice = 1;
+					}
+				} while (direction.compare("down") != 0 && direction.compare("right") != 0);
+			}
 		}
 		else if(down){
-			//Set the ship coordinates.
+			choice = 1;
 		}
 		else if(right){
-			//Set the ship coordinates.
+			choice = 3;
 		}
-
-
-
-
 
 	}
 	else{
 		cout << "Ship already placed there.";
 	}
-	
 
-		//Returns an array of directions that the user can oriente the ship, based on location availabilities.
-		//Eion: I changed this to return an int corresponding to the chosen orientation rather than an array of options (choose within this method)
-	return 0;	
+	return choice;	
+
+	// -1 means invalid or error, 0 means "up", 1 means "down", 2 means "left", 3 means "right"
 };
 
