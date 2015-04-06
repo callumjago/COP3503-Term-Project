@@ -4,11 +4,11 @@
 
 bool Ship::sinkShip(){
 	if(this->isSunk){
-		//if ship is already sunk, do something here
+		// if ship is already sunk, do something here
 		return false;
 	}
 	else{
-		//if ship is afloat, sink it here
+		// if ship is afloat, sink it here
 		this->isSunk = true;
 
 		std::cout << "SINKING SHIP\n";
