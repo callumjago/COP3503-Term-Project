@@ -5,21 +5,15 @@ private:
 
 public:
 	User(){
-		/*board = new Board();
+		board = new Board();
 
-		carrier = Ship(5);
-		battleship = Ship(4);
-		submarine = Ship(3);
-		cruiser = Ship(3);
-		destroyer = Ship(2);*/
+		carrier = new Ship(5);
+		battleship = new Ship(4);
+		submarine = new Ship(3);
+		cruiser = new Ship(3);
+		destroyer = new Ship(2);
 	}
-	bool setShip();		//Eion: I think these function declarations are redundant sincce they are already declared in player.h?
-	bool guess();		//""
-	void isValidPosition(string desiredPos, int length);	//""
+	bool setShip();	
+	bool guess();		
+	int isValidPos(string desPos, int length);	
 };
-	
-
-bool User :: setShip(){
-	return false;
-};
-
