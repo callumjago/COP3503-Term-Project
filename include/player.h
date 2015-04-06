@@ -1,28 +1,38 @@
 #include "ship.h"
 
 class Player{
+
 public:
-	virtual bool setShip() = 0;
-	virtual bool guess() = 0;
-	virtual int isValidPos(string desPos, int length) = 0;
+
 	Player(){
-		carrier = Ship(5);
-		battleship = Ship(4);
-		submarine = Ship(3);
-		cruiser = Ship(3);
-		destroyer = Ship(2);
+		carrier = new Ship(5);
+		battleship = new Ship(4);
+		submarine = new Ship(3);
+		cruiser = new Ship(3);
+		destroyer = new Ship(2);
 	}
 
-private:
+void setCarrier(){
+	std::cout << carrier->getIsSunk();
+}
+void setBattleship(){
+	std::cout << battleship->getIsSunk();
+}
+void setSubmarine(){
+	std::cout << submarine->getIsSunk();
+}
+void setCruiser(){
+	std::cout << cruiser->getIsSunk();
+}
+void setDestroyer(){
+	std::cout << destroyer->getIsSunk();
+}
 		
-protected:
 	Board *board;
-
 	Ship *carrier;
 	Ship *battleship;
 	Ship *submarine;
 	Ship *cruiser;
 	Ship *destroyer;
-
 	string guessPos;
 };

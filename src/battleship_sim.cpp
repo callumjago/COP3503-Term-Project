@@ -16,9 +16,10 @@ int main(int argc, char *argv[1]){
 
 	int length;
 	bool allowed_ship = false;
+	bool second_third = false;
 	int allowed_lengths[] = {2,3,3,4,5};
 
-
+	Player player = Player();
 
 	// While there are still ships to create
 	while ((allowed_lengths[0] != 0) | (allowed_lengths[1] != 0) | (allowed_lengths[2] != 0) | (allowed_lengths[3] != 0) | (allowed_lengths[4] != 0))
@@ -33,8 +34,23 @@ int main(int argc, char *argv[1]){
 			{
 				allowed_lengths[i] = 0; 	  // Remove from array
 				allowed_ship = true;		  // Untriggers if statment below
-				Ship carrier = Ship(i);		  // Create ship of length i
-				cout << "Is this ship sunk? " << carrier.getIsSunk() << endl << endl;
+				switch(length){
+					case 2: player.setDestroyer();
+					break;
+					case 3: 
+							if (second_third == false)
+							{
+								player.setSubmarine();
+								second_third = true;
+							}else{
+								player.setCruiser();
+							}
+					break;
+					case 4: player.setBattleship();
+					break;
+					case 5: player.setCarrier();
+					break;
+				}
 				break;
 			}
 		}

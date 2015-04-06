@@ -3,7 +3,7 @@ CXXFLAGS = -Wall -I ~/src/
 
 SEARCH_TARGET = battleship_sim
 
-LIB = board.o ship.o  computer.o
+LIB = board.o ship.o computer.o
 
 all: $(SEARCH_TARGET)
 

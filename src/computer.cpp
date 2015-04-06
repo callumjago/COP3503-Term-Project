@@ -2,7 +2,7 @@
 #include <string>
 #include <stdlib.h>
 
-Computer :: Computer(){
+Computer::Computer(){
 		board = new Board();
 
 		carrier =		new Ship(5);
