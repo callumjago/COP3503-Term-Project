@@ -176,7 +176,7 @@ int User::isValidPos(string desPos, int length){
 		else if(right && down){
 			cout << "Choose to orientate the ship right or down: ";
 			cin >> direction;
-			else if(direction.compare("right") == 0){
+			if(direction.compare("right") == 0){
 				choice = 3;
 			}
 			else if(direction.compare("down") == 0){
@@ -221,17 +221,24 @@ void setCarrier(){
 	cout << "Enter the desired position of your carrier: ";
 	cin >> desPose;
 
-	if(isValidPos(desPose, 2) >= 0){
-		//Set ship based on direction and coordinates.
+	if(isValidPos(desPose, 2) == 1){
+		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
+			carrier = new Ship(2, "Carrier", false, desPose.at(0), 10);
+		}
+		else{
+			carrier = new Ship(2, "Carrier", false, desPose.at(0), (int)desPose.at(1));
+		}
+	}
+	else if(isValidPos(desPose, 2) == 3){
+		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
+			carrier = new Ship(2, "Carrier", true, desPose.at(0), 10);
+		}
+		else{
+			carrier = new Ship(2, "Carrier", true, desPose.at(0), (int)desPose.at(1));
+		}
 	}
 	else{
-		do{
-			"Invalid position, enter a different position: ";
-			cin >> desPose;
-			if(isValidPos(desPose, 2) >= 0){
-				//Set ship based on direction and coordinates.
-			}
-		} while (isValidPos(desPose, 2) < 0);
+		cout << "Invalid position.";
 	}
 }
 void setBattleship(){
