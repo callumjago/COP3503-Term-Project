@@ -7,10 +7,11 @@ bool User::guess(){
 	cout << "Enter your guess: ";
 	cin >> guess;
 
+
 	return false;
 };
 
-bool User::setShip(){
+/*bool User::setShip(){
 
 	string desPose = "";
 
@@ -100,7 +101,7 @@ bool User::setShip(){
 
 
 	return false;
-};
+};*/
 
 
 int User::isValidPos(string desPos, int length){
@@ -211,4 +212,38 @@ int User::isValidPos(string desPos, int length){
 
 	// -1 means invalid or error, 0 means "up", 1 means "down", 2 means "left", 3 means "right"
 };
+
+void setCarrier(){
+	//std::cout << carrier->getIsSunk();
+
+	string desPose = "";
+
+	cout << "Enter the desired position of your carrier: ";
+	cin >> desPose;
+
+	if(isValidPos(desPose, 2) >= 0){
+		//Set ship based on direction and coordinates.
+	}
+	else{
+		do{
+			"Invalid position, enter a different position: ";
+			cin >> desPose;
+			if(isValidPos(desPose, 2) >= 0){
+				//Set ship based on direction and coordinates.
+			}
+		} while (isValidPos(desPose, 2) < 0);
+	}
+}
+void setBattleship(){
+	std::cout << battleship->getIsSunk();
+}
+void setSubmarine(){
+	std::cout << submarine->getIsSunk();
+}
+void setCruiser(){
+	std::cout << cruiser->getIsSunk();
+}
+void setDestroyer(){
+	std::cout << destroyer->getIsSunk();
+}
 
