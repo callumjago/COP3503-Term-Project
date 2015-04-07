@@ -18,10 +18,10 @@ class Ship{
 		bool isHorizontal;
 		string name;
 };
-
-Ship::Ship(int length, str name, bool isHorizontal, int startY, int startX):length(length), status(NULL), isSunk(false){
+//x, and y specify top left most coordinate, ship then extends down if vertical, right if horizontal
+Ship::Ship(int length, str name, bool isHorizontal, char startX, int startY):length(length), status(NULL), isSunk(false){
 	status = new int[length];
-	this->startX = startX;
+	this->startX = 66 - startX;
 	this->startY = startY;
 	this->name = name;	
 	this->isHorizontal = isHorizontal;
