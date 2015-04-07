@@ -24,7 +24,7 @@ bool Computer::guess(){
 	str << let << num;
 	str >> guess;
 
-	if(isValidPosition(guess) != -1){
+	if(isValidPosition(guess, 1) != -1){
 		//bomb that space on board
 	}
 	else{
