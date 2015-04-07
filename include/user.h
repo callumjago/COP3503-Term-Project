@@ -7,13 +7,19 @@ public:
 	User(){
 		board = new Board();
 
-		carrier = new Ship(5);
+		/*carrier = new Ship(5);
 		battleship = new Ship(4);
 		submarine = new Ship(3);
 		cruiser = new Ship(3);
-		destroyer = new Ship(2);
+		destroyer = new Ship(2);*/
 	}
-	bool setShip();	
+
+	void setCarrier();
+	void setBattleship();
+	void setSubmarine();
+	void setCruiser();
+	void setDestroyer();
+	
 	bool guess();		
 	int isValidPos(string desPos, int length);	
 };

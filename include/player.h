@@ -17,24 +17,11 @@ public:
 		Ship *submarine;
 		Ship *cruiser;
 		Ship *destroyer;
+		
 		string guessPos;
 	}
 
-void setCarrier(){
-	std::cout << carrier->getIsSunk();
-}
-void setBattleship(){
-	std::cout << battleship->getIsSunk();
-}
-void setSubmarine(){
-	std::cout << submarine->getIsSunk();
-}
-void setCruiser(){
-	std::cout << cruiser->getIsSunk();
-}
-void setDestroyer(){
-	std::cout << destroyer->getIsSunk();
-}
+
 		
 	
 };
