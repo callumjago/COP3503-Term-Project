@@ -1,10 +1,13 @@
 //Win method
+string = 
 bool win =false;
 bool lose = false;
 bool gameover=false; 
 
 
-//Need to pass Computer into Lose to check ship contained by Computer
+//Need to pass Computer into Lose to check ship contained by Computer 
+//***not sure how to do that
+
 void Lose(){
 int sunkNum;
 if(carrier.getIsSunk()==true)
@@ -51,33 +54,51 @@ int main() {
 
 	while(gameover!=true)
 
-		//Guess location 
+	//%%%%%%%%%%%%%%%%%%%%%__USER__%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-			//checks ship, changes status to hit or miss 
+	//-------------------Guess location----------------------
 
+		//User.guess
 
-		//Return hit or miss message
+	//-------------Changes status to hit or miss------------- 
 
-
-		if(win==true){
+	//-------------check if ship hit is sunk-----------------
+	Win();
+	if(win==true){
+			cout<<"Congrats! You won!";
 			//Congrats you win message
 			gameover = true; 
+			return 0;
 		}
 		
 
-		if(lose==true){
-			//Sorry you lose
+//*******I need to find a way to make sure that in win scenario, computer doesnt get turn
+
+
+
+	//%%%%%%%%%%%%%%%%%%%__COMPUTER__%%%%%%%%%%%%%%%%%%%%%%%%
+
+	//--------------------Guess Location-------------------
+
+		//Computer.guess
+	
+	//-------------Changes status to hit or miss---------------
+
+	//-------------check if ship hit is sunk-------------------
+
+		 //Access specific location on ship, changes it to 1 or 0 
+
+
+	Lose();
+	if(lose==true){
+			cout<<"You lost."
 			gameover= true;
+			return 0;
 		}
 
 		
-		if(giveup==true){
-			gameover=true; 
-		}
 
-
-	
-	
+//Resign option and "would you like to play again" option in sim file
 
 
 }
