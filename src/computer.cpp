@@ -6,30 +6,31 @@
 Computer::Computer(){
 		board = new Board();
 
+		/*
 		carrier =		new Ship(5);
 		battleship =	new Ship(4);
 		submarine =		new Ship(3);
 		cruiser =		new Ship(3);
 		destroyer =		new Ship(2);
+		*/
 
 		guessPos = "";
 	}
 
 bool Computer::guess(){
-	int num = rand() % 10 + 1;
-	char let = 'A' + (rand() % 10);
+	char let = 'A';
+	int num = 1;
 
-	stringstream str;
-	string guess;
-	str << let << num;
-	str >> guess;
-
-	if(isValidPosition(guess, 1) != -1){
-		//bomb that space on board
-	}
-	else{
-		//guess again
-	}
+	do{
+		let = 'A' + (rand() % 10);
+		num = rand() % 10 + 1;
+		stringstream str;
+		guessPos = "";
+		str << let << num;
+		str >> guessPos;
+	}while(isValidPosition(guessPos, 1) == -1);
+	//guess is now a valid position (regardless of orientation because its ""length"" is 1
+	//bomb the guess place on board!
 
 	return false;
 }
@@ -92,7 +93,7 @@ bool Computer::setShip(){
 int Computer::isValidPosition(string desPos, int length){
 	char let = desPos.at(0);
 	int num = desPos.at(1);
-	if(num == 1 && (int)desPos.at(2) == 0){
+	if(num == 1 && (signed)desPos.length() > 2 && (int)desPos.at(2) == 0){
 		num = 10;
 	}
 
@@ -181,7 +182,7 @@ int Computer::isValidPosition(string desPos, int length){
 	for(int i = 0; i < 4; i++){ if(option[i]){ sum++; } }
 
 	if(sum == 0){
-		//cout << "Error: no orientation options." << endl;
+		//cout << "Error: no orientation options." << endl;		/*this is only an error when placing a ship, not when guessing a place to bomb*/
 		return 0;
 	}
 	
