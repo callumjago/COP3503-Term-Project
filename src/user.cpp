@@ -1,4 +1,6 @@
 #include "../include/user.h"
+#include <iostream>
+
 
 
 bool User::guess(){
@@ -9,7 +11,7 @@ bool User::guess(){
 
 	char letter = guess.at(0);
 	int digit = guess.at(1);
-	if(digit == 1 && (int)desPos.at(2) == 0){
+	if(digit == 1 && (int)guess.at(2) == 0){
 		digit = 10;
 	}
 
@@ -228,7 +230,7 @@ void User::setCarrier(){
 	cin >> desPose;
 
 	if(isValidPos(desPose, 2) == 1){
-		if((signed)desPos.length() > 2 && desPose.at(1) == 1 && (int)desPose.at(2) == 0){
+		if((signed)desPose.length() > 2 && desPose.at(1) == 1 && (int)desPose.at(2) == 0){
 			carrier = new Ship(2, "Carrier", false, desPose.at(0), 10);
 		}
 		else{

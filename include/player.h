@@ -14,6 +14,12 @@ public:
 		
 	}
 
+	void setCarrier();
+	void setBattleship();
+	void setSubmarine();
+	void setCruiser();
+	void setDestroyer();
+
 protected:
 	Board *board;
 

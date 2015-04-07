@@ -1,7 +1,6 @@
 #include "../include/board.h"
 #include "../include/ship.h"
 #include "../include/user.h"
-
 #include <unistd.h>
 
 
@@ -72,12 +71,14 @@ int main(int argc, char *argv[1]){
 		
 		allowed_ship = false; // reset
 
-		// main loop for runnning program
+		
+	}
+
+	// main loop for runnning program
 		while(1){
 			printf("sdsdfsdf\n");
 			sleep(1);
 		}
-	}
 
 	/*
 	cout << "How long is this ship? " << test.getLength() << endl;
