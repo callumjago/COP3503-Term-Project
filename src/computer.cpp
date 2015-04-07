@@ -40,7 +40,7 @@ bool Computer::setShip(){
 		str << let << num;
 		str >> desPos;
 		orientation = isValidPosition(desPos, 5);
-	}while(orientation == -1)
+	}while(orientation == -1);
 	//orientation is now inequal to -1, so set and orient the carrier
 
 	do{
@@ -49,7 +49,7 @@ bool Computer::setShip(){
 		str << let << num;
 		str >> desPos;
 		orientation = isValidPosition(desPos, 4);
-	}while(orientation == -1)
+	}while(orientation == -1);
 	//orientation is now inequal to -1, so set and orient the battleship
 
 	do{
@@ -58,7 +58,7 @@ bool Computer::setShip(){
 		str << let << num;
 		str >> desPos;
 		orientation = isValidPosition(desPos, 3);
-	}while(orientation == -1)
+	}while(orientation == -1);
 	//orientation is now inequal to -1, so set and orient the submarine
 
 	do{
@@ -67,7 +67,7 @@ bool Computer::setShip(){
 		str << let << num;
 		str >> desPos;
 		orientation = isValidPosition(desPos, 3);
-	}while(orientation == -1)
+	}while(orientation == -1);
 	//orientation is now inequal to -1, so set and orient the cruiser
 
 	do{
@@ -76,7 +76,7 @@ bool Computer::setShip(){
 		str << let << num;
 		str >> desPos;
 		orientation = isValidPosition(desPos, 5);
-	}while(orientation == -1)
+	}while(orientation == -1);
 	//orientation is now inequal to -1, so set and orient the destroyer
 	
 	return true;
