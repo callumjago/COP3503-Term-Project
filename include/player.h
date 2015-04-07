@@ -3,7 +3,7 @@
 class Player{
 
 private:
-	string desPose;
+	string guessPos;
 
 public:
 	virtual bool setShip() = 0;
@@ -11,17 +11,19 @@ public:
 	virtual int isValidPos(string desPos, int length) = 0;
 
 	Player(){
-		Board *board;
-		Ship *carrier;
-		Ship *battleship;
-		Ship *submarine;
-		Ship *cruiser;
-		Ship *destroyer;
 		
-		string guessPos;
 	}
 
+protected:
+	Board *board;
 
+	string desPose;
+	
+	Ship *carrier;
+	Ship *battleship;
+	Ship *submarine;
+	Ship *cruiser;
+	Ship *destroyer;
 		
 	
 };

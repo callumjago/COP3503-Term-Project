@@ -185,9 +185,8 @@ int User::isValidPos(string desPos, int length){
 			else{
 				do{
 					"Invalid choice. Choose again: ";
-					cin >> direction; = 0;
-					}
-					else if(direction.compare("right") == 0){
+					cin >> direction;
+					if(direction.compare("right") == 0){
 						choice = 3;
 					}
 					else if(direction.compare("down") == 0){
@@ -202,7 +201,6 @@ int User::isValidPos(string desPos, int length){
 		else if(right){
 			choice = 3;
 		}
-
 	}
 	else{
 		cout << "Ship already placed there.";
@@ -213,7 +211,7 @@ int User::isValidPos(string desPos, int length){
 	// -1 means invalid or error, 0 means "up", 1 means "down", 2 means "left", 3 means "right"
 };
 
-void setCarrier(){
+void User::setCarrier(){
 	//std::cout << carrier->getIsSunk();
 
 	string desPose = "";
@@ -222,7 +220,7 @@ void setCarrier(){
 	cin >> desPose;
 
 	if(isValidPos(desPose, 2) == 1){
-		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
+		if(desPose.at(1) == 1 && (int)desPose.at(2) == 0){
 			carrier = new Ship(2, "Carrier", false, desPose.at(0), 10);
 		}
 		else{
@@ -230,7 +228,7 @@ void setCarrier(){
 		}
 	}
 	else if(isValidPos(desPose, 2) == 3){
-		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
+		if(desPose.at(1) == 1 && (int)desPose.at(2) == 0){
 			carrier = new Ship(2, "Carrier", true, desPose.at(0), 10);
 		}
 		else{
@@ -241,16 +239,16 @@ void setCarrier(){
 		cout << "Invalid position.";
 	}
 }
-void setBattleship(){
-	std::cout << battleship->getIsSunk();
+void User::setBattleship(){
+	//std::cout << battleship->getIsSunk();
 }
-void setSubmarine(){
-	std::cout << submarine->getIsSunk();
+void User::setSubmarine(){
+	//std::cout << submarine->getIsSunk();
 }
-void setCruiser(){
-	std::cout << cruiser->getIsSunk();
+void User::setCruiser(){
+	//std::cout << cruiser->getIsSunk();
 }
-void setDestroyer(){
-	std::cout << destroyer->getIsSunk();
+void User::setDestroyer(){
+	//std::cout << destroyer->getIsSunk();
 }
 

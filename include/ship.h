@@ -14,10 +14,7 @@ class Ship{
 		bool getIsSunk();	//getter method for state bool isSunk
 		int getLength();	//getter method for state int length
 
-		Ship(int len){
-			length = len;
-			isSunk = false;
-		};	//parametrized class constructor, input state int length
+		Ship(int length, string name, bool isHorizontal, char startX, int startY);	//parametrized class constructor, input state int length
 
 	
 };

@@ -6,7 +6,7 @@ class Ship{
 		bool sinkShip();	//attempts sinking the Ship (interp as setter method for state bool isSunk)
 		bool getIsSunk();	//getter method for state bool isSunk
 		int getLength();	//getter method for state int length
-		Ship(int length);	//parametrized class constructor, input state int length
+		Ship(int length, string name, bool isHorizontal, char startX, int startY);	//parametrized class constructor, input state int length
 
 	private:
 		int length;
@@ -19,7 +19,7 @@ class Ship{
 		string name;
 };
 //x, and y specify top left most coordinate, ship then extends down if vertical, right if horizontal
-Ship::Ship(int length, str name, bool isHorizontal, char startX, int startY):length(length), status(NULL), isSunk(false){
+Ship::Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), status(NULL), isSunk(false){
 	status = new int[length];
 	this->startX = 66 - startX;
 	this->startY = startY;
