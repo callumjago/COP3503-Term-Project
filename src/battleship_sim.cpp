@@ -1,6 +1,8 @@
 #include "../include/board.h"
 #include "../include/ship.h"
-#include "../include/player.h"
+#include "../include/user.h"
+
+#include <unistd.h>
 
 
 
@@ -19,7 +21,7 @@ int main(int argc, char *argv[1]){
 	bool second_third = false;
 	int allowed_lengths[] = {2,3,3,4,5};
 
-	User player = User();
+	User user = User();
 
 	// While there are still ships to create
 	while ((allowed_lengths[0] != 0) | (allowed_lengths[1] != 0) | (allowed_lengths[2] != 0) | (allowed_lengths[3] != 0) | (allowed_lengths[4] != 0))
@@ -35,20 +37,20 @@ int main(int argc, char *argv[1]){
 				allowed_lengths[i] = 0; 	  // Remove from array
 				allowed_ship = true;		  // Untriggers if statment below
 				switch(length){
-					case 2: player.setDestroyer();
+					case 2: user.setDestroyer();
 					break;
 					case 3: 
 							if (second_third == false)
 							{
-								player.setSubmarine();
+								user.setSubmarine();
 								second_third = true;
 							}else{
-								player.setCruiser();
+								user.setCruiser();
 							}
 					break;
-					case 4: player.setBattleship();
+					case 4: user.setBattleship();
 					break;
-					case 5: player.setCarrier();
+					case 5: user.setCarrier();
 					break;
 				}
 				break;
@@ -69,6 +71,12 @@ int main(int argc, char *argv[1]){
 			}
 		
 		allowed_ship = false; // reset
+
+		// main loop for runnning program
+		while(1){
+			printf("sdsdfsdf\n");
+			sleep(1);
+		}
 	}
 
 	/*

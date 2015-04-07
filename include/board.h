@@ -27,7 +27,6 @@ class Board{
 			tile * tiles;
 		} full_board_t;
 		
-		struct tile values[101];
 		struct full_board board; 
 
 		int possibleStatus[];
@@ -48,6 +47,8 @@ class Board{
 			}
 			
 		}
+		
+		struct tile values[101];
 
 		
 };

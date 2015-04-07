@@ -6,9 +6,9 @@ private:
 	string guessPos;
 
 public:
-	virtual bool setShip() = 0;
-	virtual bool guess() = 0;
-	virtual int isValidPos(string desPos, int length) = 0;
+	//virtual bool setShip() = 0;
+	//virtual bool guess() = 0;
+	//virtual int isValidPos(string desPos, int length) = 0;
 
 	Player(){
 		

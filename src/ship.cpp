@@ -1,23 +1,9 @@
-#include "battleship_main.h"
+#include <iostream>
+#include "../include/board.h"
+#include "../include/ship.h"
 //TODO store location of ship and figure out interaction with board.cpp
 //Status values: 0 - empty; 1 - not hit; 2 - hit
-class Ship{
-	public:
-		bool sinkShip();	//attempts sinking the Ship (interp as setter method for state bool isSunk)
-		bool getIsSunk();	//getter method for state bool isSunk
-		int getLength();	//getter method for state int length
-		Ship(int length, string name, bool isHorizontal, char startX, int startY);	//parametrized class constructor, input state int length
 
-	private:
-		int length;
-		int startX;
-		int startY;
-		int* status;
-		int* location;
-		bool isSunk;
-		bool isHorizontal;
-		string name;
-};
 //x, and y specify top left most coordinate, ship then extends down if vertical, right if horizontal
 Ship::Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), status(NULL), isSunk(false){
 	status = new int[length];
@@ -33,7 +19,7 @@ Ship::Ship(int length, string name, bool isHorizontal, char startX, int startY):
 	else { this->length = length;}
 }
 
-void Ship::Initialize(board b) {
+void Ship::Initialize(Board b) {
 	if(isHorizontal) {
 		for(int i = 0; i < length; i++) {
 			b.values[(10*startY) + startX + i].status = 1; //not sure if 1 is correct value
