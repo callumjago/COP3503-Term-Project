@@ -19,7 +19,7 @@ int main(int argc, char *argv[1]){
 	bool second_third = false;
 	int allowed_lengths[] = {2,3,3,4,5};
 
-	Player player = Player();
+	User player = User();
 
 	// While there are still ships to create
 	while ((allowed_lengths[0] != 0) | (allowed_lengths[1] != 0) | (allowed_lengths[2] != 0) | (allowed_lengths[3] != 0) | (allowed_lengths[4] != 0))
