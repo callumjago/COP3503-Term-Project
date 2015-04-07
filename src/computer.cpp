@@ -1,6 +1,7 @@
 #include "../include/computer.h"
 #include <string>
 #include <stdlib.h>
+#include <sstream>
 
 Computer::Computer(){
 		board = new Board();
@@ -14,7 +15,7 @@ Computer::Computer(){
 		guessPos = "";
 	}
 
-bool Computer :: guess(){
+bool Computer::guess(){
 	int num = rand() % 10 + 1;
 	char let = 'A' + (rand() % 10);
 
@@ -26,31 +27,62 @@ bool Computer :: guess(){
 	return false;
 }
 
-bool Computer :: setShip(){
+bool Computer::setShip(){
 	string desPos = "";
+	char let = 'A';
+	int num = 1;
+	stringstream str;
+	int orientation = -1;
 
-	//guess-like algorithm to randomize position
-	int orient = isValidPosition(desPos, 2);
-	if(orient == -1){ return false; }
-	else if(orient == 0){
-		//set according to up algorithm
-	}
-	else if(orient == 1){
-		//set according to down algorithm
-	}
-	else if(orient == 2){
-		//set according to left algorithm
-	}
-	else if(orient == 3){
-		//set according to right algorithm
-	}
+	do{
+		let = 'A' + (rand() % 10);
+		num = rand() % 10 + 1;
+		str << let << num;
+		str >> desPos;
+		orientation = isValidPosition(desPos, 5);
+	}while(orientation == -1)
+	//orientation is now inequal to -1, so set and orient the carrier
 
-	//repeat for remaining ships
+	do{
+		let = 'A' + (rand() % 10);
+		num = rand() % 10 + 1;
+		str << let << num;
+		str >> desPos;
+		orientation = isValidPosition(desPos, 4);
+	}while(orientation == -1)
+	//orientation is now inequal to -1, so set and orient the battleship
 
+	do{
+		let = 'A' + (rand() % 10);
+		num = rand() % 10 + 1;
+		str << let << num;
+		str >> desPos;
+		orientation = isValidPosition(desPos, 3);
+	}while(orientation == -1)
+	//orientation is now inequal to -1, so set and orient the submarine
+
+	do{
+		let = 'A' + (rand() % 10);
+		num = rand() % 10 + 1;
+		str << let << num;
+		str >> desPos;
+		orientation = isValidPosition(desPos, 3);
+	}while(orientation == -1)
+	//orientation is now inequal to -1, so set and orient the cruiser
+
+	do{
+		let = 'A' + (rand() % 10);
+		num = rand() % 10 + 1;
+		str << let << num;
+		str >> desPos;
+		orientation = isValidPosition(desPos, 5);
+	}while(orientation == -1)
+	//orientation is now inequal to -1, so set and orient the destroyer
+	
 	return true;
 }
 
-int Computer :: isValidPosition(string desPos, int length){
+int Computer::isValidPosition(string desPos, int length){
 	char let = desPos.at(0);
 	int num = desPos.at(1);
 	if(num == 1 && (int)desPos.at(2) == 0){
