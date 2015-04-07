@@ -220,7 +220,7 @@ void User::setCarrier(){
 	cin >> desPose;
 
 	if(isValidPos(desPose, 2) == 1){
-		if(desPose.at(1) == 1 && (int)desPose.at(2) == 0){
+		if((signed)desPos.length() > 2 && desPose.at(1) == 1 && (int)desPose.at(2) == 0){
 			carrier = new Ship(2, "Carrier", false, desPose.at(0), 10);
 		}
 		else{
