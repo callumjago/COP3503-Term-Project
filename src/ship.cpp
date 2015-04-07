@@ -1,5 +1,6 @@
 #include "battleship_main.h"
 //TODO store location of ship and figure out interaction with board.cpp
+//Status values: 0 - empty; 1 - not hit; 2 - hit
 class Ship{
 	public:
 		bool sinkShip();	//attempts sinking the Ship (interp as setter method for state bool isSunk)
@@ -58,17 +59,19 @@ bool Ship::sinkShip(){
 }
 
 bool Ship::getIsSunk(){
+	//Checks every element of status array, if any element is 1(not hit), return false
 	for(int i = 0; i < length; i++) {
-		if(status[i] != 1)
+		if(status[i] == 1)
 			return false;
 	}
 	return true;
 }
 
 int Ship::getLength(){
+	//returns length
 	return this->length;
 }
-
+/*
 int main(int argc, char *argv[1]){
 	int length;
 	cout << "\nEnter ship length: "; cin >> length;
@@ -80,3 +83,4 @@ int main(int argc, char *argv[1]){
 
 	return 0;
 }
+*/
