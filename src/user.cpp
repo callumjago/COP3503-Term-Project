@@ -7,6 +7,14 @@ bool User::guess(){
 	cout << "Enter your guess: ";
 	cin >> guess;
 
+	char letter = guess.at(0);
+	int digit = guess.at(1);
+	if(digit == 1 && (int)desPos.at(2) == 0){
+		digit = 10;
+	}
+
+	int index = ((letter - 'A') * 10) + digit; //Determines the index of the position in the board.
+	
 
 	return false;
 };
