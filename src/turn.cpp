@@ -69,13 +69,31 @@ else
 
 
 //-----------------------Hitting ship--------------------------
-void ship_hit(User user){
+void ship_hit(User user; Board board_user; Computer computer; Board board_comp; ){
+	
+	//!!!!!!!!!!!!!!!!!!!!!!!!!! guess methods need to return an array location and not a boolean value!!!!!!!!!!!!!!!!!!!!!
+	// int a = user.guess();	
+
+	// Need a check status and change status method for board.....
+	if (board_computer.getStatus(a)== 2){
+		cout<<"Location already guessed, please guess again:"
+	}
+	else
+	if (board_computer.getStatus(a)==1){
+		//run change status method
+		cout<<"Hit!";
+		//Need someway to check if the
+	}
+	else
+	if (board_computer.getStatus(a)==0){
+		cout<<"Miss!";
+		//possible need another value in case it was guessed so it can say that the location was already guessed
+	}
 
 
 
 
 }
-
 
 
 
@@ -111,15 +129,6 @@ int main() {
 
 		 //Access specific location on ship, changes it to 1 or 0 
 
-
-	Lose();
-	if(lose==true){
-			cout<<"You lost."
-			gameover= true;
-			return 0;
-		}
-
-		
 
 //Resign option and "would you like to play again" option in sim file
 
