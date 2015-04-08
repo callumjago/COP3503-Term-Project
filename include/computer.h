@@ -5,15 +5,16 @@ private:
 public:
 	Computer(){
 		board = new Board();
-		/*carrier =		new Ship(5);
-		battleship =	new Ship(4);
-		submarine =		new Ship(3);
-		cruiser =		new Ship(3);
-		destroyer =		new Ship(2);*/
 		choice = -1;
 	}
 
+	void setCarrier(bool *addSuccess);
+	void setBattleship(bool *addSuccess);
+	void setSubmarine(bool *addSuccess);
+	void setCruiser(bool *addSuccess);
+	void setDestroyer(bool *addSuccess);
+
 	bool guess();
-	bool setShip();
+	int formulate(int length);
 	int isValidPos(string desPos, int length);
 };
