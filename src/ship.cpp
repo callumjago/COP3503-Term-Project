@@ -10,7 +10,7 @@ Ship::Ship(int length, string name, bool isHorizontal, char startX, int startY):
 	status = new int[length];
 
 	//Converts char to int value
-	this->startX = 64 - (int)startX;
+	this->startX = (int)startX - 64;
 	this->startY = startY;
 	this->name = name;	
 	this->isHorizontal = isHorizontal;
