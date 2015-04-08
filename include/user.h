@@ -25,5 +25,8 @@ public:
 	
 	bool guess();		
 	int isValidPos(string desPos, int length);	
+
+
+	int *index;
 };
 #endif
