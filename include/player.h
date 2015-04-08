@@ -1,17 +1,13 @@
 #include "ship.h"
 
 class Player{
-
 private:
-	string guessPos;
-
 public:
 	//virtual bool setShip() = 0;
 	//virtual bool guess() = 0;
 	//virtual int isValidPos(string desPos, int length) = 0;
 
 	Player(){
-		
 	}
 
 	void setCarrier();
@@ -23,7 +19,7 @@ public:
 protected:
 	Board *board;
 
-	string desPose;
+	string desPos;
 	
 	Ship *carrier;
 	Ship *battleship;
@@ -32,6 +28,4 @@ protected:
 	Ship *destroyer;
 
 	int choice;
-		
-	
 };
