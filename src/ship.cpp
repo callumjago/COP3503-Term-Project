@@ -6,8 +6,11 @@
 
 //x, and y specify top left most coordinate, ship then extends down if vertical, right if horizontal
 Ship::Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), status(NULL), isSunk(false){
+	//Initializes status array
 	status = new int[length];
-	this->startX = 66 - startX;
+
+	//Converts char to int value
+	this->startX = 64 - (int)startX;
 	this->startY = startY;
 	this->name = name;	
 	this->isHorizontal = isHorizontal;
@@ -22,12 +25,12 @@ Ship::Ship(int length, string name, bool isHorizontal, char startX, int startY):
 void Ship::Initialize(Board b) {
 	if(isHorizontal) {
 		for(int i = 0; i < length; i++) {
-			b.values[(10*startY) + startX + i].status = 1; //not sure if 1 is correct value
+			b.values[(10*startY) + startX + i].status = 1; //sets status in sequential tiles to 1 for not hit
 		}
 	}
 	else {
 		for(int i = 0; i < length; i++) {
-			b.values[(10*startY) + startX + (10*i)].status = 1;
+			b.values[(10*startY) + startX + (10*i)].status = 1; //Sets status in vertically sequetial tiles to 1 for not hit
 		}
 	}
 }
