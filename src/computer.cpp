@@ -3,33 +3,19 @@
 #include <stdlib.h>
 #include <sstream>
 
-Computer::Computer(){
-	board = new Board();
-
-	/*
-	carrier =		new Ship(5);
-	battleship =	new Ship(4);
-	submarine =		new Ship(3);
-	cruiser =		new Ship(3);
-	destroyer =		new Ship(2);
-	*/
-
-	//guessPos = "";
-}
-
 bool Computer::guess(){
 	char let = 'A';
 	int num = 1;
-	string guessP = "";
+	desPos = "";
 
 	do{
 		let = 'A' + (rand() % 10);
 		num = rand() % 10 + 1;
 		stringstream str;
-		guessP = "";	//eventually change this to guessPos
+		desPos = "";
 		str << let << num;
-		str >> guessP;
-	}while(isValidPosition(guessP, 1) == -1);
+		str >> desPos;
+	}while(isValidPos(desPos, 1) == -1);
 	//guess is now a valid position (regardless of orientation because its ""length"" is 1
 	{/*bomb the location aka make that guess*/}
 
@@ -48,7 +34,7 @@ bool Computer::setShip(){
 		num = rand() % 10 + 1;
 		str << let << num;
 		str >> desPos;
-		orientation = isValidPosition(desPos, 5);
+		orientation = isValidPos(desPos, 5);
 	}while(orientation == -1 || orientation == 0);
 	//orientation is now inequal to -1 and 0
 	{/*set and orient the carrier*/}
@@ -58,7 +44,7 @@ bool Computer::setShip(){
 		num = rand() % 10 + 1;
 		str << let << num;
 		str >> desPos;
-		orientation = isValidPosition(desPos, 4);
+		orientation = isValidPos(desPos, 4);
 	}while(orientation == -1 || orientation == 0);
 	//orientation is now inequal to -1 and 0
 	{/*set and orient the battleship*/}
@@ -68,7 +54,7 @@ bool Computer::setShip(){
 		num = rand() % 10 + 1;
 		str << let << num;
 		str >> desPos;
-		orientation = isValidPosition(desPos, 3);
+		orientation = isValidPos(desPos, 3);
 	}while(orientation == -1 || orientation == 0);
 	//orientation is now inequal to -1 and 0
 	{/*set and orient the submarine*/}
@@ -78,7 +64,7 @@ bool Computer::setShip(){
 		num = rand() % 10 + 1;
 		str << let << num;
 		str >> desPos;
-		orientation = isValidPosition(desPos, 3);
+		orientation = isValidPos(desPos, 3);
 	}while(orientation == -1 || orientation == 0);
 	//orientation is now inequal to -1 and 0
 	{/*set and orient the cruiser*/}
@@ -88,7 +74,7 @@ bool Computer::setShip(){
 		num = rand() % 10 + 1;
 		str << let << num;
 		str >> desPos;
-		orientation = isValidPosition(desPos, 5);
+		orientation = isValidPos(desPos, 5);
 	}while(orientation == -1 || orientation == 0);
 	//orientation is now inequal to -1 and 0
 	{/*set and orient the destroyer*/}
@@ -96,10 +82,10 @@ bool Computer::setShip(){
 	return true;
 }
 
-int Computer::isValidPosition(string desPos, int length){
+int Computer::isValidPos(string desPos, int length){
 	char let = desPos.at(0);
-	int num = desPos.at(1);
-	if(num == 1 && (signed)desPos.length() > 2 && (int)desPos.at(2) == 0){
+	int num = (int)desPos.at(1) - 48;
+	if(num == 1 && desPos.length() == 3 && desPos.at(2) == '0'){
 		num = 10;
 	}
 
@@ -108,7 +94,7 @@ int Computer::isValidPosition(string desPos, int length){
 
 	bool left = true, right = true, up = true, down = true;
 
-	int ind = ((let - 'A') * 10) + num;
+	int ind = ((int)(let - 'A') * 10) + num;
 	int tempInd = 0;
 
 	if(let < 'A' || let > 'J' || num < 1 || num > 10){
