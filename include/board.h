@@ -15,9 +15,10 @@ class Board{
 
 	private:
 		typedef struct tile {
+			//Potential to put total number of ships currently on the board.
 			string str;
 			int id_num;
-			bool status; // Represents if a ship is placed at the board at that position. False means that there is not a ship, true means otherwise.
+			int status; //Status values: 0 - empty; 1 - not hit; 2 - hit
 		} tile_t;
 
 		// The thought here is that we have one board struct to hold all the tiles and all the ships
@@ -28,6 +29,8 @@ class Board{
 		} full_board_t;
 		
 		struct full_board board; 
+
+
 
 		int possibleStatus[];
 

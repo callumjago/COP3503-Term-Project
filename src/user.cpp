@@ -32,7 +32,7 @@ int User::isValidPos(string desPos, int length){
 
 	char letter = desPos.at(0);
 	int digit = (int)desPos.at(1) - 48;
-	if(desPos.length() == 3 && digit == 1 && (int)desPos.at(2) == 0){
+	if(desPos.length() == 3 && digit == 1 && desPos.at(2) == '0'){
 		digit = 10;
 	}
 
@@ -40,12 +40,12 @@ int User::isValidPos(string desPos, int length){
 	char tempLetter = 'A';
 	int tempDigit = 1;
 
-	int index = ((int)(letter - 'A') * 10) + digit; //Determines the index of the position in the board.
+	index = ((int)(letter - 'A') * 10) + digit; //Determines the index of the position in the board.
 	int tempIndex = 0;
 
 
 	if(letter >= 'A' && letter <= 'J' && digit >= 1 && digit <= 10){
-		if(board->getStatus(index) == false){
+		if(board->getStatus(index) == 0){
 
 			//Checks to see if down is possible.
 			if(letter + length >= 'J'){
@@ -55,7 +55,7 @@ int User::isValidPos(string desPos, int length){
 
 					tempIndex = ((tempLetter - 'A') * 10) + tempDigit;
 
-					if(board->getStatus(index) == false){
+					if(board->getStatus(index) == 0){
 					}
 					else{
 						down = false;
@@ -72,7 +72,7 @@ int User::isValidPos(string desPos, int length){
 
 					tempIndex = ((tempLetter - 'A') * 10) + tempDigit;
 
-					if(board->getStatus(index) == false){
+					if(board->getStatus(index) == 0){
 					}
 					else{
 						right = false;
@@ -144,11 +144,11 @@ void User::setCarrier(){
 	choice = isValidPos(desPose, 5);
 
 	if(choice == 1){
-		if((signed)desPose.length() > 2 && desPose.at(1) == 1 && (int)desPose.at(2) == 0){
+		if((signed)desPose.length() > 2 && desPose.at(1) == '1' && desPose.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", false, desPose.at(0), 10);
 		}
 		else{
-			carrier = new Ship(5, "Carrier", false, desPose.at(0), (int)desPose.at(1));
+			carrier = new Ship(5, "Carrier", false, desPose.at(0), (int)(desPose.at(1) - 48);
 		}
 	}
 	
@@ -157,7 +157,7 @@ void User::setCarrier(){
 			carrier = new Ship(5, "Carrier", true, desPose.at(0), 10);
 		}
 		else{
-			carrier = new Ship(5, "Carrier", true, desPose.at(0), (int)desPose.at(1));
+			carrier = new Ship(5, "Carrier", true, desPose.at(0), (int)(desPose.at(1) - 48));
 		}
 		return;
 	}
