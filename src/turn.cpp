@@ -1,5 +1,4 @@
 //Win method
-string = 
 bool win =false;
 bool lose = false;
 bool gameover=false; 
@@ -8,44 +7,75 @@ bool gameover=false;
 //Need to pass Computer into Lose to check ship contained by Computer 
 //***not sure how to do that
 
-void Lose(){
+
+
+//gameover boolean
+bool gameover(Computer computer; User user){
+	if (Lose(computer)==true){
+		return true;
+	}
+	if (Win(user)==true){
+		return true;
+	}
+}
+
+//Lose check
+
+
+bool Lose(Computer computer){
 int sunkNum;
-if(carrier.getIsSunk()==true)
+//!!!!!!!!!!!!!!!!!!!!------check "computer.ship"------!!!!!!!!!!!!!!!!!!!111
+if(computer.carrier.getIsSunk()==true)
 	sunkNum++;
-if(battleship.getIsSunk()==true)
+if(computer.battleship.getIsSunk()==true)
 	sunkNum++;
-if(submarine.getIsSunk()==true)
+if(computer.submarine.getIsSunk()==true)
 	sunkNum++;
-if(cruiser.getIsSunk()==true)
+if(computer.cruiser.getIsSunk()==true)
 	sunkNum++;
-if(destroyer.getIsSunk()==true)
+if(computer.destroyer.getIsSunk()==true)
 	sunkNum++;
 if(sunkNum==5)
-	lose=true;
+	return true;
 else
-	win=false;
+	return false;
 }
 
 
 //Need to pass Player class into Win to check ship contained by player
-void Win(){
+//User user? 
+bool Win(User user){
 int sunkNum;
-if(carrier.getIsSunk()==true)
+//!!!!!!!!!!!!!!!!!!!!-----check "user.ship.get" works-------!!!!!!!!!!!!!!!!!!!
+if(user.carrier.getIsSunk()==true)
 	sunkNum++;
-if(battleship.getIsSunk()==true)
+if(user.battleship.getIsSunk()==true)
 	sunkNum++;
-if(submarine.getIsSunk()==true)
+if(user.submarine.getIsSunk()==true)
 	sunkNum++;
-if(cruiser.getIsSunk()==true)
+if(user.cruiser.getIsSunk()==true)
 	sunkNum++;
-if(destroyer.getIsSunk()==true)
+if(user.destroyer.getIsSunk()==true)
 	sunkNum++;
 
-if(sunkNum==5)
-	win=true;
+if(sunkNum==5){
+	return true;
+}
 else
-	win=false;
+	return false;
 	}
+
+
+
+
+//-----------------------Hitting ship--------------------------
+void ship_hit(User user){
+
+
+
+
+}
+
 
 
 
@@ -63,14 +93,7 @@ int main() {
 	//-------------Changes status to hit or miss------------- 
 
 	//-------------check if ship hit is sunk-----------------
-	Win();
-	if(win==true){
-			cout<<"Congrats! You won!";
-			//Congrats you win message
-			gameover = true; 
-			return 0;
-		}
-		
+	
 
 //*******I need to find a way to make sure that in win scenario, computer doesnt get turn
 
