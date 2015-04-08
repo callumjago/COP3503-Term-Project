@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -I ~/src/
+CXXFLAGS = -I ~/src/
 
 SEARCH_TARGET = battleship_sim
 

@@ -17,7 +17,7 @@ class Board{
 		typedef struct tile {
 			string str;
 			int id_num;
-			int status; //Represents the possible configurations of the board: hit, miss, empty.
+			bool status; // Represents if a ship is placed at the board at that position. False means that there is not a ship, true means otherwise.
 		} tile_t;
 
 		// The thought here is that we have one board struct to hold all the tiles and all the ships
@@ -43,7 +43,7 @@ class Board{
 		Board(){
 			populate(); 
 			for(int i = 0; i < 101; i++){
-				values[i].status = 0;
+				values[i].status = false;
 			}
 			
 		}

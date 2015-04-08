@@ -30,6 +30,8 @@ protected:
 	Ship *submarine;
 	Ship *cruiser;
 	Ship *destroyer;
+
+	int choice;
 		
 	
 };

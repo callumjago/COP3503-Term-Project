@@ -14,6 +14,7 @@ public:
 		submarine = new Ship(3);
 		cruiser = new Ship(3);
 		destroyer = new Ship(2);*/
+		choice = -1;
 	}
 
 	void setCarrier();
