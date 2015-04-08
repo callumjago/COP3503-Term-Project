@@ -22,64 +22,179 @@ bool Computer::guess(){
 	return false;
 }
 
-bool Computer::setShip(){
-	string desPos = "";
+/*
+the formulate() function employs the computer's pseudorandom algorithm for picking a location on the board
+to which a ship will be set, and checks accordingly with respect to chosen orientations, returning an int
+corresponding to the chosen orientation for ship-setting; it also leaves desPos class state as this target
+location
+*/
+int Computer::formulate(int length){
+	desPos = "";
 	char let = 'A';
 	int num = 1;
 	stringstream str;
-	int orientation = -1;
+	int orientation = -1, counter = 0;
 
-	do{									//manages placement for the carrier
+	do{
 		let = 'A' + (rand() % 10);
 		num = rand() % 10 + 1;
 		str << let << num;
 		str >> desPos;
-		orientation = isValidPos(desPos, 5);
+		orientation = isValidPos(desPos, length);
+		if(++counter > 10000){ return 0; }		//prevents an infinite loop, but allows ample guessing error if pickings are slim
 	}while(orientation == -1 || orientation == 0);
-	//orientation is now inequal to -1 and 0
-	{/*set and orient the carrier*/}
 
-	do{									//manages placement for the battleship
-		let = 'A' + (rand() % 10);
-		num = rand() % 10 + 1;
-		str << let << num;
-		str >> desPos;
-		orientation = isValidPos(desPos, 4);
-	}while(orientation == -1 || orientation == 0);
-	//orientation is now inequal to -1 and 0
-	{/*set and orient the battleship*/}
+	return orientation;
+}
 
-	do{									//manages placement for the submarine
-		let = 'A' + (rand() % 10);
-		num = rand() % 10 + 1;
-		str << let << num;
-		str >> desPos;
-		orientation = isValidPos(desPos, 3);
-	}while(orientation == -1 || orientation == 0);
-	//orientation is now inequal to -1 and 0
-	{/*set and orient the submarine*/}
+void Computer::setCarrier(bool *addSuccess){
+	int orientation = formulate(5);
+	char let = desPos.at(0);
+	int num = (int)desPos.at(1) - 48;
+	bool success = false;
+	if(num == 1 && desPos.length() == 3 && desPos.at(2) == '0'){
+		num = 10;
+	}
 
-	do{									//manages placement for the cruiser
-		let = 'A' + (rand() % 10);
-		num = rand() % 10 + 1;
-		str << let << num;
-		str >> desPos;
-		orientation = isValidPos(desPos, 3);
-	}while(orientation == -1 || orientation == 0);
-	//orientation is now inequal to -1 and 0
-	{/*set and orient the cruiser*/}
+	if(orientation == 1){
+		let -= 4;	//readjusts position to act as "down" orientation with uppermost position put into initializer
+		carrier = new Ship(5, "Carrier", false, let, num);
+		success = true;
+	}
+	else if(orientation == 2){
+		carrier = new Ship(5, "Carrier", false, let, num);
+		success = true;
+	}
+	else if(orientation == 3){
+		num -= 4;	//readjusts position to act as "right" orientation with leftmost position put into initializer
+		carrier = new Ship(5, "Carrier", true, let, num);
+		success = true;
+	}
+	else if(orientation == 4){
+		carrier = new Ship(5, "Carrier", true, let, num);
+		success = true;
+	}
+	addSuccess = &success;
+}
 
-	do{									//manages placements for the destroyer
-		let = 'A' + (rand() % 10);
-		num = rand() % 10 + 1;
-		str << let << num;
-		str >> desPos;
-		orientation = isValidPos(desPos, 5);
-	}while(orientation == -1 || orientation == 0);
-	//orientation is now inequal to -1 and 0
-	{/*set and orient the destroyer*/}
-	
-	return true;
+void Computer::setBattleship(bool *addSuccess){
+	int orientation = formulate(4);
+	char let = desPos.at(0);
+	int num = (int)desPos.at(1) - 48;
+	bool success = false;
+	if(num == 1 && desPos.length() == 3 && desPos.at(2) == '0'){
+		num = 10;
+	}
+
+	if(orientation == 1){
+		let -= 3;	//readjusts position to act as "down" orientation with uppermost position put into initializer
+		carrier = new Ship(4, "Battleship", false, let, num);
+		success = true;
+	}
+	else if(orientation == 2){
+		carrier = new Ship(4, "Battleship", false, let, num);
+		success = true;
+	}
+	else if(orientation == 3){
+		num -= 3;	//readjusts position to act as "right" orientation with leftmost position put into initializer
+		carrier = new Ship(4, "Battleship", true, let, num);
+		success = true;
+	}
+	else if(orientation == 4){
+		carrier = new Ship(4, "Battleship", true, let, num);
+		success = true;
+	}
+	addSuccess = &success;
+}
+
+void Computer::setSubmarine(bool *addSuccess){
+	int orientation = formulate(3);
+	char let = desPos.at(0);
+	int num = (int)desPos.at(1) - 48;
+	bool success = false;
+	if(num == 1 && desPos.length() == 3 && desPos.at(2) == '0'){
+		num = 10;
+	}
+
+	if(orientation == 1){
+		let -= 2;	//readjusts position to act as "down" orientation with uppermost position put into initializer
+		carrier = new Ship(3, "Submarine", false, let, num);
+		success = true;
+	}
+	else if(orientation == 2){
+		carrier = new Ship(3, "Submarine", false, let, num);
+		success = true;
+	}
+	else if(orientation == 3){
+		num -= 2;	//readjusts position to act as "right" orientation with leftmost position put into initializer
+		carrier = new Ship(3, "Submarine", true, let, num);
+		success = true;
+	}
+	else if(orientation == 4){
+		carrier = new Ship(3, "Submarine", true, let, num);
+		success = true;
+	}
+	addSuccess = &success;
+}
+
+void Computer::setCruiser(bool *addSuccess){
+	int orientation = formulate(3);
+	char let = desPos.at(0);
+	int num = (int)desPos.at(1) - 48;
+	bool success = false;
+	if(num == 1 && desPos.length() == 3 && desPos.at(2) == '0'){
+		num = 10;
+	}
+
+	if(orientation == 1){
+		let -= 2;	//readjusts position to act as "down" orientation with uppermost position put into initializer
+		carrier = new Ship(3, "Cruiser", false, let, num);
+		success = true;
+	}
+	else if(orientation == 2){
+		carrier = new Ship(3, "Cruiser", false, let, num);
+		success = true;
+	}
+	else if(orientation == 3){
+		num -= 2;	//readjusts position to act as "right" orientation with leftmost position put into initializer
+		carrier = new Ship(3, "Cruiser", true, let, num);
+		success = true;
+	}
+	else if(orientation == 4){
+		carrier = new Ship(3, "Cruiser", true, let, num);
+		success = true;
+	}
+	addSuccess = &success;
+}
+
+void Computer::setDestroyer(bool *addSuccess){
+	int orientation = formulate(2);
+	char let = desPos.at(0);
+	int num = (int)desPos.at(1) - 48;
+	bool success = false;
+	if(num == 1 && desPos.length() == 3 && desPos.at(2) == '0'){
+		num = 10;
+	}
+
+	if(orientation == 1){
+		let -= 1;	//readjusts position to act as "down" orientation with uppermost position put into initializer
+		carrier = new Ship(2, "Destroyer", false, let, num);
+		success = true;
+	}
+	else if(orientation == 2){
+		carrier = new Ship(2, "Destroyer", false, let, num);
+		success = true;
+	}
+	else if(orientation == 3){
+		num -= 1;	//readjusts position to act as "right" orientation with leftmost position put into initializer
+		carrier = new Ship(2, "Destroyer", true, let, num);
+		success = true;
+	}
+	else if(orientation == 4){
+		carrier = new Ship(2, "Destroyer", true, let, num);
+		success = true;
+	}
+	addSuccess = &success;
 }
 
 int Computer::isValidPos(string desPos, int length){
