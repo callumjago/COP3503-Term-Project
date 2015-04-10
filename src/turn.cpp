@@ -7,7 +7,7 @@ bool gameover=false;
 //Need to pass Computer into Lose to check ship contained by Computer 
 //***not sure how to do that
 
-
+//USING GETISSUNK vs ISSUNK???
 
 //gameover boolean
 bool gameover(Computer computer; User user){
@@ -25,15 +25,15 @@ bool gameover(Computer computer; User user){
 bool Lose(Computer computer){
 int sunkNum;
 //!!!!!!!!!!!!!!!!!!!!------check "computer.ship"------!!!!!!!!!!!!!!!!!!!111
-if(computer.carrier.getIsSunk()==true)
+if(computer.carrier.isSunk==true)
 	sunkNum++;
-if(computer.battleship.getIsSunk()==true)
+if(computer.battleship.isSunk==true)
 	sunkNum++;
-if(computer.submarine.getIsSunk()==true)
+if(computer.submarine.isSunk==true)
 	sunkNum++;
-if(computer.cruiser.getIsSunk()==true)
+if(computer.cruiser.isSunk==true)
 	sunkNum++;
-if(computer.destroyer.getIsSunk()==true)
+if(computer.destroyer.isSunk==true)
 	sunkNum++;
 if(sunkNum==5)
 	return true;
@@ -47,15 +47,15 @@ else
 bool Win(User user){
 int sunkNum;
 //!!!!!!!!!!!!!!!!!!!!-----check "user.ship.get" works-------!!!!!!!!!!!!!!!!!!!
-if(user.carrier.getIsSunk()==true)
+if(user.carrier.isSunk==true)
 	sunkNum++;
-if(user.battleship.getIsSunk()==true)
+if(user.battleship.isSunk==true)
 	sunkNum++;
-if(user.submarine.getIsSunk()==true)
+if(user.submarine.isSunk==true)
 	sunkNum++;
-if(user.cruiser.getIsSunk()==true)
+if(user.cruiser.isSunk==true)
 	sunkNum++;
-if(user.destroyer.getIsSunk()==true)
+if(user.destroyer.isSunk==true)
 	sunkNum++;
 
 if(sunkNum==5){
@@ -91,6 +91,14 @@ void ship_hit(User user; Board board_user; Computer computer; Board board_comp; 
 	}
 
 
+//just repeat for all of these? probably easier to make an array of objects for user and for computer
+	if(computer.carrier.isSunk==false)
+	{
+		if(computer.carrier.getIsSunk()==true);
+			computer.carrier.sinkShip();
+			cout<<"You have sunk a ship!";
+	}
+	
 
 
 }
