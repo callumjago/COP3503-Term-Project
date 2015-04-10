@@ -1,7 +1,4 @@
 //Win method
-bool win =false;
-bool lose = false;
-bool gameover=false; 
 
 
 //Need to pass Computer into Lose to check ship contained by Computer 
@@ -69,10 +66,10 @@ else
 
 
 //-----------------------Hitting ship--------------------------
-void ship_hit(User user; Board board_user; Computer computer; Board board_comp; ){
+void user_hit_ship(User user; Board board_user; Computer computer; Board board_comp; ){
 	
-	//!!!!!!!!!!!!!!!!!!!!!!!!!! guess methods need to return an array location and not a boolean value!!!!!!!!!!!!!!!!!!!!!
-	// int a = user.guess();	
+	//!!!!!!!!!!!!!!!!!!!!!!!!!! guess methods need to return index and not a boolean value!!!!!!!!!!!!!!!!!!!!!
+	int a = user.guess();	
 
 	// Need a check status and change status method for board.....
 	if (board_computer.getStatus(a)== 2){
@@ -99,6 +96,13 @@ void ship_hit(User user; Board board_user; Computer computer; Board board_comp; 
 			cout<<"You have sunk a ship!";
 	}
 	
+
+
+}
+
+void computer_hit_ship(){
+
+
 
 
 }
