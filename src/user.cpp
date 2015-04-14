@@ -32,6 +32,10 @@ int User::isValidPos(string desPos, int length, int* index){
 	bool right = true;
 	bool down = true;
 
+	if(desPos.length() < 1 || desPos.length() > 3){
+		return -1;
+	}
+
 
 	char letter = desPos.at(0);
 	int digit = (int)desPos.at(1) - 48;
@@ -100,6 +104,7 @@ int User::isValidPos(string desPos, int length, int* index){
 				}
 				else{
 					// Represents that the choice of right/down is invalid.
+					return -1;
 				}
 			/*else{
 				do{
@@ -169,7 +174,7 @@ void User::setCarrier(bool *addSuccess){
 		}
 	}
 	else{
-		
+		cout << "Unable to place a ship due to error.";
 	}
 }
 void User::setBattleship(bool *addSuccess){
