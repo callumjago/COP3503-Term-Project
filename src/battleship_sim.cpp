@@ -38,20 +38,20 @@ int main(int argc, char *argv[1]){
 				 	  // Remove from array
 				allowed_ship = true;		  // Untriggers if statment below
 				switch(length){
-					case 2: user.setDestroyer(addSuccess);
+					case 2: user.setDestroyer(&addSuccess);
 						break;
 					case 3: 
 						if (second_third == false)
 						{
-							user.setSubmarine(addSuccess);
+							user.setSubmarine(&addSuccess);
 							second_third = true;
 						}else{
-							user.setCruiser(addSuccess);
+							user.setCruiser(&addSuccess);
 						}
 						break;
-					case 4: user.setBattleship(addSuccess);
+					case 4: user.setBattleship(&addSuccess);
 						break;
-					case 5: user.setCarrier(addSuccess);
+					case 5: user.setCarrier(&addSuccess);
 						break;
 				}
 
