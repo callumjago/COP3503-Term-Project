@@ -3,7 +3,7 @@
 
 
 
-bool User::guess(){
+bool User::guess(int* index){
 
 	string guess = "";
 	cout << "Enter your guess: ";
@@ -15,7 +15,7 @@ bool User::guess(){
 		digit = 10;
 	}
 
-	int index = ((letter - 'A') * 10) + digit; //Determines the index of the position in the board.
+	*index = ((letter - 'A') * 10) + digit; //Determines the index of the position in the board.
 	
 
 	return false;
@@ -23,7 +23,7 @@ bool User::guess(){
 
 
 // -1 means invalid or error, 0 means "up", 1 means "down", 2 means "left", 3 means "right"
-int User::isValidPos(string desPos, int length){
+int User::isValidPos(string desPos, int length, int* index){
 	string direction = ""; //Can be either up, down, or right.
 	
 	bool right = true;
@@ -40,12 +40,12 @@ int User::isValidPos(string desPos, int length){
 	char tempLetter = 'A';
 	int tempDigit = 1;
 
-	index = ((int)(letter - 'A') * 10) + digit; //Determines the index of the position in the board.
+	*index = ((int)(letter - 'A') * 10) + digit; //Determines the index of the position in the board.
 	int tempIndex = 0;
 
 
 	if(letter >= 'A' && letter <= 'J' && digit >= 1 && digit <= 10){
-		if(board->getStatus(index) == 0){
+		if(board->getStatus(*index) == 0){
 
 			//Checks to see if down is possible.
 			if(letter + length >= 'J'){
@@ -55,7 +55,7 @@ int User::isValidPos(string desPos, int length){
 
 					tempIndex = ((tempLetter - 'A') * 10) + tempDigit;
 
-					if(board->getStatus(index) == 0){
+					if(board->getStatus(*index) == 0){
 					}
 					else{
 						down = false;
@@ -72,7 +72,7 @@ int User::isValidPos(string desPos, int length){
 
 					tempIndex = ((tempLetter - 'A') * 10) + tempDigit;
 
-					if(board->getStatus(index) == 0){
+					if(board->getStatus(*index) == 0){
 					}
 					else{
 						right = false;
@@ -141,14 +141,15 @@ void User::setCarrier(){
 	cout << "Enter the desired position of your carrier: ";
 	cin >> desPose;
 
-	choice = isValidPos(desPose, 5);
+	int index;
+	int choice = isValidPos(desPose, 5, &index);
 
 	if(choice == 1){
 		if((signed)desPose.length() > 2 && desPose.at(1) == '1' && desPose.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", false, desPose.at(0), 10);
 		}
 		else{
-			carrier = new Ship(5, "Carrier", false, desPose.at(0), (int)(desPose.at(1) - 48);
+			carrier = new Ship(5, "Carrier", false, desPose.at(0), (int)(desPose.at(1) - 48));
 		}
 	}
 	

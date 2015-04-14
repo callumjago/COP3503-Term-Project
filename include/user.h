@@ -17,16 +17,15 @@ public:
 		choice = -1;
 	}
 
+	
+	int isValidPos(string desPos, int length, int* index);
 	void setCarrier();
 	void setBattleship();
 	void setSubmarine();
 	void setCruiser();
 	void setDestroyer();
 	
-	bool guess();		
-	int isValidPos(string desPos, int length);	
+	bool guess(int* index);			
 
-
-	int *index;
 };
 #endif
