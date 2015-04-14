@@ -22,6 +22,8 @@ int main(int argc, char *argv[1]){
 
 	User user = User();
 
+	bool addSuccess;
+
 	// While there are still ships to create
 	while ((allowed_lengths[0] != 0) | (allowed_lengths[1] != 0) | (allowed_lengths[2] != 0) | (allowed_lengths[3] != 0) | (allowed_lengths[4] != 0))
 	{
@@ -33,24 +35,31 @@ int main(int argc, char *argv[1]){
 
 			if (length == allowed_lengths[i]) // length is allowed and available
 			{
-				allowed_lengths[i] = 0; 	  // Remove from array
+				 	  // Remove from array
 				allowed_ship = true;		  // Untriggers if statment below
 				switch(length){
-					case 2: user.setDestroyer();
-					break;
+					case 2: user.setDestroyer(addSuccess);
+						break;
 					case 3: 
-							if (second_third == false)
-							{
-								user.setSubmarine();
-								second_third = true;
-							}else{
-								user.setCruiser();
-							}
-					break;
-					case 4: user.setBattleship();
-					break;
-					case 5: user.setCarrier();
-					break;
+						if (second_third == false)
+						{
+							user.setSubmarine(addSuccess);
+							second_third = true;
+						}else{
+							user.setCruiser(addSuccess);
+						}
+						break;
+					case 4: user.setBattleship(addSuccess);
+						break;
+					case 5: user.setCarrier(addSuccess);
+						break;
+				}
+
+				if(addSuccess == false){
+					cout << "\n\nUnable to set ship.";
+				}
+				else{
+					allowed_lengths[i] = 0;
 				}
 				break;
 			}

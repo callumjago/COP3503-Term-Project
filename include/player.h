@@ -10,12 +10,12 @@ public:
 	Player(){
 	}
 
-	void setCarrier();
-	void setBattleship();
-	void setSubmarine();
-	void setCruiser();
-	void setDestroyer();
-
+	void setCarrier(bool &addSuccess);
+	void setBattleship(bool &addSuccess);
+	void setSubmarine(bool &addSuccess);
+	void setCruiser(bool &addSuccess);
+	void setDestroyer(bool &addSuccess);
+	
 protected:
 	Board *board;
 
@@ -28,4 +28,6 @@ protected:
 	Ship *destroyer;
 
 	int choice;
+	//bool addSuccess;
+
 };

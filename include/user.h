@@ -9,14 +9,11 @@ private:
 public:
 	User(){
 		board = new Board();
-		/*carrier = new Ship(5);
-		battleship = new Ship(4);
-		submarine = new Ship(3);
-		cruiser = new Ship(3);
-		destroyer = new Ship(2);*/
 		choice = -1;
+		//addSuccess = false;
 	}
 
+<<<<<<< HEAD
 	
 	int isValidPos(string desPos, int length, int* index);
 	void setCarrier();
@@ -26,6 +23,17 @@ public:
 	void setDestroyer();
 	
 	bool guess(int* index);			
+=======
+	void setCarrier(bool &addSuccess);
+	void setBattleship(bool &addSuccess);
+	void setSubmarine(bool &addSuccess);
+	void setCruiser(bool &addSuccess);
+	void setDestroyer(bool &addSuccess);
+	
+	bool guess();		
+	int isValidPos(string desPos, int length);
+
+>>>>>>> Fleshed out user.cpp to set all ships.
 
 };
 #endif
