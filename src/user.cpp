@@ -94,12 +94,12 @@ int User::isValidPos(string desPos, int length){
 				// Represents that the placement there is unavailable.
 			}
 			else if(right && down){
-				cout << "\nChoose to orientate the ship right or down: ";
+				cout << "\nChoose to orientate the ship right (R) or down (D): ";
 				cin >> direction;
-				if(direction.compare("right") == 0){
+				if(direction.compare("R") == 0){
 					choice = 3;
 				}
-				else if(direction.compare("down") == 0){
+				else if(direction.compare("D") == 0){
 					choice = 1;
 				}
 				else{
