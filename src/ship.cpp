@@ -33,8 +33,13 @@ bool Ship::sinkShip(){
 		return this->isSunk;
 	}
 }
+<<<<<<< HEAD
 
 bool Ship::getIsSunk(Board* b){
+=======
+/*
+bool Ship::getIsSunk(Board board){
+>>>>>>> Fieed build errors
 	//Checks every element of status array, if any element is 1(not hit), return false
 	int temp
 	bool sunk = true;
@@ -57,6 +62,7 @@ bool Ship::getIsSunk(Board* b){
 	}
 	return sunk;
 }
+*/
 
 int Ship::getLength(){
 	//returns length

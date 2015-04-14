@@ -7,9 +7,9 @@
 
 int main(int argc, char *argv[1]){
 
-	Board temp;
-	temp.print_board();
-	temp.add_tiles_to_board();
+	//Board temp;
+	//temp.print_board();
+	//temp.add_tiles_to_board();
 
 	cout << "\nThere are 5 ships in total of length 5,4,3,3,2.\n";
 	cout << "We will now guide you through the placement procedure.\n\n";
@@ -91,11 +91,7 @@ int main(int argc, char *argv[1]){
 		
 
 	// main loop for runnning program
-		while(1){
-			printf("sdsdfsdf\n");
-			sleep(1);
-		}
-
+		while(1);
 	/*
 	cout << "How long is this ship? " << test.getLength() << endl;
 	cout << "Is this ship sunk? " << test.getIsSunk() << endl;
