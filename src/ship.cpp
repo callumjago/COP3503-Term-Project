@@ -7,17 +7,15 @@
 //x, and y specify top left most coordinate, ship then extends down if vertical, right if horizontal
 
 
-void Ship::Initialize(Board* b) {
+void Ship::Initialize(Board b) {
 	if(isHorizontal) {
 		for(int i = 0; i < length; i++) {
-			//sets status in sequential tiles to 1 for not hit
-			b->setStatus((10*startY) + startX + i, 1)
+			b.values[(10*startY) + startX + i].status = 1; //sets status in sequential tiles to 1 for not hit
 		}
 	}
 	else {
 		for(int i = 0; i < length; i++) {
-			//Sets status in vertically sequetial tiles to 1 for not hit
-			b->setStatus((10*startY) + startX + (10*i), 1)
+			b.values[(10*startY) + startX + (10*i)].status = 1; //Sets status in vertically sequetial tiles to 1 for not hit
 		}
 	}
 }
@@ -33,20 +31,13 @@ bool Ship::sinkShip(){
 		return this->isSunk;
 	}
 }
-<<<<<<< HEAD
-
-bool Ship::getIsSunk(Board* b){
-=======
 /*
 bool Ship::getIsSunk(Board board){
->>>>>>> Fieed build errors
 	//Checks every element of status array, if any element is 1(not hit), return false
-	int temp
 	bool sunk = true;
 	if(isHorizontal) {
 		for(int i = 0; i < length; i++) {
-			temp = b->getStatus((10*startY) + startX + i);
-			if(temp == 1) {
+			if(board->getStatus((10*startY) + startX + i) == 1) {
 				sunk = false;
 			}
 			
@@ -54,8 +45,7 @@ bool Ship::getIsSunk(Board board){
 	}
 	else {
 		for(int i = 0; i < length; i++) {
-			temp = b->getStatus((10*startY) + startX + (10*i))
-			if(temp == 1) {
+			if(board->getStatus((10*startY) + startX + (10*i)) == 1) {
 				sunk = false;
 			}
 		}
