@@ -41,7 +41,7 @@ class Board{
 		
 		string getId(int index){ return values[index].str; };
 		int getStatus(int index){ return values[index].status; };
-		void setStatus(int status){ values[index].status = status; };
+		void setStatus(int index, int status){ values[index].status = status; };
 
 		// Populate the board upon initialization
 		Board(){
