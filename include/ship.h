@@ -5,7 +5,7 @@
 class Ship{
 	public:
 		bool sinkShip();	//attempts sinking the Ship (interp as setter method for state bool isSunk)
-		bool getIsSunk();	//getter method for state bool isSunk
+		bool getIsSunk(Board* b);	//getter method for state bool isSunk
 		int getLength();	//getter method for state int length
 		
 		Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), status(NULL), isSunk(false){
@@ -30,7 +30,7 @@ class Ship{
 	else { this->length = length;}
 }
 
-		void Initialize(Board b);
+		void Initialize(Board* b);
 		
 	private:
 		int length;
