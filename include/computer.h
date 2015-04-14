@@ -8,13 +8,13 @@ public:
 		choice = -1;
 	}
 
-	void setCarrier(bool &addSuccess);
-	void setBattleship(bool &addSuccess);
-	void setSubmarine(bool &addSuccess);
-	void setCruiser(bool &addSuccess);
-	void setDestroyer(bool &addSuccess);
+	void setCarrier(bool *addSuccess);
+	void setBattleship(bool *addSuccess);
+	void setSubmarine(bool *addSuccess);
+	void setCruiser(bool *addSuccess);
+	void setDestroyer(bool *addSuccess);
 
-	bool guess();
+	int guess();
 	int formulate(int length);
 	int isValidPos(string desPos, int length);
 };
