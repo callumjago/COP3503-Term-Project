@@ -32,10 +32,10 @@ int main(int argc, char *argv[1]){
 
 		if(!(length)){
 			cout << "Invalid length.";
-			return;
 		}
 
-		// Loop through allowed length array and see if requested length is allowed and unused
+		else{
+			// Loop through allowed length array and see if requested length is allowed and unused
 		for (int i = 0; i < 5; i++){
 
 			if (length == allowed_lengths[i]) // length is allowed and available
@@ -87,6 +87,8 @@ int main(int argc, char *argv[1]){
 
 		
 	}
+		}
+		
 
 	// main loop for runnning program
 		while(1){
