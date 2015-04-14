@@ -1,4 +1,3 @@
-//Win method
 
 
 //Need to pass Computer into Lose to check ship contained by Computer 
@@ -16,9 +15,9 @@ bool gameover(Computer computer; User user){
 	}
 }
 
-//Lose check
 
 
+//check Lose
 bool Lose(Computer computer){
 int sunkNum;
 //!!!!!!!!!!!!!!!!!!!!------check "computer.ship"------!!!!!!!!!!!!!!!!!!!111
@@ -40,7 +39,8 @@ else
 
 
 //Need to pass Player class into Win to check ship contained by player
-//User user? 
+
+//check Win
 bool Win(User user){
 int sunkNum;
 //!!!!!!!!!!!!!!!!!!!!-----check "user.ship.get" works-------!!!!!!!!!!!!!!!!!!!
@@ -68,14 +68,20 @@ else
 //-----------------------Hitting ship--------------------------
 void user_hit_ship(User user; Board board_user; Computer computer; Board board_comp; ){
 	
-	//!!!!!!!!!!!!!!!!!!!!!!!!!! guess methods need to return index and not a boolean value!!!!!!!!!!!!!!!!!!!!!
-	int a = user.guess();	
+	do{
+		int a = user.guess();
+		if(a== -1){
+			cout<<"Invalid location, please guess again."
+		}
+		if(a==2||3){
+			cout<<"Location already guessed, please guess again."
+		}
+
+	}
+	while(user.guess()==2||3)
+
 
 	// Need a check status and change status method for board.....
-	if (board_computer.getStatus(a)== 2){
-		cout<<"Location already guessed, please guess again:"
-	}
-	else
 	if (board_computer.getStatus(a)==1){
 		//run change status method
 		cout<<"Hit!";
@@ -88,11 +94,36 @@ void user_hit_ship(User user; Board board_user; Computer computer; Board board_c
 	}
 
 
-//just repeat for all of these? probably easier to make an array of objects for user and for computer
+//Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
+	//If it returns false, it attempts to sink it
 	if(computer.carrier.isSunk==false)
 	{
 		if(computer.carrier.getIsSunk()==true);
 			computer.carrier.sinkShip();
+			cout<<"You have sunk a ship!";
+	}
+	if(computer.battleship.isSunk==false)
+	{
+		if(computer.battleship.getIsSunk()==true);
+			computer.battleship.sinkShip();
+			cout<<"You have sunk a ship!";
+	}
+	if(computer.submarine.isSunk==false)
+	{
+		if(computer.submarine.getIsSunk()==true);
+			computer.submarine.sinkShip();
+			cout<<"You have sunk a ship!";
+	}
+	if(computer.cruiser.isSunk==false)
+	{
+		if(computer.cruiser.getIsSunk()==true);
+			computer.cruiser.sinkShip();
+			cout<<"You have sunk a ship!";
+	}
+	if(computer.destroyer.isSunk==false)
+	{
+		if(computer.destroyer.getIsSunk()==true);
+			computer.destroyer.sinkShip();
 			cout<<"You have sunk a ship!";
 	}
 	
@@ -100,49 +131,71 @@ void user_hit_ship(User user; Board board_user; Computer computer; Board board_c
 
 }
 
-void computer_hit_ship(){
+void computer_hit_ship(User user; Board board_user; Computer computer; Board board_comp;){
+
+	do{
+		int b = computer.guess();
+	}
+	while(computer.guess()==2||3)
 
 
+	if (user_computer.getStatus(a)==1){
+		//run change status method
+		cout<<"Hit!";
+		//Need someway to check if the
+	}
+	else
+	if (user_computer.getStatus(a)==0){
+		cout<<"Miss!";
+		//possible need another value in case it was guessed so it can say that the location was already guessed
+	}
 
+
+//Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
+	//If it returns false, it attempts to sink it
+	if(user.carrier.isSunk==false)
+	{
+		if(user.carrier.getIsSunk()==true);
+			user.carrier.sinkShip();
+			cout<<"Computer has sunk a ship!";
+	}
+	if(user.battleship.isSunk==false)
+	{
+		if(user.battleship.getIsSunk()==true);
+			user.battleship.sinkShip();
+			cout<<"Computer has sunk a ship!";
+	}
+	if(user.submarine.isSunk==false)
+	{
+		if(user.submarine.getIsSunk()==true);
+			user.submarine.sinkShip();
+			cout<<"Computer has sunk a ship!";
+	}
+	if(computer.cruiser.isSunk==false)
+	{
+		if(user.cruiser.getIsSunk()==true);
+			user.cruiser.sinkShip();
+			cout<<"Computer has sunk a ship!";
+	}
+	if(user.destroyer.isSunk==false)
+	{
+		if(user.destroyer.getIsSunk()==true);
+			user.destroyer.sinkShip();
+			cout<<"Computer has sunk a ship!";
+	}
+	
 
 }
 
 
 
-int main() {
-	
+void turn(){
 
-	while(gameover!=true)
+}
 
-	//%%%%%%%%%%%%%%%%%%%%%__USER__%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-	//-------------------Guess location----------------------
-
-		//User.guess
-
-	//-------------Changes status to hit or miss------------- 
-
-	//-------------check if ship hit is sunk-----------------
-	
-
-//*******I need to find a way to make sure that in win scenario, computer doesnt get turn
+int main(){
 
 
-
-	//%%%%%%%%%%%%%%%%%%%__COMPUTER__%%%%%%%%%%%%%%%%%%%%%%%%
-
-	//--------------------Guess Location-------------------
-
-		//Computer.guess
-	
-	//-------------Changes status to hit or miss---------------
-
-	//-------------check if ship hit is sunk-------------------
-
-		 //Access specific location on ship, changes it to 1 or 0 
-
-
-//Resign option and "would you like to play again" option in sim file
 
 
 }
