@@ -15,10 +15,10 @@ int Computer::guess(){
 		desPos = "";
 		str << let << num;
 		str >> desPos;
-		if(++counter > 10000){ return 0; }	//prevents an infinite loop, but allows ample guessing error if pickings are slim
+		if(++counter > 10000){ return -1; }	//prevents an infinite loop, but allows ample guessing error if pickings are slim
 	}while(isValidPos(desPos, 1) == -1);
 	//guess is now a valid position (regardless of orientation because its ""length"" is 1
-	num += (((int)(let - 'A') + 1) * 10);	//converts desPos into index value for board
+	num += (int)(let - 'A') * 10;	//converts desPos into index value for board
 
 	return num;
 }
