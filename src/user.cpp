@@ -26,7 +26,7 @@ int User::guess(){
 
 
 // -1 means invalid or error, 0 means "up", 1 means "down", 2 means "left", 3 means "right"
-int User::isValidPos(string desPos, int length, int* index){
+int User::isValidPos(string desPos, int length){
 	string direction = ""; //Can be either up, down, or right.
 	
 	bool right = true;
@@ -47,12 +47,12 @@ int User::isValidPos(string desPos, int length, int* index){
 	char tempLetter = 'A';
 	int tempDigit = 1;
 
-	*index = ((int)(letter - 'A') * 10) + digit; //Determines the index of the position in the board.
+	int index = ((int)(letter - 'A') * 10) + digit; //Determines the index of the position in the board.
 	int tempIndex = 0;
 
 
 	if(letter >= 'A' && letter <= 'J' && digit >= 1 && digit <= 10){
-		if(board->getStatus(*index) == 0){
+		if(board->getStatus(index) == 0){
 
 			//Checks to see if down is possible.
 			if(letter + length >= 'J'){
@@ -62,7 +62,7 @@ int User::isValidPos(string desPos, int length, int* index){
 
 					tempIndex = ((tempLetter - 'A') * 10) + tempDigit;
 
-					if(board->getStatus(*index) == 0){
+					if(board->getStatus(index) == 0){
 					}
 					else{
 						down = false;
@@ -79,7 +79,7 @@ int User::isValidPos(string desPos, int length, int* index){
 
 					tempIndex = ((tempLetter - 'A') * 10) + tempDigit;
 
-					if(board->getStatus(*index) == 0){
+					if(board->getStatus(index) == 0){
 					}
 					else{
 						right = false;
@@ -149,8 +149,7 @@ void User::setCarrier(bool *addSuccess){
 	cout << "\nEnter the desired position of your carrier: ";
 	cin >> desPos;
 
-	int index;
-	int choice = isValidPos(desPose, 5, &index);
+	choice = isValidPos(desPos, 5);
 
 	if(choice == 1){
 		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
