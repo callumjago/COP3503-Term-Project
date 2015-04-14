@@ -12,28 +12,14 @@ public:
 		choice = -1;
 		//addSuccess = false;
 	}
-
-<<<<<<< HEAD
 	
 	int isValidPos(string desPos, int length, int* index);
-	void setCarrier();
-	void setBattleship();
-	void setSubmarine();
-	void setCruiser();
-	void setDestroyer();
+	void setCarrier(bool *addSuccess);
+	void setBattleship(bool *addSuccess);
+	void setSubmarine(bool *addSuccess);
+	void setCruiser(bool *addSuccess);
+	void setDestroyer(bool *addSuccess);
 	
 	bool guess(int* index);			
-=======
-	void setCarrier(bool &addSuccess);
-	void setBattleship(bool &addSuccess);
-	void setSubmarine(bool &addSuccess);
-	void setCruiser(bool &addSuccess);
-	void setDestroyer(bool &addSuccess);
-	
-	bool guess();		
-	int isValidPos(string desPos, int length);
-
->>>>>>> Fleshed out user.cpp to set all ships.
-
 };
 #endif

@@ -40,11 +40,7 @@ int User::isValidPos(string desPos, int length, int* index){
 	char tempLetter = 'A';
 	int tempDigit = 1;
 
-<<<<<<< HEAD
 	*index = ((int)(letter - 'A') * 10) + digit; //Determines the index of the position in the board.
-=======
-	int index = ((int)(letter - 'A') * 10) + digit; //Determines the index of the position in the board.
->>>>>>> Fleshed out user.cpp to set all ships.
 	int tempIndex = 0;
 
 
@@ -137,7 +133,7 @@ int User::isValidPos(string desPos, int length, int* index){
 	// -1 means invalid or error, 0 means "up", 1 means "down", 2 means "left", 3 means "right"
 };
 
-void User::setCarrier(bool &addSuccess){
+void User::setCarrier(bool *addSuccess){
 	//std::cout << carrier->getIsSunk();
 
 	string desPos = "";
@@ -145,43 +141,35 @@ void User::setCarrier(bool &addSuccess){
 	cout << "\nEnter the desired position of your carrier: ";
 	cin >> desPos;
 
-<<<<<<< HEAD
 	int index;
 	int choice = isValidPos(desPose, 5, &index);
-=======
-	choice = isValidPos(desPos, 5);
->>>>>>> Fleshed out user.cpp to set all ships.
 
 	if(choice == 1){
 		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", false, desPos.at(0), 10);
-			addSuccess = true;
+			*addSuccess= true;
 		}
 		else{
-<<<<<<< HEAD
-			carrier = new Ship(5, "Carrier", false, desPose.at(0), (int)(desPose.at(1) - 48));
-=======
 			carrier = new Ship(5, "Carrier", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			addSuccess = true;
->>>>>>> Fleshed out user.cpp to set all ships.
+			*addSuccess= true;
 		}
 	}
 	
 	else if(choice == 3){
 		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
 			carrier = new Ship(5, "Carrier", true, desPos.at(0), 10);
-			addSuccess = true;
+			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(5, "Carrier", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			addSuccess = true;
+			*addSuccess= true;
 		}
 	}
 	else{
 		
 	}
 }
-void User::setBattleship(bool &addSuccess){
+void User::setBattleship(bool *addSuccess){
 	//std::cout << battleship->getIsSunk();
 
 	string desPos = "";
@@ -194,29 +182,29 @@ void User::setBattleship(bool &addSuccess){
 	if(choice == 1){
 		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(4, "Battleship", false, desPos.at(0), 10);
-			addSuccess = true;
+			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(4, "Battleship", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			addSuccess = true;
+			*addSuccess= true;
 		}
 	}
 	
 	else if(choice == 3){
 		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
 			carrier = new Ship(4, "Battleship", true, desPos.at(0), 10);
-			addSuccess = true;
+			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(4, "Battleship", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			addSuccess = true;
+			*addSuccess= true;
 		}
 	}
 	else{
 		
 	}
 }
-void User::setSubmarine(bool &addSuccess){
+void User::setSubmarine(bool *addSuccess){
 	//std::cout << submarine->getIsSunk();
 
 	string desPos = "";
@@ -229,29 +217,29 @@ void User::setSubmarine(bool &addSuccess){
 	if(choice == 1){
 		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(3, "Submarine", false, desPos.at(0), 10);
-			addSuccess = true;
+			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(3, "Submarine", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			addSuccess = true;
+			*addSuccess= true;
 		}
 	}
 	
 	else if(choice == 3){
 		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
 			carrier = new Ship(3, "Submarine", true, desPos.at(0), 10);
-			addSuccess = true;
+			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(3, "Submarine", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			addSuccess = true;
+			*addSuccess= true;
 		}
 	}
 	else{
 		
 	}
 }
-void User::setCruiser(bool &addSuccess){
+void User::setCruiser(bool *addSuccess){
 	//std::cout << cruiser->getIsSunk();
 
 	string desPos = "";
@@ -264,29 +252,29 @@ void User::setCruiser(bool &addSuccess){
 	if(choice == 1){
 		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(3, "Cruiser", false, desPos.at(0), 10);
-			addSuccess = true;
+			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(3, "Cruiser", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			addSuccess = true;
+			*addSuccess= true;
 		}
 	}
 	
 	else if(choice == 3){
 		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
 			carrier = new Ship(3, "Cruiser", true, desPos.at(0), 10);
-			addSuccess = true;
+			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(3, "Cruiser", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			addSuccess = true;
+			*addSuccess= true;
 		}
 	}
 	else{
 		
 	}
 }
-void User::setDestroyer(bool &addSuccess){
+void User::setDestroyer(bool *addSuccess){
 	//std::cout << destroyer->getIsSunk();
 
 	string desPos = "";
@@ -299,22 +287,22 @@ void User::setDestroyer(bool &addSuccess){
 	if(choice == 1){
 		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(2, "Destroyer", false, desPos.at(0), 10);
-			addSuccess = true;
+			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(2, "Destroyer", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			addSuccess = true;
+			*addSuccess= true;
 		}
 	}
 	
 	else if(choice == 3){
 		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
 			carrier = new Ship(2, "Destroyer", true, desPos.at(0), 10);
-			addSuccess = true;
+			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(2, "Destroyer", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			addSuccess = true;
+			*addSuccess= true;
 		}
 	}
 	else{
