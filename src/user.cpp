@@ -3,11 +3,15 @@
 
 
 
-bool User::guess(int* index){
+int User::guess(){
 
 	string guess = "";
 	cout << "Enter your guess: ";
 	cin >> guess;
+
+	if(guess.length() < 1 || guess.length() > 3){
+		return -1;
+	}
 
 	char letter = guess.at(0);
 	int digit = guess.at(1);
@@ -15,10 +19,9 @@ bool User::guess(int* index){
 		digit = 10;
 	}
 
-	*index = ((letter - 'A') * 10) + digit; //Determines the index of the position in the board.
+	int index = ((letter - 'A') * 10) + digit; //Determines the index of the position in the board.
 	
-
-	return false;
+	return index;
 };
 
 

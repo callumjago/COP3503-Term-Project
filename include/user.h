@@ -20,6 +20,6 @@ public:
 	void setCruiser(bool *addSuccess);
 	void setDestroyer(bool *addSuccess);
 	
-	bool guess(int* index);			
+	int guess();			
 };
 #endif
