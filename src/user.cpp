@@ -209,7 +209,7 @@ void User::setBattleship(bool *addSuccess){
 		}
 	}
 	else{
-		
+		cout << "Unable to place a ship due to error.";
 	}
 }
 void User::setSubmarine(bool *addSuccess){
@@ -244,7 +244,7 @@ void User::setSubmarine(bool *addSuccess){
 		}
 	}
 	else{
-		
+		cout << "Unable to place a ship due to error.";
 	}
 }
 void User::setCruiser(bool *addSuccess){
@@ -279,7 +279,7 @@ void User::setCruiser(bool *addSuccess){
 		}
 	}
 	else{
-		
+		cout << "Unable to place a ship due to error.";cout << "Unable to place a ship due to error.";
 	}
 }
 void User::setDestroyer(bool *addSuccess){
@@ -314,7 +314,7 @@ void User::setDestroyer(bool *addSuccess){
 		}
 	}
 	else{
-		
+		cout << "Unable to place a ship due to error.";
 	}
 }
 
