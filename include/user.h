@@ -13,7 +13,7 @@ public:
 		//addSuccess = false;
 	}
 	
-	int isValidPos(string desPos, int length, int* index);
+	int isValidPos(string desPos, int length);
 	void setCarrier(bool *addSuccess);
 	void setBattleship(bool *addSuccess);
 	void setSubmarine(bool *addSuccess);
