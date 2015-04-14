@@ -34,11 +34,23 @@ bool Ship::sinkShip(){
 
 bool Ship::getIsSunk(){
 	//Checks every element of status array, if any element is 1(not hit), return false
-	for(int i = 0; i < length; i++) {
-		if(status[i] == 1)
-			return false;
+	bool sunk = true;
+	if(isHorizontal) {
+		for(int i = 0; i < length; i++) {
+			if(board->getStatus((10*startY) + startX + i) == 1) {
+				sunk = false;
+			}
+			
+		}
 	}
-	return true;
+	else {
+		for(int i = 0; i < length; i++) {
+			if(board->getStatus((10*startY) + startX + (10*i)) == 1) {
+				sunk = false;
+			}
+		}
+	}
+	return sunk;
 }
 
 int Ship::getLength(){

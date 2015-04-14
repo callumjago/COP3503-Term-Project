@@ -8,9 +8,8 @@ class Ship{
 		bool getIsSunk();	//getter method for state bool isSunk
 		int getLength();	//getter method for state int length
 		
-		Ship(int length, string name, bool isHorizontal, char startX, int startY, int* status[]):length(length), status(NULL), isSunk(false){
+		Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), status(NULL), isSunk(false){
 	//Initializes status array
-	this->status = status;
 
 	//Converts char to int value
 	if((int)startX <= 64 || (int)startX >= 75) {
