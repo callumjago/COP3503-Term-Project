@@ -30,6 +30,11 @@ int main(int argc, char *argv[1]){
 		cout << "\nEnter the ship length that you want to place: "; 
 		cin >> length;
 
+		if(!(length)){
+			cout << "Invalid length.";
+			return;
+		}
+
 		// Loop through allowed length array and see if requested length is allowed and unused
 		for (int i = 0; i < 5; i++){
 
