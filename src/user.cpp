@@ -2,7 +2,10 @@
 #include <iostream>
 
 
-
+/*This function is used for the user to input a guess for a location on the board to hit. This 
+function will return an index value that corresponds to the array value of the desired location 
+on the board. This function is to be called using the "Turn" class. 
+*/
 int User::guess(){
 
 	string guess = "";
@@ -24,7 +27,7 @@ int User::guess(){
 	return index;
 };
 
-
+//This function is used to see if the desired position of the ship is valid 
 // -1 means invalid or error, 0 means "up", 1 means "down", 2 means "left", 3 means "right"
 int User::isValidPos(string desPos, int length){
 	string direction = ""; //Can be either up, down, or right.
