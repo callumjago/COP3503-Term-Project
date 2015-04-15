@@ -23,12 +23,10 @@ int Computer::guess(){
 	return num;
 }
 
-/*
-the formulate() function employs the computer's pseudorandom algorithm for picking a location on the board
+/* the formulate() function employs the computer's pseudorandom algorithm for picking a location on the board
 to which a ship will be set, and checks accordingly with respect to chosen orientations, returning an int
 corresponding to the chosen orientation for ship-setting; it also leaves desPos class state as this target
-location
-*/
+location. This need not be called by any other class but remains public for simplicity. */
 int Computer::formulate(int length){
 	desPos = "";
 	char let = 'A';
