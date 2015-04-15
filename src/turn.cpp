@@ -1,8 +1,3 @@
-//Need to pass Computer into Lose to check ship contained by Computer 
-//***not sure how to do that
-
-//USING GETISSUNK vs ISSUNK???
-
 #include "../include/turn.h"
 
 //gameover boolean
@@ -10,8 +5,8 @@ bool Turn::gameover(Computer *computer, User *user){
 	return (lose(computer) || win(user));
 }
 
-//check lose
-bool Turn::lose(Computer *computer){
+//check win scenario
+bool Turn::win(Computer *computer){
 	int sunkNum = 0;
 
 	if(computer->carrier->getIsSunk()){ sunkNum++; }
@@ -23,8 +18,8 @@ bool Turn::lose(Computer *computer){
 	return (sunkNum == 5);
 }
 
-//check win
-bool Turn::win(User *user){
+//check lose scenario
+bool Turn::lose(User *user){
 	int sunkNum = 0;
 
 	if(user->carrier->getIsSunk()){ sunkNum++; }
@@ -37,7 +32,7 @@ bool Turn::win(User *user){
 }
 
 //-----------------------Hitting ship--------------------------
-void Turn::user_hit_ship(User *user, Computer *computer, Board *board_user, Board *computer_user){
+void Turn::user_hit_ship(User *user, Computer *computer, Board *board_user, Board *board_computer){
 	int a = 0, b = 0;
 	do{
 		a = user->guess();
@@ -51,13 +46,14 @@ void Turn::user_hit_ship(User *user, Computer *computer, Board *board_user, Boar
 		}
 	}while(b == 2 || b == 3);
 
-	// Need a check status and change status method for board.....
+	// Need a change status method for board.....
 	if(board_computer->getStatus(a) == 1){
 		//run change status method
 		cout << "Hit!\n";
 	}
 	else if(board_computer->getStatus(a) == 0){
-		cout << "Miss!\n";		//possible need another value in case it was guessed so it can say that the location was already guessed
+		//run change status method
+		cout << "Miss!\n";		
 	}
 
 	/* Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
@@ -89,7 +85,7 @@ void Turn::user_hit_ship(User *user, Computer *computer, Board *board_user, Boar
 	}
 }
 
-void Turn::computer_hit_ship(User *user, Computer *computer, Board *board_user, Board *computer_user){
+void Turn::computer_hit_ship(User *user, Computer *computer, Board *board_user, Board *board_computer){
 	do{
 		int b = computer->guess();
 	}while(b == 2 || b == 3);
@@ -131,5 +127,34 @@ void Turn::computer_hit_ship(User *user, Computer *computer, Board *board_user, 
 	}
 }
 
-void Turn::turn(User *user, Computer *computer, Board *board_user, Board *computer_user){
+void Turn::frame(User *user, Computer *computer, Board *board_user, Board *board_computer){
+
+	bool a = false; 
+	bool b = false; 
+	bool c = false; 
+
+ //Refresh board_
+	user_hit_ship(*user, *computer, *board_user, *board_computer);
+	
+	a = win(*computer);
+	if(a== true){
+		cout<<"You win!";
+	}
+	else{
+	computer_hit_ship(*user, *computer, *board_user, *board_computer);
+
+
+//Refresh board_user
+	b = lose(*user);
+	if(b==true){
+		cout<<"You lose.";
+	}
+	}
+
+	c = gameover(*computer, *user);
+
+	if(c==true){
+		cout<<"Gameover.";
+	}
+
 }

@@ -23,9 +23,9 @@ public:
 	bool gameover(Computer *computer, User *user);
 	bool lose(Computer *computer);
 	bool win(User *user);
-	void user_hit_ship(User *user, Computer *computer, Board *board_user, Board *computer_user);
-	void computer_hit_ship(User *user, Computer *computer, Board *board_user, Board *computer_user);
-	void turn(User *user, Computer *computer, Board *board_user, Board *computer_user);
+	void user_hit_ship(User *user, Computer *computer, Board *board_user, Board *board_computer);
+	void computer_hit_ship(User *user, Computer *computer, Board *board_user, Board *board_computer);
+	void turn(User *user, Computer *computer, Board *board_user, Board *board_computer);
 
 	friend class Player;
 	friend class Ship;
