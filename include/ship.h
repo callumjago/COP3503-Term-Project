@@ -10,7 +10,7 @@ class Ship{
 
 		char getStart(){ return startX; };
 		
-		Ship(int length, string name, bool isHorizontal, char startX, int startY, Board *b):length(length), status(NULL), isSunk(false){
+		Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), status(NULL), isSunk(false){
 			//Initializes status array
 
 			//Converts char to int value
@@ -32,19 +32,9 @@ class Ship{
 			else { this->length = length;}
 
 
-			if(isHorizontal) {
-				for(int i = 0; i < length; i++) {
-					*b.setStatus(((int)(startX - 64) + i), 1); //sets status in sequential tiles to 1 for not hit
-				}
-			}
-			else {
-				for(int i = 0; i < length; i++) {
-					*b.setStatus(((int)(startX - 64) + (10 * i)), 1); //Sets status in vertically sequetial tiles to 1 for not hit
-				}
-			}
 		}
 
-	//void Initialize(Board b);
+		void Initialize(Board b);
 		
 	private:
 		int length;

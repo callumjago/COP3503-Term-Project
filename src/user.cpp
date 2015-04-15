@@ -157,12 +157,12 @@ void User::setCarrier(bool *addSuccess){
 
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(5, "Carrier", false, desPos.at(0), 10, getBoard());
+			carrier = new Ship(5, "Carrier", false, desPos.at(0), 10);
 			//carrier->Initialize(getBoard());
 			*addSuccess= true;
 		}
 		else if(desPos.length() == 2){ 
-			carrier = new Ship(5, "Carrier", false, desPos.at(0), (int)(desPos.at(1) - 48), getBoard());
+			carrier = new Ship(5, "Carrier", false, desPos.at(0), (int)(desPos.at(1) - 48));
 			//carrier->Initialize(getBoard());
 			*addSuccess= true;
 		}
@@ -170,12 +170,12 @@ void User::setCarrier(bool *addSuccess){
 	
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(5, "Carrier", true, desPos.at(0), 10, getBoard());
+			carrier = new Ship(5, "Carrier", true, desPos.at(0), 10);
 			//carrier->Initialize(getBoard());
 			*addSuccess= true;
 		}
 		else{
-			carrier = new Ship(5, "Carrier", true, desPos.at(0), (int)(desPos.at(1) - 48), getBoard());
+			carrier = new Ship(5, "Carrier", true, desPos.at(0), (int)(desPos.at(1) - 48));
 			//carrier->Initialize(getBoard());
 			*addSuccess= true;
 		}
@@ -184,7 +184,7 @@ void User::setCarrier(bool *addSuccess){
 		*addSuccess = false;
 	}
 }
-/*void User::setBattleship(bool *addSuccess){
+void User::setBattleship(bool *addSuccess){
 	//std::cout << battleship->getIsSunk();
 
 	string desPos = "";
@@ -323,5 +323,5 @@ void User::setDestroyer(bool *addSuccess){
 	else{
 		cout << "Unable to place a ship due to error.";
 	}
-}*/
+}
 
