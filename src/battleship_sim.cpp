@@ -11,6 +11,10 @@ int main(int argc, char *argv[1]){
 	//temp.print_board();
 	//temp.add_tiles_to_board();
 
+	User user = User();
+
+	user.getBoard().print_board();
+
 	cout << "\nThere are 5 ships in total of length 5,4,3,3,2.\n";
 	cout << "We will now guide you through the placement procedure.\n\n";
 	cout << "Please choose your first ship.\n";
@@ -20,7 +24,7 @@ int main(int argc, char *argv[1]){
 	bool second_third = false;
 	int allowed_lengths[] = {2,3,3,4,5};
 
-	User user = User();
+
 
 	bool addSuccess;
 
@@ -36,42 +40,43 @@ int main(int argc, char *argv[1]){
 
 		else{
 			// Loop through allowed length array and see if requested length is allowed and unused
-		for (int i = 0; i < 5; i++){
+			for (int i = 0; i < 5; i++){
 
-			if (length == allowed_lengths[i]) // length is allowed and available
-			{
+				if (length == allowed_lengths[i]) // length is allowed and available
+				{
 				 	  // Remove from array
-				allowed_ship = true;		  // Untriggers if statment below
-				switch(length){
-					case 2: user.setDestroyer(&addSuccess);
-						break;
-					case 3: 
-						if (second_third == false)
-						{
-							user.setSubmarine(&addSuccess);
-							second_third = true;
-						}else{
-							user.setCruiser(&addSuccess);
-						}
-						break;
-					case 4: user.setBattleship(&addSuccess);
-						break;
-					case 5: user.setCarrier(&addSuccess);
-						break;
-				}
+					allowed_ship = true;		  // Untriggers if statment below
+					switch(length){
+						case 2: user.setDestroyer(&addSuccess);
+							break;
+						case 3: 
+							if (second_third == false)
+							{
+								user.setSubmarine(&addSuccess);
+								second_third = true;
+							}else{
+								user.setCruiser(&addSuccess);
+							}
+							break;
+						case 4: user.setBattleship(&addSuccess);
+							break;
+						case 5: user.setCarrier(&addSuccess);
+							break;
+					}
 
-				if(addSuccess == false){
-					cout << "\n\nUnable to set ship.";
+					if(addSuccess == false){
+						cout << "\n\nUnable to set ship.";
+					}
+					else{
+						cout << "\n\nShip added - success!";
+						//allowed_lengths[i] = 0;
+					}
+					break;
 				}
-				else{
-					allowed_lengths[i] = 0;
-				}
-				break;
 			}
-		}
-		if (allowed_ship == false)			  // If length is not allowed or is unavailable
-		{
-			cout << "Unavailable ship length.\n";
+			if (allowed_ship == false)			  // If length is not allowed or is unavailable
+			{
+				cout << "Unavailable ship length.\n";
 
 				for (int i = 0; i < 5; i++)   // Print available lengths
 				{
@@ -83,11 +88,11 @@ int main(int argc, char *argv[1]){
 				cout << endl;
 			}
 		
-		allowed_ship = false; // reset
+			allowed_ship = false; // reset
 
 		
-	}
 		}
+	}
 		
 
 	// main loop for runnning program

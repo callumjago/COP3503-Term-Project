@@ -18,7 +18,7 @@ class Board{
 			//Potential to put total number of ships currently on the board.
 			string str;
 			int id_num;
-			int status; //Status values: 0 - empty; 1 - not hit; 2 - hit
+			int status; //Status values: 0 - empty; 1 - ship present; 2 - hit; 3 - miss
 		} tile_t;
 
 		// The thought here is that we have one board struct to hold all the tiles and all the ships

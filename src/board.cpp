@@ -60,7 +60,18 @@ void Board::print_board(){
 	{
 		for (int i = 0; i < 10; i++)
 		{
-			cout << values[count].str << " ";
+			if(values[count].status == 1){
+				cout << "S " << " ";
+			}
+			else if(values[count].status == 2){
+				cout << "H " << " ";
+			}
+			else if(values[count].status == 3){
+				cout << "M " << " ";
+			}
+			else{
+				cout << values[count].str << " ";
+			}
 			count++;
 		}
 		cout << "\n";

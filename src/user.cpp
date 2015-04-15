@@ -96,6 +96,7 @@ int User::isValidPos(string desPos, int length){
 			else if(right && down){
 				cout << "\nChoose to orientate the ship right (R) or down (D): ";
 				cin >> direction;
+
 				if(direction.compare("R") == 0){
 					choice = 3;
 				}
@@ -154,26 +155,29 @@ void User::setCarrier(bool *addSuccess){
 	if(choice == 1){
 		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", false, desPos.at(0), 10);
+			carrier->Initialize(getBoard());
 			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(5, "Carrier", false, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier->Initialize(getBoard());
 			*addSuccess= true;
 		}
 	}
 	
 	else if(choice == 3){
-		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
+		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", true, desPos.at(0), 10);
+			carrier->Initialize(getBoard());
 			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(5, "Carrier", true, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier->Initialize(getBoard());
 			*addSuccess= true;
 		}
 	}
 	else{
-		cout << "Unable to place a ship due to error.";
 	}
 }
 void User::setBattleship(bool *addSuccess){

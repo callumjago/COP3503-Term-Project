@@ -9,13 +9,13 @@
 
 void Ship::Initialize(Board b) {
 	if(isHorizontal) {
-		for(int i = 0; i < length; i++) {
-			b.values[(10*startY) + startX + i].status = 1; //sets status in sequential tiles to 1 for not hit
+		for(int i = 0; i < getLength(); i++) {
+			b.setStatus((getStart() + i), 1); //sets status in sequential tiles to 1 for not hit
 		}
 	}
 	else {
-		for(int i = 0; i < length; i++) {
-			b.values[(10*startY) + startX + (10*i)].status = 1; //Sets status in vertically sequetial tiles to 1 for not hit
+		for(int i = 0; i < getLength(); i++) {
+			b.setStatus((getStart() + (10 * i)), 1); //Sets status in vertically sequetial tiles to 1 for not hit
 		}
 	}
 }

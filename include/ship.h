@@ -7,6 +7,8 @@ class Ship{
 		bool sinkShip();	//attempts sinking the Ship (interp as setter method for state bool isSunk)
 		bool getIsSunk(Board board);	//getter method for state bool isSunk
 		int getLength();	//getter method for state int length
+
+		char getStart(){ return startX; };
 		
 		Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), status(NULL), isSunk(false){
 			//Initializes status array
@@ -22,9 +24,9 @@ class Ship{
 			this->startY = startY;
 			this->name = name;	
 			this->isHorizontal = isHorizontal;
-			for(int i = 0; i < length; i++){	//Initializes status array to all 1s
+			/*for(int i = 0; i < length; i++){	//Initializes status array to all 1s
 				status[i] = 1;
-			}
+			}*/
 			//perhaps do something for state int* status
 			if(length < 0){ this->length = 0; }
 			else { this->length = length;}

@@ -15,6 +15,8 @@ public:
 	void setSubmarine(bool &addSuccess);
 	void setCruiser(bool &addSuccess);
 	void setDestroyer(bool &addSuccess);
+
+	Board getBoard(){ return *board; };
 	
 protected:
 	Board *board;
