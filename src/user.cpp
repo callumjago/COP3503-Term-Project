@@ -42,6 +42,9 @@ int User::isValidPos(string desPos, int length){
 	if(desPos.length() == 3 && digit == 1 && desPos.at(2) == '0'){
 		digit = 10;
 	}
+	else if(desPos.length() == 3 && digit != 1 && desPos.at(2) != '0'){
+		return -1;
+	}
 
 
 	char tempLetter = 'A';
@@ -153,12 +156,12 @@ void User::setCarrier(bool *addSuccess){
 	choice = isValidPos(desPos, 5);
 
 	if(choice == 1){
-		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
+		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", false, desPos.at(0), 10);
 			carrier->Initialize(getBoard());
 			*addSuccess= true;
 		}
-		else{
+		else if(desPos.length() == 2){ 
 			carrier = new Ship(5, "Carrier", false, desPos.at(0), (int)(desPos.at(1) - 48));
 			carrier->Initialize(getBoard());
 			*addSuccess= true;
@@ -166,7 +169,7 @@ void User::setCarrier(bool *addSuccess){
 	}
 	
 	else if(choice == 3){
-		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
+		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", true, desPos.at(0), 10);
 			carrier->Initialize(getBoard());
 			*addSuccess= true;
@@ -282,7 +285,7 @@ void User::setCruiser(bool *addSuccess){
 		}
 	}
 	else{
-		cout << "Unable to place a ship due to error.";cout << "Unable to place a ship due to error.";
+		cout << "Unable to place a ship due to error.";
 	}
 }
 void User::setDestroyer(bool *addSuccess){

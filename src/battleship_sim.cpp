@@ -26,7 +26,7 @@ int main(int argc, char *argv[1]){
 
 
 
-	bool addSuccess;
+	bool addSuccess = false;
 
 	// While there are still ships to create
 	while ((allowed_lengths[0] != 0) | (allowed_lengths[1] != 0) | (allowed_lengths[2] != 0) | (allowed_lengths[3] != 0) | (allowed_lengths[4] != 0))
