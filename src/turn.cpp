@@ -3,231 +3,133 @@
 
 //USING GETISSUNK vs ISSUNK???
 
-bool comp_carrier = false;
-bool comp_battleship = false;
-bool comp_submarine = false;
-bool comp_cruiser = false;
-bool comp_destroyer = false; 
-
-
-bool user_carrier = false;
-bool user_battleship = false;
-bool user_submarine = false;
-bool user_cruiser = false;
-bool user_destroyer = false; 
-
+#include "../include/turn.h"
 
 //gameover boolean
-bool gameover(Computer computer; User user){
-	if (Lose(computer)==true){
-		return true;
-	}
-	if (Win(user)==true){
-		return true;
-	}
+bool Turn::gameover(Computer *computer, User *user){
+	return (lose(computer) || win(user));
 }
 
+//check lose
+bool Turn::lose(Computer *computer){
+	int sunkNum = 0;
 
+	if(computer->carrier->getIsSunk()){ sunkNum++; }
+	if(computer->battleship->getIsSunk()){ sunkNum++; }
+	if(computer->submarine->getIsSunk()){ sunkNum++; }
+	if(computer->cruiser->getIsSunk()){ sunkNum++; }
+	if(computer->destroyer->getIsSunk()){ sunkNum++; }
 
-//check Lose
-bool Lose(Computer computer){
-int sunkNum;
-//!!!!!!!!!!!!!!!!!!!!------check "computer.ship"------!!!!!!!!!!!!!!!!!!!111
-if(computer.carrier->getIsSunk()==true)
-	sunkNum++;
-if(computer.battleship->getIsSunk()==true)
-	sunkNum++;
-if(computer.submarine->getIsSunk()==true)
-	sunkNum++;
-if(computer.cruiser->getIsSunk()==true)
-	sunkNum++;
-if(computer.destroyer->getIsSunk()==true)
-	sunkNum++;
-if(sunkNum==5)
-	return true;
-else
-	return false;
+	return (sunkNum == 5);
 }
 
+//check win
+bool Turn::win(User *user){
+	int sunkNum = 0;
 
-//Need to pass Player class into Win to check ship contained by player
+	if(user->carrier->getIsSunk()){ sunkNum++; }
+	if(user->battleship->getIsSunk()){ sunkNum++; }
+	if(user->submarine->getIsSunk()){ sunkNum++; }
+	if(user->cruiser->getIsSunk()){ sunkNum++; }
+	if(user->destroyer->getIsSunk()){ sunkNum++; }
 
-//check Win
-bool Win(User user){
-int sunkNum;
-//!!!!!!!!!!!!!!!!!!!!-----check "user.ship.get" works-------!!!!!!!!!!!!!!!!!!!
-if(user.carrier->getIsSunk()==true)
-	sunkNum++;
-if(user.battleship->getIsSunk()==true)
-	sunkNum++;
-if(user.submarine->getIsSunk()==true)
-	sunkNum++;
-if(user.cruiser->getIsSunk()==true)
-	sunkNum++;
-if(user.destroyer->getIsSunk()==true)
-	sunkNum++;
-
-if(sunkNum==5){
-	return true;
+	return (sunkNum == 5);
 }
-else
-	return false;
-	}
-
-
-
 
 //-----------------------Hitting ship--------------------------
-void user_hit_ship(User user; Board board_user; Computer computer; Board board_comp; ){
-	
+void Turn::user_hit_ship(User *user, Computer *computer, Board *board_user, Board *computer_user){
+	int a = 0, b = 0;
 	do{
-		int a = user.guess();
-		if(a== -1){
-			cout<<"Invalid location, please guess again."
-		}
-		if(board_computer.getStatus(a)==2||3){
-			cout<<"Location already guessed, please guess again."
+		a = user->guess();
+		if(a == -1){
+			cout << "Invalid location, please guess again.\n"; continue;
 		}
 
-	}
-	while(board_computer.getStatus(a)==2||3)
-
+		b = board_computer->getStatus(a);
+		if(b == 2 || b == 3){
+			cout << "Location already guessed, please guess again.\n";
+		}
+	}while(b == 2 || b == 3);
 
 	// Need a check status and change status method for board.....
-	if (board_computer.getStatus(a)==1){
+	if(board_computer->getStatus(a) == 1){
 		//run change status method
-		cout<<"Hit!";
-		//Need someway to check if the
+		cout << "Hit!\n";
 	}
-	else
-	if (board_computer.getStatus(a)==0){
-		cout<<"Miss!";
-		//possible need another value in case it was guessed so it can say that the location was already guessed
+	else if(board_computer->getStatus(a) == 0){
+		cout << "Miss!\n";		//possible need another value in case it was guessed so it can say that the location was already guessed
 	}
 
-
-//Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
-	//If it returns false, it attempts to sink it
-	if(comp_carrier==false)
-	{
-		if(computer.carrier->getIsSunk()==true){
-			computer.carrier->sinkShip();
-			cout<<"You have sunk a ship!";
-			comp_carrier = true; 
-		}
+	/* Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
+	   If it returns false, it attempts to sink it */
+	if(!computer_carrier && computer->carrier->getIsSunk()){
+		computer->carrier->sinkShip();
+		cout << "You have sunk a ship!\n";
+		computer_carrier = true;
 	}
-	if(comp_battleship==false)
-	{
-		if(computer.battleship->getIsSunk()==true){
-			computer.battleship->sinkShip();
-			cout<<"You have sunk a ship!";
-			comp_battleship = true;
-		}
+	if(!computer_battleship && computer->battleship->getIsSunk()){
+		computer->battleship->sinkShip();
+		cout << "You have sunk a ship!\n";
+		computer_battleship = true;
 	}
-	if(comp_submarine==false)
-	{
-		if(computer.submarine->getIsSunk()==true){
-			computer.submarine->sinkShip();
-			cout<<"You have sunk a ship!";
-			comp_submarine = true;
-		}
+	if(!computer_submarine && computer->submarine->getIsSunk()){
+		computer->submarine->sinkShip();
+		cout << "You have sunk a ship!\n";
+		computer_submarine = true;
 	}
-	if(comp_cruiser==false)
-	{
-		if(computer.cruiser->getIsSunk()==true){
-			computer.cruiser->sinkShip();
-			cout<<"You have sunk a ship!";
-			comp_cruiser = true;
-		}
+	if(!computer_cruiser && computer->cruiser->getIsSunk()){
+		computer->cruiser->sinkShip();
+		cout << "You have sunk a ship!\n";
+		computer_cruiser = true;
 	}
-	if(comp_destroyer==false)
-	{
-		if(computer.destroyer->getIsSunk()==true){
-			computer.destroyer->sinkShip();
-			cout<<"You have sunk a ship!";
-			comp_destroyer = true; 
-		}
+	if(!computer_destroyer && computer->destroyer->getIsSunk()){
+		computer->destroyer->sinkShip();
+		cout << "You have sunk a ship!\n";
+		computer_destroyer = true;
 	}
-	
-
-
 }
 
-void computer_hit_ship(User user; Board board_user; Computer computer; Board board_comp;){
-
+void Turn::computer_hit_ship(User *user, Computer *computer, Board *board_user, Board *computer_user){
 	do{
-		int b = computer.guess();
-	}
-	while(==2||3)
+		int b = computer->guess();
+	}while(b == 2 || b == 3);
 
-
-	if (board_user.getStatus(a)==1){
-		//run change status method
-		cout<<"Hit!";
-		//Need someway to check if the
+	if(board_user->getStatus(a) == 1){
+		//need to run change status method
+		cout << "Hit!\n";
 	}
-	else
-	if (board_user.getStatus(a)==0){
-		cout<<"Miss!";
-		//possible need another value in case it was guessed so it can say that the location was already guessed
+	else if(board_user->getStatus(a) == 0){
+		cout << "Miss!\n";		//possible need another value in case it was guessed so it can say that the location was already guessed
 	}
 
-
-//Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
-	//If it returns false, it attempts to sink it
-	if(user_carrier==false)
-	{
-		if(user.carrier.getIsSunk()==true){
-			user.carrier.sinkShip();
-			cout<<"Computer has sunk a ship!";
-			user_carrier = true; 
-		}
+	/* Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
+	   If it returns false, it attempts to sink it */
+	if(!user_carrier && user->carrier->getIsSunk()){
+		user->carrier->sinkShip();
+		cout << "Computer has sunk a ship!\n";
+		user_carrier = true; 
 	}
-	if(user_battleship==false)
-	{
-		if(user.battleship.getIsSunk()==true){
-			user.battleship.sinkShip();
-			cout<<"Computer has sunk a ship!";
-			user_battleship = true; 
-		}
+	if(!user_battleship && user->battleship->getIsSunk()){
+		user->battleship->sinkShip();
+		cout << "Computer has sunk a ship!\n";
+		user_battleship = true; 
 	}
-	if(user_submarine==false)
-	{
-		if(user.submarine.getIsSunk()==true){
-			user.submarine.sinkShip();
-			cout<<"Computer has sunk a ship!";
-			user_submarine = true;
-		}
+	if(!user_submarine && user->submarine->getIsSunk()){
+		user->submarine->sinkShip();
+		cout << "Computer has sunk a ship!\n";
+		user_submarine = true;
 	}
-	if(user_cruiser==false)
-	{
-		if(user.cruiser.getIsSunk()==true){
-			user.cruiser.sinkShip();
-			cout<<"Computer has sunk a ship!";
-			user_cruiser = true; 
-		}
+	if(!user_cruiser && user->cruiser->getIsSunk()){
+		user->cruiser->sinkShip();
+		cout << "Computer has sunk a ship!\n";
+		user_cruiser = true; 
 	}
-	if(user_destroyer==false)
-	{
-		if(user.destroyer.getIsSunk()==true){
-			user.destroyer.sinkShip();
-			cout<<"Computer has sunk a ship!";
-			user_destroyer = true;
-		}
+	if(!user_destroyer && user->destroyer->getIsSunk()){
+		user->destroyer->sinkShip();
+		cout << "Computer has sunk a ship!\n";
+		user_destroyer = true;
 	}
-	
-
 }
 
-
-
-void turn(User user; Board board_user; Computer computer; Board board_comp;){
-
-}
-
-int main(){
-
-
-
-
+void Turn::turn(User *user, Computer *computer, Board *board_user, Board *computer_user){
 }
