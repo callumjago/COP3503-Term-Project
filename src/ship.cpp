@@ -7,7 +7,7 @@
 //x, and y specify top left most coordinate, ship then extends down if vertical, right if horizontal
 
 
-void Ship::Initialize(Board b) {
+/*void Ship::Initialize(Board b) {
 	if(isHorizontal) {
 		for(int i = 0; i < getLength(); i++) {
 			b.setStatus((getStart() + i), 1); //sets status in sequential tiles to 1 for not hit
@@ -18,7 +18,7 @@ void Ship::Initialize(Board b) {
 			b.setStatus((getStart() + (10 * i)), 1); //Sets status in vertically sequetial tiles to 1 for not hit
 		}
 	}
-}
+}*/
 
 bool Ship::sinkShip(){
 	if(this->isSunk){
