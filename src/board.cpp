@@ -110,17 +110,17 @@ void Board::add_tiles_to_board(){
 	std::cout << "Added tiles to board\n";
 }
 
-/*
 
-int main(){
+
+/*int main(){
 
 	//Testing the board printing method.
 	Board board;
 	board.print_board();
 
-	//Testing the getId function of the board at index 1.
-	cout << "The ID at position A1 is " << board.getId(1) << endl;  
-	return 0;
-}
+	board.setStatus(1, 1);
 
-*/
+	cout << "\n\n";
+	board.print_board();
+}*/
+

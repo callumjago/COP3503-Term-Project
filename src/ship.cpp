@@ -7,15 +7,15 @@
 //x, and y specify top left most coordinate, ship then extends down if vertical, right if horizontal
 
 
-void Ship::Initialize(Board b) {
+void Ship::Initialize(Board *&b) {
 	if(isHorizontal) {
 		for(int i = 0; i < getLength(); i++) {
-			b.setStatus((getStart() + i), 1); //sets status in sequential tiles to 1 for not hit
+			b->setStatus((getStart() + i), 1); //sets status in sequential tiles to 1 for not hit
 		}
 	}
 	else {
 		for(int i = 0; i < getLength(); i++) {
-			b.setStatus((getStart() + (10 * i)), 1); //Sets status in vertically sequetial tiles to 1 for not hit
+			b->setStatus((getStart() + (10 * i)), 1); //Sets status in vertically sequetial tiles to 1 for not hit
 		}
 	}
 }

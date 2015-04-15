@@ -36,7 +36,7 @@ int main(int argc, char *argv[1]){
 		cin >> length;
 
 		if(!(length)){
-			cout << "Invalid length.";
+			cout << "\nInvalid length.\n";
 		}
 
 		else{
@@ -66,10 +66,10 @@ int main(int argc, char *argv[1]){
 					}
 
 					if(addSuccess == false){
-						cout << "\n\nUnable to set ship.";
+						cout << "\nUnable to set ship.";
 					}
 					else{
-						cout << "\n\nShip added - success!";
+						cout << "\nShip added - success!";
 						//allowed_lengths[i] = 0;
 					}
 					break;
@@ -77,7 +77,7 @@ int main(int argc, char *argv[1]){
 			}
 			if (allowed_ship == false)			  // If length is not allowed or is unavailable
 			{
-				cout << "Unavailable ship length.\n";
+				cout << "\nUnavailable ship length.\n";
 
 				for (int i = 0; i < 5; i++)   // Print available lengths
 				{

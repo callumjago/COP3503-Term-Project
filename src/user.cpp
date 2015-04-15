@@ -158,12 +158,12 @@ void User::setCarrier(bool *addSuccess){
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", false, desPos.at(0), 10);
-			//carrier->Initialize(getBoard());
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 		else if(desPos.length() == 2){ 
 			carrier = new Ship(5, "Carrier", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			//carrier->Initialize(getBoard());
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 	}
@@ -171,52 +171,76 @@ void User::setCarrier(bool *addSuccess){
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", true, desPos.at(0), 10);
-			//carrier->Initialize(getBoard());
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(5, "Carrier", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			//carrier->Initialize(getBoard());
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 	}
 	else{
 		*addSuccess = false;
 	}
+
+
+	for(int i = 0; i < 10; i++){
+
+		for(int i = 0; i < 10; i++){
+			cout << getBoard().getStatus((i * 10) + i) << " ";
+		}
+		cout << "\n";
+	}
+
+
 }
 void User::setBattleship(bool *addSuccess){
 	//std::cout << battleship->getIsSunk();
 
 	string desPos = "";
 
-	cout << "\nEnter the desired position of your battleship: ";
+	cout << "\nEnter the desired position of your carrier: ";
 	cin >> desPos;
 
 	choice = isValidPos(desPos, 4);
 
 	if(choice == 1){
-		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(4, "Battleship", false, desPos.at(0), 10);
+		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
+			carrier = new Ship(4, "Carrier", false, desPos.at(0), 10);
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
-		else{
-			carrier = new Ship(4, "Battleship", false, desPos.at(0), (int)(desPos.at(1) - 48));
+		else if(desPos.length() == 2){ 
+			carrier = new Ship(4, "Carrier", false, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 	}
 	
 	else if(choice == 3){
-		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
-			carrier = new Ship(4, "Battleship", true, desPos.at(0), 10);
+		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
+			carrier = new Ship(4, "Carrier", true, desPos.at(0), 10);
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 		else{
-			carrier = new Ship(4, "Battleship", true, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier = new Ship(4, "Carrier", true, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 	}
 	else{
-		cout << "Unable to place a ship due to error.";
+		*addSuccess = false;
+	}
+
+
+	for(int i = 0; i < 10; i++){
+
+		for(int i = 0; i < 10; i++){
+			cout << getBoard().getStatus((i * 10) + i) << " ";
+		}
+		cout << "\n";
 	}
 }
 void User::setSubmarine(bool *addSuccess){
@@ -224,34 +248,47 @@ void User::setSubmarine(bool *addSuccess){
 
 	string desPos = "";
 
-	cout << "\nEnter the desired position of your submarine: ";
+	cout << "\nEnter the desired position of your carrier: ";
 	cin >> desPos;
 
 	choice = isValidPos(desPos, 3);
 
 	if(choice == 1){
-		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(3, "Submarine", false, desPos.at(0), 10);
+		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
+			carrier = new Ship(3, "Carrier", false, desPos.at(0), 10);
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
-		else{
-			carrier = new Ship(3, "Submarine", false, desPos.at(0), (int)(desPos.at(1) - 48));
+		else if(desPos.length() == 2){ 
+			carrier = new Ship(3, "Carrier", false, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 	}
 	
 	else if(choice == 3){
-		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
-			carrier = new Ship(3, "Submarine", true, desPos.at(0), 10);
+		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
+			carrier = new Ship(3, "Carrier", true, desPos.at(0), 10);
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 		else{
-			carrier = new Ship(3, "Submarine", true, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier = new Ship(3, "Carrier", true, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 	}
 	else{
-		cout << "Unable to place a ship due to error.";
+		*addSuccess = false;
+	}
+
+
+	for(int i = 0; i < 10; i++){
+
+		for(int i = 0; i < 10; i++){
+			cout << getBoard().getStatus((i * 10) + i) << " ";
+		}
+		cout << "\n";
 	}
 }
 void User::setCruiser(bool *addSuccess){
@@ -259,34 +296,47 @@ void User::setCruiser(bool *addSuccess){
 
 	string desPos = "";
 
-	cout << "\nEnter the desired position of your cruiser: ";
+	cout << "\nEnter the desired position of your carrier: ";
 	cin >> desPos;
 
 	choice = isValidPos(desPos, 3);
 
 	if(choice == 1){
-		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(3, "Cruiser", false, desPos.at(0), 10);
+		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
+			carrier = new Ship(3, "Carrier", false, desPos.at(0), 10);
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
-		else{
-			carrier = new Ship(3, "Cruiser", false, desPos.at(0), (int)(desPos.at(1) - 48));
+		else if(desPos.length() == 2){ 
+			carrier = new Ship(3, "Carrier", false, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 	}
 	
 	else if(choice == 3){
-		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
-			carrier = new Ship(3, "Cruiser", true, desPos.at(0), 10);
+		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
+			carrier = new Ship(3, "Carrier", true, desPos.at(0), 10);
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 		else{
-			carrier = new Ship(3, "Cruiser", true, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier = new Ship(3, "Carrier", true, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 	}
 	else{
-		cout << "Unable to place a ship due to error.";
+		*addSuccess = false;
+	}
+
+
+	for(int i = 0; i < 10; i++){
+
+		for(int i = 0; i < 10; i++){
+			cout << getBoard().getStatus((i * 10) + i) << " ";
+		}
+		cout << "\n";
 	}
 }
 void User::setDestroyer(bool *addSuccess){
@@ -294,34 +344,47 @@ void User::setDestroyer(bool *addSuccess){
 
 	string desPos = "";
 
-	cout << "\nEnter the desired position of your destroyer: ";
+	cout << "\nEnter the desired position of your carrier: ";
 	cin >> desPos;
 
 	choice = isValidPos(desPos, 2);
 
 	if(choice == 1){
-		if((signed)desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(2, "Destroyer", false, desPos.at(0), 10);
+		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
+			carrier = new Ship(2, "Carrier", false, desPos.at(0), 10);
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
-		else{
-			carrier = new Ship(2, "Destroyer", false, desPos.at(0), (int)(desPos.at(1) - 48));
+		else if(desPos.length() == 2){ 
+			carrier = new Ship(2, "Carrier", false, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 	}
 	
 	else if(choice == 3){
-		if(desPos.at(1) == 1 && (int)desPos.at(2) == 0){
-			carrier = new Ship(2, "Destroyer", true, desPos.at(0), 10);
+		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
+			carrier = new Ship(2, "Carrier", true, desPos.at(0), 10);
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 		else{
-			carrier = new Ship(2, "Destroyer", true, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier = new Ship(2, "Carrier", true, desPos.at(0), (int)(desPos.at(1) - 48));
+			carrier->Initialize(board);
 			*addSuccess= true;
 		}
 	}
 	else{
-		cout << "Unable to place a ship due to error.";
+		*addSuccess = false;
+	}
+
+
+	for(int i = 0; i < 10; i++){
+
+		for(int i = 0; i < 10; i++){
+			cout << getBoard().getStatus((i * 10) + i) << " ";
+		}
+		cout << "\n";
 	}
 }
 

@@ -17,9 +17,11 @@ public:
 	void setDestroyer(bool &addSuccess);
 
 	Board getBoard(){ return *board; };
+
+	Board *board;
 	
 protected:
-	Board *board;
+	
 
 	string desPos;
 	

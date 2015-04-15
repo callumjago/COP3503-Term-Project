@@ -8,7 +8,7 @@ class Ship{
 		bool getIsSunk(Board board);	//getter method for state bool isSunk
 		int getLength();	//getter method for state int length
 
-		char getStart(){ return startX; };
+		int getStart(){ return startX; };
 		
 		Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), status(NULL), isSunk(false){
 			//Initializes status array
@@ -34,7 +34,7 @@ class Ship{
 
 		}
 
-		void Initialize(Board b);
+		void Initialize(Board *&b);
 		
 	private:
 		int length;
