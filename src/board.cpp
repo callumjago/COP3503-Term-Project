@@ -87,7 +87,6 @@ void Board::print_board(){
 				memset(&temp[0], 0, sizeof(temp));
 				usleep(5000);
 		
-
 			}
 			count++;
 		}
@@ -96,7 +95,13 @@ void Board::print_board(){
 		usleep(5000);
 	}
 
-
+	for (int i = 0; i < 15; ++i)
+	{
+		out.push_to_display("-");
+		usleep(5000);
+	}
+	
+	out.push_to_display("\n");
 
 };
 
