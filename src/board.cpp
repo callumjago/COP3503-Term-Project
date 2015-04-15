@@ -1,4 +1,7 @@
 #include "../include/board.h"
+#include "../include/display.h"
+
+
 
 void Board::populate(){
 
@@ -54,14 +57,19 @@ void Board::populate(){
 
 void Board::print_board(){
 
-	int count = 1; // keeps track of where to print line breaks
+	Display out = Display();
 
+	int count = 1; // keeps track of where to print line breaks
 	for (int x = 0; x < 10; x++)
 	{
+
+
 		for (int i = 0; i < 10; i++)
 		{
+
 			if(values[count].status == 1){
 				cout << "S " << " ";
+
 			}
 			else if(values[count].status == 2){
 				cout << "H " << " ";
@@ -70,12 +78,26 @@ void Board::print_board(){
 				cout << "M " << " ";
 			}
 			else{
-				cout << values[count].str << " ";
+				//cout << values[count].str << " ";
+				stringstream ss; 
+				char temp[100];
+				ss << values[count].str ;
+				ss >> temp;
+				out.push_to_display(temp);
+				memset(&temp[0], 0, sizeof(temp));
+				usleep(5000);
+		
+
 			}
 			count++;
 		}
-		cout << "\n";
+		//cout << "\n";
+		out.push_to_display("\n");
+		usleep(5000);
 	}
+
+
+
 };
 
 void Board::add_tiles_to_board(){
