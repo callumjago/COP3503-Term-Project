@@ -30,9 +30,11 @@ class Ship{
 			//perhaps do something for state int* status
 			if(length < 0){ this->length = 0; }
 			else { this->length = length;}
+
+
 		}
 
-	void Initialize(Board b);
+		void Initialize(Board b);
 		
 	private:
 		int length;
