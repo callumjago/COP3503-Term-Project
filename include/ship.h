@@ -9,6 +9,10 @@ class Ship{
 		int getLength();	//getter method for state int length
 
 		int getStart(){ return index; };
+
+		char getStartX(){ return startX; };
+		int getStartY() { return startY; };
+		bool getIsHorizontal(){ return isHorizontal; };
 		
 		Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), status(NULL), isSunk(false){
 			//Initializes status array
@@ -17,7 +21,7 @@ class Ship{
 			/*if((int)startX <= 64 || (int)startX >= 75) {
 				startX = 'A';
 			}
-			this->startX = (int)startX - 64;
+			
 			if(startY <= 0 || startY >= 11) {
 				startY = 1;
 			}
@@ -31,23 +35,31 @@ class Ship{
 			if(length < 0){ this->length = 0; }
 			else { this->length = length;}
 
-			index = ((startX - 'A') * 10) + startY;
+			index = 0;
 
+			
+			this->isHorizontal = isHorizontal;
+			this->startX = (int)startX;
+			this->startY = startY;
+
+			this->name = name;	
 
 		}
 
 		void Initialize(Board *&b);
 		
+		int index;
+		
 	private:
 		int length;
 		int startX;
 		int startY;
-		int* status;
+		//int* status;
 		int* location;
 		bool isSunk;
 		bool isHorizontal;
 		string name;
 
-		int index;
+		
 };
 #endif

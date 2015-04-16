@@ -182,6 +182,9 @@ void User::setCarrier(bool *addSuccess){
 
 	choice = isValidPos(desPos, 5);
 
+	cout << (int)(desPos.at(0) - 65);
+	cout << (int)(desPos.at(1) - 48);
+
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", false, desPos.at(0), 10);
