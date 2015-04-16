@@ -1,6 +1,7 @@
 #include "computer.h"
 #include "user.h"
 #include "board.h"
+
 class Turn {
 private:
 	bool computer_carrier, computer_battleship, computer_submarine, computer_cruiser, computer_destroyer;
@@ -21,11 +22,13 @@ public:
 	}
 
 	bool gameover(Computer *computer, User *user);
-	bool lose(Computer *computer);
-	bool win(User *user);
+	bool lose(User *user);
+	bool win(Computer *computer);
 	void user_hit_ship(User *user, Computer *computer, Board *board_user, Board *board_computer);
 	void computer_hit_ship(User *user, Computer *computer, Board *board_user, Board *board_computer);
 	void turn(User *user, Computer *computer, Board *board_user, Board *board_computer);
+	void frame(User *user, Computer *computer, Board *board_user, Board *board_computer);
+
 
 	friend class Player;
 	friend class Ship;

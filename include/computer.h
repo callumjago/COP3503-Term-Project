@@ -1,4 +1,4 @@
-#include "player.h"
+#include "user.h"
 
 class Computer : public Player{
 private:

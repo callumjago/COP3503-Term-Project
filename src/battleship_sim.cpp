@@ -97,11 +97,7 @@ int main(int argc, char *argv[1]){
 		
 		}
 
-<<<<<<< HEAD
-		
 
-=======
->>>>>>> bc4e4945ec43e5e6c03af6ae3b04e3692faf9a91
 		//user.getBoard().print_board();
 	}
 		

@@ -188,12 +188,12 @@ void User::setCarrier(bool *addSuccess){
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", false, desPos.at(0), 10);
-			//carrier->Initialize(board);
+			carrier->Initialize(*board);
 			*addSuccess= true;
 		}
 		else if(desPos.length() == 2){ 
 			carrier = new Ship(5, "Carrier", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			//carrier->Initialize(board);
+			carrier->Initialize(*board);
 			*addSuccess= true;
 		}
 	}
@@ -201,12 +201,12 @@ void User::setCarrier(bool *addSuccess){
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", true, desPos.at(0), 10);
-			//carrier->Initialize(board);
+			carrier->Initialize(*board);
 			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(5, "Carrier", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			//carrier->Initialize(board);
+			carrier->Initialize(*board);
 			*addSuccess= true;
 		}
 	}

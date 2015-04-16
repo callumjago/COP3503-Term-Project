@@ -19,17 +19,20 @@ public:
 	Board getBoard(){ return *board; };
 
 	Board *board;
+
+
+	Ship *carrier;
+	Ship *battleship;
+	Ship *submarine;
+	Ship *cruiser;
+	Ship *destroyer;
 	
 protected:
 	
 
 	string desPos;
 	
-	Ship *carrier;
-	Ship *battleship;
-	Ship *submarine;
-	Ship *cruiser;
-	Ship *destroyer;
+	
 
 	int choice;
 	//bool addSuccess;

@@ -5,7 +5,7 @@
 class Ship{
 	public:
 		bool sinkShip();	//attempts sinking the Ship (interp as setter method for state bool isSunk)
-		bool getIsSunk(Board board);	//getter method for state bool isSunk
+		bool getIsSunk(Board *board);	//getter method for state bool isSunk
 		int getLength();	//getter method for state int length
 
 		int getStart(){ return (((int)getStartX() - 65) * 10) + getStartY(); };
@@ -14,11 +14,7 @@ class Ship{
 		int getStartY() { return startY; };
 		bool getIsHorizontal(){ return isHorizontal; };
 		
-<<<<<<< HEAD
 		Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), /*status(NULL)*/ isSunk(false){
-=======
-		Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), isSunk(false){
->>>>>>> bc4e4945ec43e5e6c03af6ae3b04e3692faf9a91
 			//Initializes status array
 
 			//Converts char to int value
@@ -50,7 +46,7 @@ class Ship{
 
 		}
 
-		void Initialize(Board *&b);
+		void Initialize(Board &b);
 		
 		int index;
 		
