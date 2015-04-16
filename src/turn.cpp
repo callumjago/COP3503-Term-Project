@@ -92,10 +92,10 @@ void Turn::computer_hit_ship(User *user, Computer *computer, Board *board_user, 
 
 	if(board_user->getStatus(a) == 1){
 		//need to run change status method
-		cout << "Hit!\n";
+		cout << "One of your ships have been hit!\n";
 	}
 	else if(board_user->getStatus(a) == 0){
-		cout << "Miss!\n";		//possible need another value in case it was guessed so it can say that the location was already guessed
+		cout << "The computer missed!\n";		
 	}
 
 	/* Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
@@ -133,7 +133,7 @@ void Turn::frame(User *user, Computer *computer, Board *board_user, Board *board
 	bool b = false; 
 	bool c = false; 
 
- //Refresh board_
+ //Refresh board_computer here
 	user_hit_ship(*user, *computer, *board_user, *board_computer);
 	
 	a = win(*computer);
@@ -144,7 +144,7 @@ void Turn::frame(User *user, Computer *computer, Board *board_user, Board *board
 	computer_hit_ship(*user, *computer, *board_user, *board_computer);
 
 
-//Refresh board_user
+//Refresh board_user here
 	b = lose(*user);
 	if(b==true){
 		cout<<"You lose.";
