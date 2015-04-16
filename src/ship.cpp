@@ -11,18 +11,21 @@ void Ship::Initialize(Board *&b) {
 
 	//int ind = (((int)getStartX() - 65) * 10) + getStartY();
 
-	if(getIsHorizontal()) {
-		/*for(int i = 0; i < getLength(); i++) {
+	cout << getStart();
+
+
+	/*if(getIsHorizontal()) {
+		for(int i = 0; i < getLength(); i++) {
 			b->setStatus((getStart() + i), 1); //sets status in sequential tiles to 1 for not hit
-		}*/
+		}
 		b->setStatus(getStart(), 1);
 	}
 	else {
-		/*for(int i = 0; i < getLength(); i++) {
+		for(int i = 0; i < getLength(); i++) {
 			b->setStatus((getStart() + (10 * i)), 1); //Sets status in vertically sequetial tiles to 1 for not hit
-		}*/
+		}
 		b->setStatus(getStart(), 1);
-	}
+	}*/
 }
 
 bool Ship::sinkShip(){

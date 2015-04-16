@@ -14,11 +14,7 @@ class Ship{
 		int getStartY() { return startY; };
 		bool getIsHorizontal(){ return isHorizontal; };
 		
-<<<<<<< HEAD
-		Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), isSunk(false){
-=======
 		Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), /*status(NULL)*/ isSunk(false){
->>>>>>> 4da0581c8c676d23a9a8877d0da112842611d58b
 			//Initializes status array
 
 			//Converts char to int value

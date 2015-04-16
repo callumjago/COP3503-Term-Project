@@ -40,6 +40,7 @@ int main(int argc, char *argv[1]){
 		cin >> length;
 
 		if(cin.fail()){
+			cin.clear(); // LINE 9
 			cout << "\nInvalid length.\n";
 		}
 		
@@ -101,7 +102,7 @@ int main(int argc, char *argv[1]){
 
 		
 
-		user.getBoard().print_board();
+		//user.getBoard().print_board();
 	}
 		
 
