@@ -1,2 +1,2 @@
-gnome-terminal -e ./battleship_sim 
-./reader
+gnome-terminal -e ./reader &
+./battleship_sim
