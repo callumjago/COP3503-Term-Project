@@ -19,6 +19,7 @@ public:
 	void setSubmarine(bool *addSuccess);
 	void setCruiser(bool *addSuccess);
 	void setDestroyer(bool *addSuccess);
+	void printShips();
 	
 	int guess();			
 };

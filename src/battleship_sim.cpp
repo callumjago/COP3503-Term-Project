@@ -1,6 +1,7 @@
 #include "../include/board.h"
 #include "../include/ship.h"
 #include "../include/user.h"
+#include "../include/display.h"
 #include <unistd.h>
 
 
@@ -13,7 +14,10 @@ int main(int argc, char *argv[1]){
 	//temp.add_tiles_to_board();
 
 	User user = User();
+	Display out = Display();
 
+	out.push_to_display("");
+	usleep(5000);
 	user.getBoard().print_board();
 
 	cout << "\nThere are 5 ships in total of length 5,4,3,3,2.\n";

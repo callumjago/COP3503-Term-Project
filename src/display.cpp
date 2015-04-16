@@ -1,6 +1,7 @@
 
 #include "../include/display.h"
 #include <iostream>
+#include <unistd.h>
 
 int Display::push_to_display(char temp[])
 {
@@ -17,6 +18,6 @@ int Display::push_to_display(char temp[])
 
     /* remove the FIFO */
     //unlink(myfifo);
-
+    usleep(5000);
     return 0;
 }

@@ -1,4 +1,5 @@
 #include "../include/user.h"
+#include "../include/display.h"
 #include <iostream>
 
 
@@ -148,6 +149,29 @@ int User::isValidPos(string desPos, int length){
 	// -1 means invalid or error, 0 means "up", 1 means "down", 2 means "left", 3 means "right"
 };
 
+void User::printShips(){
+
+	Display out = Display();
+	char temp[5];
+	for(int r = 0; r < 10; r++){
+
+		for(int c = 0; c < 10; c++){
+			int temp_int = board->getStatus((r * 10) + c + 1);
+			stringstream ss; 
+			ss << temp_int ;
+			ss >> temp;
+			out.push_to_display(temp);
+			memset(&temp[0], 0, sizeof(temp));
+		}
+		out.push_to_display("\n");
+	}
+	for (int i = 0; i < 15; ++i)
+	{
+		out.push_to_display("-");
+	}
+	out.push_to_display("\n");
+}
+
 void User::setCarrier(bool *addSuccess){
 	//std::cout << carrier->getIsSunk();
 
@@ -188,18 +212,13 @@ void User::setCarrier(bool *addSuccess){
 	}
 
 
-	for(int r = 0; r < 10; r++){
-
-		for(int c = 1; c <= 10; c++){
-			cout << board->getStatus((r * 10) + c) << " ";
-		}
-		cout << "\n";
-	}
+	printShips();
 
 
 }
 void User::setBattleship(bool *addSuccess){
 	//std::cout << battleship->getIsSunk();
+
 
 	string desPos = "";
 
@@ -237,13 +256,8 @@ void User::setBattleship(bool *addSuccess){
 		*addSuccess = false;
 	}
 
-	for(int r = 0; r < 10; r++){
+	printShips();
 
-		for(int c = 0; c < 10; c++){
-			cout << board->getStatus((r * 10) + c + 1) << " ";
-		}
-		cout << "\n";
-	}
 }
 void User::setSubmarine(bool *addSuccess){
 	//std::cout << submarine->getIsSunk();
@@ -285,13 +299,7 @@ void User::setSubmarine(bool *addSuccess){
 	}
 
 
-	for(int r = 0; r < 10; r++){
-
-		for(int c = 0; c < 10; c++){
-			cout << board->getStatus((r * 10) + c + 1) << " ";
-		}
-		cout << "\n";
-	}
+	printShips();
 }
 void User::setCruiser(bool *addSuccess){
 	//std::cout << cruiser->getIsSunk();
@@ -332,14 +340,8 @@ void User::setCruiser(bool *addSuccess){
 		*addSuccess = false;
 	}
 
+	printShips();
 
-	for(int r = 0; r < 10; r++){
-
-		for(int c = 0; c < 10; c++){
-			cout << board->getStatus((r * 10) + c + 1) << " ";
-		}
-		cout << "\n";
-	}
 }
 void User::setDestroyer(bool *addSuccess){
 	//std::cout << destroyer->getIsSunk();
@@ -380,13 +382,6 @@ void User::setDestroyer(bool *addSuccess){
 		*addSuccess = false;
 	}
 
-
-	for(int r = 0; r < 10; r++){
-
-		for(int c = 0; c < 10; c++){
-			cout << board->getStatus((r * 10) + c + 1) << " ";
-		}
-		cout << "\n";
-	}
+	printShips();
 }
 
