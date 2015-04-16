@@ -39,9 +39,10 @@ int main(int argc, char *argv[1]){
 		cout << "\nEnter the ship length that you want to place: "; 
 		cin >> length;
 
-		if(!(length)){
+		if(cin.fail()){
 			cout << "\nInvalid length.\n";
 		}
+		
 
 		else{
 			// Loop through allowed length array and see if requested length is allowed and unused
@@ -97,6 +98,8 @@ int main(int argc, char *argv[1]){
 
 		
 		}
+
+		
 
 		user.getBoard().print_board();
 	}

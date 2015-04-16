@@ -8,13 +8,13 @@ class Ship{
 		bool getIsSunk(Board board);	//getter method for state bool isSunk
 		int getLength();	//getter method for state int length
 
-		int getStart(){ return index; };
+		int getStart(){ return (((int)getStartX() - 65) * 10) + getStartY(); };
 
 		char getStartX(){ return startX; };
 		int getStartY() { return startY; };
 		bool getIsHorizontal(){ return isHorizontal; };
 		
-		Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), status(NULL), isSunk(false){
+		Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), isSunk(false){
 			//Initializes status array
 
 			//Converts char to int value
