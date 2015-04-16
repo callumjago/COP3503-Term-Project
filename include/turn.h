@@ -1,6 +1,6 @@
 #include "computer.h"
 #include "user.h"
-
+#include "board.h"
 class Turn {
 private:
 	bool computer_carrier, computer_battleship, computer_submarine, computer_cruiser, computer_destroyer;
