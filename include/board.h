@@ -42,13 +42,24 @@ class Board{
 		
 		string getId(int index){ return values[index].str; };
 		int getStatus(int index){ return values[index].status; };
-		void setStatus(int index, int status){ values[index].status = status; };
+		void setStatus(int index, int status){ 
+			values[index].status = status; 
+			if(status == 1){
+				values[index].str = "S";
+			}
+			else if(status == 2){
+				values[index].str = "H";
+			}
+			else if(status == 3){
+				values[index].str = "M";
+			}
+		};
 
 		// Populate the board upon initialization
 		Board(){
 			populate(); 
 			for(int i = 0; i < 101; i++){
-				values[i].status = false;
+				values[i].status = 0;
 			}
 			
 		}

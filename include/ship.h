@@ -8,13 +8,13 @@ class Ship{
 		bool getIsSunk(Board board);	//getter method for state bool isSunk
 		int getLength();	//getter method for state int length
 
-		int getStart(){ return startX; };
+		int getStart(){ return index; };
 		
 		Ship(int length, string name, bool isHorizontal, char startX, int startY):length(length), status(NULL), isSunk(false){
 			//Initializes status array
 
 			//Converts char to int value
-			if((int)startX <= 64 || (int)startX >= 75) {
+			/*if((int)startX <= 64 || (int)startX >= 75) {
 				startX = 'A';
 			}
 			this->startX = (int)startX - 64;
@@ -31,6 +31,8 @@ class Ship{
 			if(length < 0){ this->length = 0; }
 			else { this->length = length;}
 
+			index = ((startX - 'A') * 10) + startY;
+
 
 		}
 
@@ -45,5 +47,7 @@ class Ship{
 		bool isSunk;
 		bool isHorizontal;
 		string name;
+
+		int index;
 };
 #endif

@@ -68,7 +68,7 @@ int User::isValidPos(string desPos, int length){
 
 					tempIndex = ((tempLetter - 'A') * 10) + tempDigit;
 
-					if(board->getStatus(index) == 0){
+					if(board->getStatus(tempIndex) == 0){
 					}
 					else{
 						down = false;
@@ -85,7 +85,7 @@ int User::isValidPos(string desPos, int length){
 
 					tempIndex = ((tempLetter - 'A') * 10) + tempDigit;
 
-					if(board->getStatus(index) == 0){
+					if(board->getStatus(tempIndex) == 0){
 					}
 					else{
 						right = false;
@@ -190,8 +190,8 @@ void User::setCarrier(bool *addSuccess){
 
 	for(int r = 0; r < 10; r++){
 
-		for(int c = 0; c < 10; c++){
-			cout << board->getStatus((r * 10) + c + 1) << " ";
+		for(int c = 1; c <= 10; c++){
+			cout << board->getStatus((r * 10) + c) << " ";
 		}
 		cout << "\n";
 	}
