@@ -8,7 +8,7 @@
 
 
 //Initializes the ship by changing the board status to 1 for each part of the ship
-void Ship::Initialize(Board &b) {
+void Ship::Initialize(Board *&b) {
 
 	//int ind = (((int)getStartX() - 65) * 10) + getStartY();
 	cout << getStart();

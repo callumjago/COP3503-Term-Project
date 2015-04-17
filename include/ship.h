@@ -51,7 +51,7 @@ class Ship{
 
 			this->name = name;	
 		}
-		void Initialize(Board &b);
+		void Initialize(Board *&b);
 		
 		int index;
 };
