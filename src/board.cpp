@@ -91,21 +91,16 @@ void Board::print_board(){
 				char temp[100];
 				ss << values[count].str ;
 				ss >> temp;
-				out.push_to_display(temp);
+				out.push_to_first_display(temp);
 				memset(&temp[0], 0, sizeof(temp));
 			}
 			count++;
 		}
 		//cout << "\n";
-		out.push_to_display("\n");
+		out.push_to_first_display("\n");
 	}
 
-	for (int i = 0; i < 15; ++i)
-	{
-		out.push_to_display("-"); //Creates a buffer between the output
-	}
-	
-	out.push_to_display("\n");
+	out.push_to_first_display("---------------\n"); //Creates a buffer between the output
 };
 
 //Adds tiles to the board

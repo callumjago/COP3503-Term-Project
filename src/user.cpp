@@ -100,7 +100,7 @@ int User::isValidPos(string desPos, int length){
 				//Represents that the placement there is unavailable.
 			}
 			else if(right && down){
-				cout << "\nChoose to orientate the ship right (R) or down (D): ";
+				cout << "Choose to orientate the ship right (R) or down (D): ";
 				cin >> direction;
 
 				if(direction.compare("R") == 0){
@@ -145,16 +145,16 @@ void User::printShips(){
 			stringstream ss; 
 			ss << temp_int ;
 			ss >> temp;
-			out.push_to_display(temp);
+			out.push_to_first_display(temp);
 			memset(&temp[0], 0, sizeof(temp));
 		}
-		out.push_to_display("\n");
+		out.push_to_first_display("\n");
 	}
 	for (int i = 0; i < 15; ++i)
 	{
-		out.push_to_display("-");
+		out.push_to_first_display("-");
 	}
-	out.push_to_display("\n");
+	out.push_to_first_display("\n");
 }
 
 void User::setCarrier(bool *addSuccess){
@@ -162,7 +162,7 @@ void User::setCarrier(bool *addSuccess){
 
 	string desPos = "";
 
-	cout << "\nEnter the desired position of your carrier: ";
+	cout << "Enter the desired position of your carrier: ";
 	cin >> desPos;
 
 	choice = isValidPos(desPos, 5);

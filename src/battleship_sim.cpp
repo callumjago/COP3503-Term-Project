@@ -6,21 +6,29 @@
 
 int main(int argc, char *argv[1]){
 
-	//Creates a user to play the game
-	User user = User();
+	//Creates a user_one to play the game
+	User user_one = User();
+	User user_two = User();
 
 	//Creates a Display object in order to display to the terminal
 	Display out = Display();
+	Display out_two = Display();
+	out.push_to_first_display("Player 1 Game Board\n");
+	out.push_to_first_display("---------------\n"); //Creates a buffer between the output
+	out_two.push_to_second_display("Player 2/Computer Game Board\n");
+	out_two.push_to_second_display("---------------\n"); //Creates a buffer between the output
 
 	//Prints the board on another screen
-	out.push_to_display("");
-	usleep(5000);
-	user.getBoard().print_board();
+	user_one.getBoard().print_board();
+	//user_two.getBoard().print_board();
+	//user_two.getBoard().print_board();
 
-	//Prompts the user to enter the ships based on length
-	cout << "\nThere are 5 ships in total of length 5,4,3,3,2.\n";
-	cout << "We will now guide you through the placement procedure.\n\n";
-	cout << "Please choose your first ship.\n";
+	
+	
+
+	//Prompts the user_one to enter the ships based on length
+	cout << "\nThere are 5 ships for you to place\n";
+	cout << "We will now guide you through the placement procedure.\n";
 
 	int length;
 	bool allowed_ship = false;			//Represents if the ship was allowed to be placed
@@ -31,13 +39,19 @@ int main(int argc, char *argv[1]){
 	//While there are still ships to create
 	while ((allowed_lengths[0] != 0) | (allowed_lengths[1] != 0) | (allowed_lengths[2] != 0) | (allowed_lengths[3] != 0) | (allowed_lengths[4] != 0))
 	{
-		cout << "\nEnter the ship length that you want to place: "; 
+		cout << "\nEnter the ship that you want to place using the numbers provided \n"; 
+		cout << "Carrier:     5 \n";
+		cout << "Battleship:  4 \n"; 
+		cout << "Submarine:   3 \n"; 
+		cout << "Cruiser:     3 \n"; 
+		cout << "Destroyer:   2 \n";
+		cout << "Ship Number: "; 
 		cin >> length;
 
 		//If the input in not an integer, it will trigger an invalid length
 		if(cin.fail()){
 			cin.clear(); // LINE 9
-			cout << "\nInvalid length.\n";
+			cout << "Invalid length.\n";
 		}
 		
 
@@ -50,20 +64,20 @@ int main(int argc, char *argv[1]){
 				 	//Remove from array
 					allowed_ship = true;		  //Untriggers if statment below
 					switch(length){
-						case 2: user.setDestroyer(&addSuccess);
+						case 2: user_one.setDestroyer(&addSuccess);
 							break;
 						case 3: 
 							if (second_third == false)
 							{
-								user.setSubmarine(&addSuccess);
+								user_one.setSubmarine(&addSuccess);
 								second_third = true;
 							}else{
-								user.setCruiser(&addSuccess);
+								user_one.setCruiser(&addSuccess);
 							}
 							break;
-						case 4: user.setBattleship(&addSuccess);
+						case 4: user_one.setBattleship(&addSuccess);
 							break;
-						case 5: user.setCarrier(&addSuccess);
+						case 5: user_one.setCarrier(&addSuccess);
 							break;
 					}
 
@@ -92,7 +106,7 @@ int main(int argc, char *argv[1]){
 			}
 			allowed_ship = false; //Reset
 		}
-		//user.getBoard().print_board();
+		//user_one.getBoard().print_board();
 	}
 		
 	//Main loop for runnning program
