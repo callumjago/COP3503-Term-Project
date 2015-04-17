@@ -1,11 +1,11 @@
 #include "../include/turn.h"
 
-//gameover boolean
+//Gameover boolean
 bool Turn::gameover(Computer *computer, User *user){
 	return (lose(user) || win(computer));
 }
 
-//check win scenario
+//Check win scenario
 bool Turn::win(Computer *computer){
 	int sunkNum = 0;
 
@@ -18,7 +18,7 @@ bool Turn::win(Computer *computer){
 	return (sunkNum == 5);
 }
 
-//check lose scenario
+//Check lose scenario
 bool Turn::lose(User *user){
 	int sunkNum = 0;
 
@@ -36,28 +36,30 @@ void Turn::user_hit_ship(User *user, Computer *computer, Board *board_user, Boar
 	int a = 0, b = 0;
 	do{
 		a = user->guess();
+
 		if(a == -1){
 			cout << "Invalid location, please guess again.\n"; continue;
 		}
 
 		b = board_computer->getStatus(a);
+
 		if(b == 2 || b == 3){
 			cout << "Location already guessed, please guess again.\n";
 		}
 	}while(b == 2 || b == 3);
 
-	// Need a change status method for board.....
+	//Need a change status method for board.....
 	if(board_computer->getStatus(a) == 1){
-		//run change status method
+		//Run change status method
 		cout << "Hit!\n";
 	}
 	else if(board_computer->getStatus(a) == 0){
-		//run change status method
+		//Run change status method
 		cout << "Miss!\n";		
 	}
 
-	/* Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
-	   If it returns false, it attempts to sink it */
+	/*Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
+	If it returns false, it attempts to sink it */
 	if(!computer_carrier && computer->carrier->getIsSunk(computer->board)){
 		computer->carrier->sinkShip();
 		cout << "You have sunk a ship!\n";
@@ -85,22 +87,24 @@ void Turn::user_hit_ship(User *user, Computer *computer, Board *board_user, Boar
 	}
 }
 
+//Represents a computer hitting a ship
 void Turn::computer_hit_ship(User *user, Computer *computer, Board *board_user, Board *board_computer){
 	int b, a = 0;
+
 	do{
 		int b = computer->guess();
 	}while(b == 2 || b == 3);
 
 	if(board_user->getStatus(a) == 1){
-		//need to run change status method
+		//Need to run change status method
 		cout << "One of your ships have been hit!\n";
 	}
 	else if(board_user->getStatus(a) == 0){
 		cout << "The computer missed!\n";		
 	}
 
-	/* Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
-	   If it returns false, it attempts to sink it */
+	/*Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
+	If it returns false, it attempts to sink it */
 	if(!user_carrier && user->carrier->getIsSunk(user->board)){
 		user->carrier->sinkShip();
 		cout << "Computer has sunk a ship!\n";
@@ -128,34 +132,35 @@ void Turn::computer_hit_ship(User *user, Computer *computer, Board *board_user, 
 	}
 }
 
+//Represents a frame where gameover is checked
 void Turn::frame(User *user, Computer *computer, Board *board_user, Board *board_computer){
-
 	bool a = false; 
 	bool b = false; 
 	bool c = false; 
 
- //Refresh board_computer here
+ 	//Refresh board_computer here
 	user_hit_ship(user, computer, board_user, board_computer);
 	
 	a = win(computer);
-	if(a== true){
+
+	if(a == true){
 		cout<<"You win!";
 	}
 	else{
-	computer_hit_ship(user, computer, board_user, board_computer);
+		computer_hit_ship(user, computer, board_user, board_computer);
 
+		//Refresh board_user here
+		b = lose(user);
 
-//Refresh board_user here
-	b = lose(user);
-	if(b==true){
-		cout<<"You lose.";
-	}
+		if(b == true){
+			cout << "You lose.";
+		}
 	}
 
 	c = gameover(computer, user);
 
-	if(c==true){
-		cout<<"Gameover.";
+	if(c == true){
+		cout << "Gameover.";
 	}
 
 }

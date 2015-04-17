@@ -3,10 +3,18 @@
 #include "board.h"
 
 class Ship{
+	private:
+		int length;			//Represents the length of the ship
+		int startX;			//Represents the integer value of the row
+		int startY;			//Represents the integer value of the column 
+		bool isSunk;		//True if the ship is sunk, false otherwise
+		bool isHorizontal;	//True if the ship is horizontal, false otherwise
+		string name;		//Represents the name of the ship
+
 	public:
-		bool sinkShip();	//attempts sinking the Ship (interp as setter method for state bool isSunk)
-		bool getIsSunk(Board *board);	//getter method for state bool isSunk
-		int getLength();	//getter method for state int length
+		bool sinkShip();				//Attempts sinking the Ship (interpret as setter method for state bool isSunk)
+		bool getIsSunk(Board *board);	//Getter method for state bool isSunk
+		int getLength();				//Getter method for state int length
 
 		int getStart(){ return (((int)getStartX() - 65) * 10) + getStartY(); };
 
@@ -37,29 +45,14 @@ class Ship{
 
 			index = 0;
 
-			
 			this->isHorizontal = isHorizontal;
 			this->startX = (int)startX;
 			this->startY = startY;
 
 			this->name = name;	
-
 		}
-
 		void Initialize(Board &b);
 		
 		int index;
-		
-	private:
-		int length;
-		int startX;
-		int startY;
-		//int* status;
-		int* location;
-		bool isSunk;
-		bool isHorizontal;
-		string name;
-
-		
 };
 #endif

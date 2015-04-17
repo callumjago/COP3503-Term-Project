@@ -7,12 +7,11 @@
 //x, and y specify top left most coordinate, ship then extends down if vertical, right if horizontal
 
 
+//Initializes the ship by changing the board status to 1 for each part of the ship
 void Ship::Initialize(Board &b) {
 
 	//int ind = (((int)getStartX() - 65) * 10) + getStartY();
-
 	cout << getStart();
-
 
 	/*if(getIsHorizontal()) {
 		for(int i = 0; i < getLength(); i++) {
@@ -28,6 +27,7 @@ void Ship::Initialize(Board &b) {
 	}*/
 }
 
+//Sinks the ship if not already sunk
 bool Ship::sinkShip(){
 	if(this->isSunk){
 		//if ship is already sunk, do something here
@@ -40,15 +40,16 @@ bool Ship::sinkShip(){
 	}
 }
 
+//Returns true if the ship has been sunk, false otherwise
 bool Ship::getIsSunk(Board *board){
 	//Checks every element of status array, if any element is 1(not hit), return false
 	bool sunk = true;
+
 	if(isHorizontal) {
 		for(int i = 0; i < length; i++) {
 			if(board->getStatus((10*startY) + startX + i) == 1) {
 				sunk = false;
 			}
-			
 		}
 	}
 	else {
@@ -61,11 +62,11 @@ bool Ship::getIsSunk(Board *board){
 	return sunk;
 }
 
-
 int Ship::getLength(){
-	//returns length
+	//Returns length
 	return this->length;
 }
+
 /*
 int main(int argc, char *argv[1]){
 	int length;

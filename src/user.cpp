@@ -19,6 +19,7 @@ int User::guess(){
 
 	char letter = guess.at(0);
 	int digit = guess.at(1);
+
 	if(digit == 1 && (int)guess.at(2) == 0){
 		digit = 10;
 	}
@@ -40,9 +41,9 @@ int User::isValidPos(string desPos, int length){
 		return -1;
 	}
 
-
 	char letter = desPos.at(0);
 	int digit = (int)desPos.at(1) - 48;
+
 	if(desPos.length() == 3 && digit == 1 && desPos.at(2) == '0'){
 		digit = 10;
 	}
@@ -50,13 +51,11 @@ int User::isValidPos(string desPos, int length){
 		return -1;
 	}
 
-
 	char tempLetter = 'A';
 	int tempDigit = 1;
 
 	int index = ((int)(letter - 'A') * 10) + digit; //Determines the index of the position in the board.
 	int tempIndex = 0;
-
 
 	if(letter >= 'A' && letter <= 'J' && digit >= 1 && digit <= 10){
 		if(board->getStatus(index) == 0){
@@ -98,7 +97,7 @@ int User::isValidPos(string desPos, int length){
 			//Given the possibilities, asks the user which direction to choose.
 			if(!right && !down){
 				//cout << "Unable to place a ship of this length there.";
-				// Represents that the placement there is unavailable.
+				//Represents that the placement there is unavailable.
 			}
 			else if(right && down){
 				cout << "\nChoose to orientate the ship right (R) or down (D): ";
@@ -114,18 +113,6 @@ int User::isValidPos(string desPos, int length){
 					// Represents that the choice of right/down is invalid.
 					return -1;
 				}
-			/*else{
-				do{
-					cout << "Invalid choice. Choose again: ";
-					cin >> direction;
-					if(direction.compare("right") == 0){
-						choice = 3;
-					}
-					else if(direction.compare("down") == 0){
-						choice = 1;
-					}
-				} while (direction.compare("down") != 0 && direction.compare("right") != 0);
-			}*/
 			}
 			else if(down){
 				choice = 1;
@@ -140,21 +127,19 @@ int User::isValidPos(string desPos, int length){
 	}
 	else{
 		//cout << "Invalid position choice.";
-		// Represents invalid position choice.
+		//Represents invalid position choice.
 	}
 
-	
 	return choice;	
-
-	// -1 means invalid or error, 0 means "up", 1 means "down", 2 means "left", 3 means "right"
+	//-1 means invalid or error, 0 means "up", 1 means "down", 2 means "left", 3 means "right"
 };
 
+//Prints the ships
 void User::printShips(){
 
 	Display out = Display();
 	char temp[5];
 	for(int r = 0; r < 10; r++){
-
 		for(int c = 0; c < 10; c++){
 			int temp_int = board->getStatus((r * 10) + c + 1);
 			stringstream ss; 
@@ -197,7 +182,6 @@ void User::setCarrier(bool *addSuccess){
 			*addSuccess= true;
 		}
 	}
-	
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", true, desPos.at(0), 10);
@@ -213,15 +197,11 @@ void User::setCarrier(bool *addSuccess){
 	else{
 		*addSuccess = false;
 	}
-
-
 	printShips();
-
-
 }
+
 void User::setBattleship(bool *addSuccess){
 	//std::cout << battleship->getIsSunk();
-
 
 	string desPos = "";
 
@@ -242,7 +222,6 @@ void User::setBattleship(bool *addSuccess){
 			*addSuccess= true;
 		}
 	}
-	
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(4, "Battleship", true, desPos.at(0), 10);
@@ -258,10 +237,9 @@ void User::setBattleship(bool *addSuccess){
 	else{
 		*addSuccess = false;
 	}
-
 	printShips();
-
 }
+
 void User::setSubmarine(bool *addSuccess){
 	//std::cout << submarine->getIsSunk();
 
@@ -300,10 +278,9 @@ void User::setSubmarine(bool *addSuccess){
 	else{
 		*addSuccess = false;
 	}
-
-
 	printShips();
 }
+
 void User::setCruiser(bool *addSuccess){
 	//std::cout << cruiser->getIsSunk();
 
@@ -342,10 +319,9 @@ void User::setCruiser(bool *addSuccess){
 	else{
 		*addSuccess = false;
 	}
-
 	printShips();
-
 }
+
 void User::setDestroyer(bool *addSuccess){
 	//std::cout << destroyer->getIsSunk();
 
@@ -384,7 +360,6 @@ void User::setDestroyer(bool *addSuccess){
 	else{
 		*addSuccess = false;
 	}
-
 	printShips();
 }
 

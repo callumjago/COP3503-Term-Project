@@ -4,38 +4,37 @@
 #include "../include/display.h"
 #include <unistd.h>
 
-
-
-
 int main(int argc, char *argv[1]){
 
-	//Board temp;
-	//temp.print_board();
-	//temp.add_tiles_to_board();
-
+	//Creates a user to play the game
 	User user = User();
+
+	//Creates a Display object in order to display to the terminal
 	Display out = Display();
 
+	//Prints the board on another screen
 	out.push_to_display("");
 	usleep(5000);
 	user.getBoard().print_board();
 
+	//Prompts the user to enter the ships based on length
 	cout << "\nThere are 5 ships in total of length 5,4,3,3,2.\n";
 	cout << "We will now guide you through the placement procedure.\n\n";
 	cout << "Please choose your first ship.\n";
 
 	int length;
-	bool allowed_ship = false;
-	bool second_third = false;
+	bool allowed_ship = false;			//Represents if the ship was allowed to be placed
+	bool second_third = false;			//Represents the possibility of having two length 3 ships
 	int allowed_lengths[] = {2,3,3,4,5};
-	bool addSuccess = false;
+	bool addSuccess = false;			//Represents the success of the ship placement
 
-	// While there are still ships to create
+	//While there are still ships to create
 	while ((allowed_lengths[0] != 0) | (allowed_lengths[1] != 0) | (allowed_lengths[2] != 0) | (allowed_lengths[3] != 0) | (allowed_lengths[4] != 0))
 	{
 		cout << "\nEnter the ship length that you want to place: "; 
 		cin >> length;
 
+		//If the input in not an integer, it will trigger an invalid length
 		if(cin.fail()){
 			cin.clear(); // LINE 9
 			cout << "\nInvalid length.\n";
@@ -43,13 +42,13 @@ int main(int argc, char *argv[1]){
 		
 
 		else{
-			// Loop through allowed length array and see if requested length is allowed and unused
+			//Loop through allowed length array and see if requested length is allowed and unused
 			for (int i = 0; i < 5; i++){
 
-				if (length == allowed_lengths[i]) // length is allowed and available
+				if (length == allowed_lengths[i]) //Length is allowed and available
 				{
-				 	  // Remove from array
-					allowed_ship = true;		  // Untriggers if statment below
+				 	//Remove from array
+					allowed_ship = true;		  //Untriggers if statment below
 					switch(length){
 						case 2: user.setDestroyer(&addSuccess);
 							break;
@@ -78,11 +77,11 @@ int main(int argc, char *argv[1]){
 					break;
 				}
 			}
-			if (allowed_ship == false)			  // If length is not allowed or is unavailable
+			if (allowed_ship == false)			//If length is not allowed or is unavailable
 			{
 				cout << "\nUnavailable ship length.\n";
 
-				for (int i = 0; i < 5; i++)   // Print available lengths
+				for (int i = 0; i < 5; i++)   	//Print available lengths
 				{
 					if (allowed_lengths[i] != 0)
 					{
@@ -91,18 +90,12 @@ int main(int argc, char *argv[1]){
 				}
 				cout << endl;
 			}
-		
-			allowed_ship = false; // reset
-
-		
+			allowed_ship = false; //Reset
 		}
-
-
 		//user.getBoard().print_board();
 	}
 		
-
-	// main loop for runnning program
+	//Main loop for runnning program
 		while(1);
 	/*
 	cout << "How long is this ship? " << test.getLength() << endl;
@@ -111,6 +104,5 @@ int main(int argc, char *argv[1]){
 	cout << "Is this ship sunk? " << test.getIsSunk() << endl << endl;
 	*/
 	
-
 	return 0;
 }
