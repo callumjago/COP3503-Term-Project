@@ -3,9 +3,10 @@
 
 
 //Sets the status of the board based on its index and desired status
-void Board::setStatus(int index, int status){ 
+int Board::setStatus(int index, int status){ 
 
-	values[index].status = status;
+	//this->values[index].status = status;
+	return 0;
 };
 
 //Sets the board up to have its tile names to be assigned to A1, D3, etc.

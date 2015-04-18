@@ -11,14 +11,24 @@ int main(int argc, char *argv[1]){
 	User user_one = User();
 	User user_two = User();
 
-	bool success = false;
+	bool addSuccess = false;			//Represents the success of the ship placement
 	//Creates a computer to play the game against the user
+	
 	Computer computer = Computer();
-	computer.setCarrier(&success);
-	computer.setBattleship(&success);
-	computer.setSubmarine(&success);
-	computer.setCruiser(&success);
-	computer.setDestroyer(&success);
+	/*
+	computer.setCarrier(&addSuccess);
+	addSuccess = false;
+	computer.setBattleship(&addSuccess);
+	addSuccess = false;
+	computer.setSubmarine(&addSuccess);
+	addSuccess = false;
+	computer.setCruiser(&addSuccess);
+	addSuccess = false;
+	computer.setDestroyer(&addSuccess);
+	addSuccess = false;
+	*/
+
+	
 
 	//Creates a Turn object in order to play the game after the ships are placed.
 	Turn turn = Turn();
@@ -34,7 +44,7 @@ int main(int argc, char *argv[1]){
 
 	//Prints the board on another screen
 	user_one.getBoard().print_user_board();
-	computer.getBoard().print_computer_board();
+	//computer.getBoard().print_computer_board();
 
 
 	//Prompts the user_one to enter the ships based on length
@@ -45,7 +55,7 @@ int main(int argc, char *argv[1]){
 	bool allowed_ship = false;			//Represents if the ship was allowed to be placed
 	bool second_third = false;			//Represents the possibility of having two length 3 ships
 	int allowed_lengths[] = {2,3,3,4,5};
-	bool addSuccess = false;			//Represents the success of the ship placement
+	
 
 	//While there are still ships to create
 	while ((allowed_lengths[0] != 0) | (allowed_lengths[1] != 0) | (allowed_lengths[2] != 0) | (allowed_lengths[3] != 0) | (allowed_lengths[4] != 0))
@@ -116,20 +126,22 @@ int main(int argc, char *argv[1]){
 				cout << endl;
 			}
 			allowed_ship = false; //Reset
+			addSuccess = false;
 		}
 		user_one.getBoard().print_user_board();
 		
 	}
 
 	
-
+/*
 	User *pointUser = &user_one;
 	Computer *pointComputer = &computer;
 	Board *pointUserBoard = user_one.board;
 	Board *pointComputerBoard = computer.board;
 
+
 	turn.frame(pointUser, pointComputer, pointUserBoard, pointComputerBoard);
-		
+		*/
 	//Main loop for runnning program
 		//while(1);
 	/*

@@ -48,7 +48,7 @@ class Board{
 		
 		string getId(int index){ return values[index].str; }; 		//Returns the name of the position at the specific index (A1, D3, etc.)
 		int getStatus(int index){ return values[index].status; }; 	//Returns the status of the position at the specfic index
-		void setStatus(int index, int status); 						//Sets the status of the position at the index specified to the status specified
+		int setStatus(int index, int status); 						//Sets the status of the position at the index specified to the status specified
 
 		// Populate the board upon initialization
 		Board(){

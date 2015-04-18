@@ -1,4 +1,8 @@
-#include "user.h"
+#ifndef COMPUTER_H
+#define COMPUTER_H
+
+#include "player.h"
+
 
 class Computer : public Player{
 	public:
@@ -21,3 +25,5 @@ class Computer : public Player{
 
 	private:
 };
+
+#endif
