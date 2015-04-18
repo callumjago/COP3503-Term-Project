@@ -204,7 +204,6 @@ void User::setCarrier(bool *addSuccess){
 	else{
 		*addSuccess = false;
 	}
-	printShips();
 }
 
 void User::setBattleship(bool *addSuccess){
@@ -244,7 +243,6 @@ void User::setBattleship(bool *addSuccess){
 	else{
 		*addSuccess = false;
 	}
-	printShips();
 }
 
 void User::setSubmarine(bool *addSuccess){
@@ -285,7 +283,6 @@ void User::setSubmarine(bool *addSuccess){
 	else{
 		*addSuccess = false;
 	}
-	printShips();
 }
 
 void User::setCruiser(bool *addSuccess){
@@ -326,7 +323,6 @@ void User::setCruiser(bool *addSuccess){
 	else{
 		*addSuccess = false;
 	}
-	printShips();
 }
 
 void User::setDestroyer(bool *addSuccess){
@@ -367,6 +363,5 @@ void User::setDestroyer(bool *addSuccess){
 	else{
 		*addSuccess = false;
 	}
-	printShips();
 }
 

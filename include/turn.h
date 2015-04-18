@@ -49,5 +49,5 @@ class Turn {
 		void turn(User *user, Computer *computer, Board *board_user, Board *board_computer);
 		
 		//Represents a frame of the game in which it is determined if the end of the game has been reached
-		void frame(User *user, Computer *computer, Board *board_user, Board *board_computer);
+		void frame(User *user, Computer *computer, Board *&board_user, Board *&board_computer);
 };

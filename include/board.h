@@ -41,9 +41,10 @@ class Board{
 		int possibleStatus[];
 
 	public:
-		void populate(); 			//Sets all of the statuses of the board to 0 - empty
-		void print_board(); 		//Prints the board
-		void add_tiles_to_board(); 	//Adds tiles to the board
+		void populate(); 				//Sets all of the statuses of the board to 0 - empty
+		void print_user_board(); 		//Prints the board
+		void print_computer_board();	//Prints the board of the computer	
+		void add_tiles_to_board(); 		//Adds tiles to the board
 		
 		string getId(int index){ return values[index].str; }; 		//Returns the name of the position at the specific index (A1, D3, etc.)
 		int getStatus(int index){ return values[index].status; }; 	//Returns the status of the position at the specfic index

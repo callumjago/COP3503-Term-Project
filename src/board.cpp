@@ -5,16 +5,7 @@
 //Sets the status of the board based on its index and desired status
 void Board::setStatus(int index, int status){ 
 
-	values[index].status = status; 
-	if(status == 1){
-		values[index].str = "S"; 	//A ship is present
-	}
-	else if(status == 2){
-		values[index].str = "H";	//A hit was registered
-	}
-	else if(status == 3){
-		values[index].str = "M";	//A miss was registered
-	}
+	values[index].status = status;
 };
 
 //Sets the board up to have its tile names to be assigned to A1, D3, etc.
@@ -67,7 +58,7 @@ void Board::populate(){
 };
 
 //Prints the board to the screen as in Battleship
-void Board::print_board(){
+void Board::print_user_board(){
 
 	Display out = Display();
 
@@ -76,23 +67,22 @@ void Board::print_board(){
 	{
 		for (int i = 0; i < 10; i++)
 		{	
+			stringstream ss; 
+			char temp[100];
+			
+
 			if(values[count].status == 1){
-				//ss << "S";
-			}
-			else if(values[count].status == 2){
-				//ss << "H";
-			}
-			else if(values[count].status == 3){
-				//ss << "M";
+				ss << "*S" ;
+				ss >> temp;
+				out.push_to_first_display(temp);
+				memset(&temp[0], 0, sizeof(temp));
 			}
 			else{
-				//cout << values[count].str << " ";
-				stringstream ss; 
-				char temp[100];
 				ss << values[count].str ;
 				ss >> temp;
 				out.push_to_first_display(temp);
 				memset(&temp[0], 0, sizeof(temp));
+
 			}
 			count++;
 		}
@@ -101,6 +91,53 @@ void Board::print_board(){
 	}
 
 	out.push_to_first_display("---------------\n"); //Creates a buffer between the output
+};
+
+//Prints the board to the screen as in Battleship
+void Board::print_computer_board(){
+
+	Display out = Display();
+
+	int count = 1; //Keeps track of where to print line breaks
+	for (int x = 0; x < 10; x++)
+	{
+		for (int i = 0; i < 10; i++)
+		{	
+			stringstream ss; 
+			char temp[100];
+			
+			if(values[count].status == 1){
+				ss << "*S" ;
+				ss >> temp;
+				out.push_to_second_display(temp);
+				memset(&temp[0], 0, sizeof(temp));
+			}
+			else if(values[count].status == 2){
+				ss << "*H" ;
+				ss >> temp;
+				out.push_to_second_display(temp);
+				memset(&temp[0], 0, sizeof(temp));
+			}
+			else if(values[count].status == 3){
+				ss << "*M" ;
+				ss >> temp;
+				out.push_to_second_display(temp);
+				memset(&temp[0], 0, sizeof(temp));
+			}
+			else{
+				ss << values[count].str ;
+				ss >> temp;
+				out.push_to_second_display(temp);
+				memset(&temp[0], 0, sizeof(temp));
+
+			}
+			count++;
+		}
+		//cout << "\n";
+		out.push_to_second_display("\n");
+	}
+
+	out.push_to_second_display("---------------\n"); //Creates a buffer between the output
 };
 
 //Adds tiles to the board

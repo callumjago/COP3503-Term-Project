@@ -7,7 +7,7 @@ LOOPBACK_TARGET = player_one_reader
 
 SECOND_TARGET = player_two_reader
 
-LIB = board.o ship.o computer.o user.o display.o
+LIB = board.o ship.o computer.o user.o display.o turn.o
 
 all: $(SEARCH_TARGET) $(LOOPBACK_TARGET) $(SECOND_TARGET)
 

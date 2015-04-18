@@ -33,9 +33,8 @@ int main(int argc, char *argv[1]){
 	out_two.push_to_second_display("---------------\n"); //Creates a buffer between the output
 
 	//Prints the board on another screen
-	user_one.getBoard().print_board();
-	//user_two.getBoard().print_board();
-	//user_two.getBoard().print_board();
+	user_one.getBoard().print_user_board();
+	computer.getBoard().print_computer_board();
 
 
 	//Prompts the user_one to enter the ships based on length
@@ -118,8 +117,17 @@ int main(int argc, char *argv[1]){
 			}
 			allowed_ship = false; //Reset
 		}
-		//user_one.getBoard().print_board();
+		user_one.getBoard().print_user_board();
+		computer.getBoard().print_computer_board();
 	}
+
+
+	User *pointUser = &user_one;
+	Computer *pointComputer = &computer;
+	Board *pointUserBoard = user_one.board;
+	Board *pointComputerBoard = computer.board;
+
+	turn.frame(pointUser, pointComputer, pointUserBoard, pointComputerBoard);
 		
 	//Main loop for runnning program
 		while(1);

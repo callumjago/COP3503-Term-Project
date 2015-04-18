@@ -133,13 +133,15 @@ void Turn::computer_hit_ship(User *user, Computer *computer, Board *board_user, 
 }
 
 //Represents a frame where gameover is checked
-void Turn::frame(User *user, Computer *computer, Board *board_user, Board *board_computer){
+void Turn::frame(User *user, Computer *computer, Board *&board_user, Board *&board_computer){
 	bool a = false; 
 	bool b = false; 
 	bool c = false; 
 
  	//Refresh board_computer here
 	user_hit_ship(user, computer, board_user, board_computer);
+	computer->getBoard().print_computer_board();
+
 	
 	a = win(computer);
 
@@ -151,6 +153,8 @@ void Turn::frame(User *user, Computer *computer, Board *board_user, Board *board
 
 		//Refresh board_user here
 		b = lose(user);
+
+		user->getBoard().print_user_board();
 
 		if(b == true){
 			cout << "You lose.";
