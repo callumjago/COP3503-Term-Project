@@ -138,30 +138,35 @@ void Turn::frame(User *user, Computer *computer, Board *&board_user, Board *&boa
 	bool b = false; 
 	bool c = false; 
 
- 	//Refresh board_computer here
-	user_hit_ship(user, computer, board_user, board_computer);
-	computer->getBoard().print_computer_board();
-
-	
-	a = win(computer);
-
-	if(a == true){
-		cout<<"You win!";
-	}
-	else{
-		computer_hit_ship(user, computer, board_user, board_computer);
-
-		//Refresh board_user here
-		b = lose(user);
-
-		user->getBoard().print_user_board();
-
-		if(b == true){
-			cout << "You lose.";
-		}
-	}
 
 	c = gameover(computer, user);
+	while(!c){
+
+		//Refresh board_computer here
+		user_hit_ship(user, computer, board_user, board_computer);
+		computer->getBoard().print_computer_board();
+
+		a = win(computer);
+
+		if(a == true){
+			cout<<"You win!";
+		}
+
+		else{
+			computer_hit_ship(user, computer, board_user, board_computer);
+
+			//Refresh board_user here
+			b = lose(user);
+
+			user->getBoard().print_user_board();
+
+			if(b == true){
+				cout << "You lose.";
+			}
+		}
+
+		c = gameover(computer, user);
+	}
 
 	if(c == true){
 		cout << "Gameover.";
