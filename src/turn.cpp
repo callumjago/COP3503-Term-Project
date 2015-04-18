@@ -50,11 +50,13 @@ void Turn::user_hit_ship(User *user, Computer *computer, Board *board_user, Boar
 
 	//Need a change status method for board.....
 	if(board_computer->getStatus(a) == 1){
-		//Run change status method
+
+		board_computer->setStatus(a, 2);
 		cout << "Hit!\n";
 	}
 	else if(board_computer->getStatus(a) == 0){
-		//Run change status method
+
+		board_computer->setStatus(a, 3);
 		cout << "Miss!\n";		
 	}
 
@@ -96,10 +98,13 @@ void Turn::computer_hit_ship(User *user, Computer *computer, Board *board_user, 
 	}while(b == 2 || b == 3);
 
 	if(board_user->getStatus(a) == 1){
-		//Need to run change status method
+
+		board_user->setStatus(a, 2);
 		cout << "One of your ships have been hit!\n";
 	}
 	else if(board_user->getStatus(a) == 0){
+
+		board_user->setStatus(a, 3);
 		cout << "The computer missed!\n";		
 	}
 
@@ -140,11 +145,10 @@ void Turn::frame(User *user, Computer *computer, Board *&board_user, Board *&boa
 
 
 	c = gameover(computer, user);
-	while(!c){
-
+	do{
 		//Refresh board_computer here
 		user_hit_ship(user, computer, board_user, board_computer);
-		computer->getBoard().print_computer_board();
+		board_computer->print_computer_board();
 
 		a = win(computer);
 
@@ -158,7 +162,7 @@ void Turn::frame(User *user, Computer *computer, Board *&board_user, Board *&boa
 			//Refresh board_user here
 			b = lose(user);
 
-			user->getBoard().print_user_board();
+			board_user->print_user_board();
 
 			if(b == true){
 				cout << "You lose.";
@@ -166,7 +170,8 @@ void Turn::frame(User *user, Computer *computer, Board *&board_user, Board *&boa
 		}
 
 		c = gameover(computer, user);
-	}
+	} while (c == false);
+
 
 	if(c == true){
 		cout << "Gameover.";

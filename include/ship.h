@@ -46,7 +46,7 @@ class Ship{
 			index = 0;
 
 			this->isHorizontal = isHorizontal;
-			this->startX = (int)startX;
+			this->startX = (int)startX - 65;
 			this->startY = startY;
 
 			this->name = name;	

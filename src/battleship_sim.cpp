@@ -118,9 +118,10 @@ int main(int argc, char *argv[1]){
 			allowed_ship = false; //Reset
 		}
 		user_one.getBoard().print_user_board();
-		computer.getBoard().print_computer_board();
+		
 	}
 
+	
 
 	User *pointUser = &user_one;
 	Computer *pointComputer = &computer;
@@ -130,7 +131,7 @@ int main(int argc, char *argv[1]){
 	turn.frame(pointUser, pointComputer, pointUserBoard, pointComputerBoard);
 		
 	//Main loop for runnning program
-		while(1);
+		//while(1);
 	/*
 	cout << "How long is this ship? " << test.getLength() << endl;
 	cout << "Is this ship sunk? " << test.getIsSunk() << endl;
