@@ -128,7 +128,7 @@ int main(int argc, char *argv[1]){
 			allowed_ship = false; //Reset
 			addSuccess = false;
 		}
-		user_one.getBoard().print_user_board();
+		//user_one.getBoard().print_user_board();
 		
 	}
 

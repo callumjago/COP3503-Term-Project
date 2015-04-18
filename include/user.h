@@ -19,7 +19,7 @@ class User: public Player{
 
 		void printShips(); 							//Prints a matrix of statuses to represent all the position in the board
 		int guess();								//Guesses a position to hit based on user's input
-		int isValidPos(string desPos, int length);	//Checks to see if the user input is a valid position
+		int isValidPos(string desPos, int length, int *index_return);	//Checks to see if the user input is a valid position
 
 		Board getBoard(){ return *this->board; }; 	//Returns the board
 

@@ -31,7 +31,8 @@ int User::guess(){
 
 //This function is used to see if the desired position of the ship is valid 
 // -1 means invalid or error, 0 means "up", 1 means "down", 2 means "left", 3 means "right"
-int User::isValidPos(string desPos, int length){
+int User::isValidPos(string desPos, int length, int *index_return){
+
 	string direction = ""; //Can be either up, down, or right.
 	
 	bool right = true;
@@ -55,6 +56,7 @@ int User::isValidPos(string desPos, int length){
 	int tempDigit = 1;
 
 	int index = ((int)(letter - 'A') * 10) + digit; //Determines the index of the position in the board.
+	*index_return = ((int)(letter - 'A') * 10) + digit;
 	int tempIndex = 0;
 
 	if(letter >= 'A' && letter <= 'J' && digit >= 1 && digit <= 10){
@@ -101,7 +103,8 @@ int User::isValidPos(string desPos, int length){
 
 			//Given the possibilities, asks the user which direction to choose.
 			if(!right && !down){
-				//cout << "Unable to place a ship of this length there.";
+
+				cout << "Unable to place a ship of this length there.";
 				//Represents that the placement there is unavailable.
 				return -1;
 			}
@@ -122,9 +125,11 @@ int User::isValidPos(string desPos, int length){
 			}
 			else if(down){
 				choice = 1;
+				cout << "Placing ship down.";
 			}
 			else if(right){
 				choice = 3; 
+				cout << "Placing ship right.";
 			}
 		}
 		else{
@@ -132,7 +137,7 @@ int User::isValidPos(string desPos, int length){
 		}
 	}
 	else{
-		//cout << "Invalid position choice.";
+		cout << "Invalid position choice.";
 		//Represents invalid position choice.
 		return -1;
 	}
@@ -172,7 +177,8 @@ void User::setCarrier(bool *addSuccess){
 	cout << "Enter the desired position of your carrier: ";
 	cin >> desPos;
 
-	choice = isValidPos(desPos, 5);
+	int index;
+	choice = isValidPos(desPos, 5, &index);
 
 	//cout << (int)(desPos.at(0) - 65);
 	//cout << (int)(desPos.at(1) - 48);
@@ -180,24 +186,24 @@ void User::setCarrier(bool *addSuccess){
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", false, desPos.at(0), 10);
-			carrier->Initialize(&board);
+			carrier->Initialize(&board, index);
 			*addSuccess= true;
 		}
 		else if(desPos.length() == 2){ 
 			carrier = new Ship(5, "Carrier", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			carrier->Initialize(&board);
+			carrier->Initialize(&board, index);
 			*addSuccess= true;
 		}
 	}
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			carrier = new Ship(5, "Carrier", true, desPos.at(0), 10);
-			carrier->Initialize(&board);
+			carrier->Initialize(&board, index);
 			*addSuccess= true;
 		}
 		else{
 			carrier = new Ship(5, "Carrier", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			carrier->Initialize(&board);
+			carrier->Initialize(&board, index);
 			*addSuccess= true;
 		}
 	}
@@ -214,36 +220,37 @@ void User::setBattleship(bool *addSuccess){
 
 	cout << "\nEnter the desired position of your Battleship: ";
 	cin >> desPos;
-
-	choice = isValidPos(desPos, 4);
+	int index;
+	choice = isValidPos(desPos, 4, &index);
 
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			battleship = new Ship(4, "Battleship", false, desPos.at(0), 10);
-			battleship->Initialize(&board);
+			battleship->Initialize(&board, index);
 			*addSuccess= true;
 		}
 		else if(desPos.length() == 2){ 
 			battleship = new Ship(4, "Battleship", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			battleship->Initialize(&board);
+			battleship->Initialize(&board, index);
 			*addSuccess= true;
 		}
 	}
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			battleship = new Ship(4, "Battleship", true, desPos.at(0), 10);
-			battleship->Initialize(&board);
+			battleship->Initialize(&board, index);
 			*addSuccess= true;
 		}
 		else{
 			battleship = new Ship(4, "Battleship", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			battleship->Initialize(&board);
+			battleship->Initialize(&board, index);
 			*addSuccess= true;
 		}
 	}
 	else{
 		*addSuccess = false;
 	}
+	printShips();
 }
 
 void User::setSubmarine(bool *addSuccess){
@@ -254,17 +261,18 @@ void User::setSubmarine(bool *addSuccess){
 	cout << "\nEnter the desired position of your submarine: ";
 	cin >> desPos;
 
-	choice = isValidPos(desPos, 3);
+	int index;
+	choice = isValidPos(desPos, 3, &index);
 
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			submarine = new Ship(3, "Submarine", false, desPos.at(0), 10);
-			submarine->Initialize(&board);
+			submarine->Initialize(&board, index);
 			*addSuccess= true;
 		}
 		else if(desPos.length() == 2){ 
 			submarine = new Ship(3, "Submarine", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			submarine->Initialize(&board);
+			submarine->Initialize(&board, index);
 			*addSuccess= true;
 		}
 	}
@@ -272,18 +280,19 @@ void User::setSubmarine(bool *addSuccess){
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			submarine = new Ship(3, "Submarine", true, desPos.at(0), 10);
-			submarine->Initialize(&board);
+			submarine->Initialize(&board, index);
 			*addSuccess= true;
 		}
 		else{
 			submarine = new Ship(3, "Submarine", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			submarine->Initialize(&board);
+			submarine->Initialize(&board, index);
 			*addSuccess= true;
 		}
 	}
 	else{
 		*addSuccess = false;
 	}
+	printShips();
 }
 
 void User::setCruiser(bool *addSuccess){
@@ -294,17 +303,18 @@ void User::setCruiser(bool *addSuccess){
 	cout << "\nEnter the desired position of your cruiser: ";
 	cin >> desPos;
 
-	choice = isValidPos(desPos, 3);
+	int index;
+	choice = isValidPos(desPos, 3, &index);
 
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			cruiser = new Ship(3, "Cruiser", false, desPos.at(0), 10);
-			cruiser->Initialize(&board);
+			cruiser->Initialize(&board, index);
 			*addSuccess= true;
 		}
 		else if(desPos.length() == 2){ 
 			cruiser = new Ship(3, "Cruiser", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			cruiser->Initialize(&board);
+			cruiser->Initialize(&board, index);
 			*addSuccess= true;
 		}
 	}
@@ -312,18 +322,19 @@ void User::setCruiser(bool *addSuccess){
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			cruiser = new Ship(3, "Cruiser", true, desPos.at(0), 10);
-			cruiser->Initialize(&board);
+			cruiser->Initialize(&board, index);
 			*addSuccess= true;
 		}
 		else{
 			cruiser = new Ship(3, "Cruiser", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			cruiser->Initialize(&board);
+			cruiser->Initialize(&board, index);
 			*addSuccess= true;
 		}
 	}
 	else{
 		*addSuccess = false;
 	}
+	printShips();
 }
 
 void User::setDestroyer(bool *addSuccess){
@@ -334,17 +345,18 @@ void User::setDestroyer(bool *addSuccess){
 	cout << "\nEnter the desired position of your destroyer: ";
 	cin >> desPos;
 
-	choice = isValidPos(desPos, 2);
+	int index;
+	choice = isValidPos(desPos, 2, &index);
 
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			destroyer = new Ship(2, "Destroyer", false, desPos.at(0), 10);
-			destroyer->Initialize(&board);
+			destroyer->Initialize(&board, index);
 			*addSuccess= true;
 		}
 		else if(desPos.length() == 2){ 
 			destroyer = new Ship(2, "Destroyer", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			destroyer->Initialize(&board);
+			destroyer->Initialize(&board, index);
 			*addSuccess= true;
 		}
 	}
@@ -352,17 +364,18 @@ void User::setDestroyer(bool *addSuccess){
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
 			destroyer = new Ship(2, "Destroyer", true, desPos.at(0), 10);
-			destroyer->Initialize(&board);
+			destroyer->Initialize(&board, index);
 			*addSuccess= true;
 		}
 		else{
 			destroyer = new Ship(2, "Destroyer", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			destroyer->Initialize(&board);
+			destroyer->Initialize(&board, index);
 			*addSuccess= true;
 		}
 	}
 	else{
 		*addSuccess = false;
 	}
+	printShips();
 }
 

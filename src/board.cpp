@@ -5,7 +5,7 @@
 //Sets the status of the board based on its index and desired status
 int Board::setStatus(int index, int status){ 
 
-	//this->values[index].status = status;
+	values[index].status = status;
 	return 0;
 };
 

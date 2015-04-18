@@ -1,7 +1,7 @@
 #ifndef COMPUTER_H
 #define COMPUTER_H
 
-#include "player.h"
+#include "user.h"
 
 
 class Computer : public Player{
@@ -19,7 +19,7 @@ class Computer : public Player{
 
 		int guess(); 									//Generates a guess position to try to sink the user's ships
 		int formulate(int length); 						//Formulates and returns an integer value representing where the computer ships will be oriented
-		int isValidPos(string desPos, int length); 		//Checks if the desired position to place a ship is a valid position
+		int isValidPos(string desPos, int length, int *index_return); 		//Checks if the desired position to place a ship is a valid position
 
 		Board getBoard(){ return *this->board; }; 	//Returns the board
 

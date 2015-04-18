@@ -8,22 +8,21 @@
 
 
 //Initializes the ship by changing the board status to 1 for each part of the ship
-void Ship::Initialize(Board **b) {
+void Ship::Initialize(Board **b, int index) {
 
 	//int ind = (((int)getStartX() - 65) * 10) + getStartY();
-
 	
 	if(getIsHorizontal()) {
 		for(int i = 0; i < getLength(); i++) {
-			(*b)->setStatus((getStart() + i), 1); //sets status in sequential tiles to 1 for not hit
+			(*b)->setStatus(index, 1); //sets status in sequential tiles to 1 for not hit
 		}
-		(*b)->setStatus(getStart(), 1);
+		(*b)->setStatus(index, 1);
 	}
 	else {
 		for(int i = 0; i < getLength(); i++) {
-			(*b)->setStatus((getStart() + (10 * i)), 1); //Sets status in vertically sequetial tiles to 1 for not hit
+			(*b)->setStatus(index, 1); //Sets status in vertically sequetial tiles to 1 for not hit
 		}
-		(*b)->setStatus(getStart(), 1);
+		(*b)->setStatus(index, 1);
 	}
 	
 }

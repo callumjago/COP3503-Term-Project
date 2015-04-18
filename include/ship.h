@@ -16,7 +16,7 @@ class Ship{
 		bool getIsSunk(Board *board);	//Getter method for state bool isSunk
 		int getLength();				//Getter method for state int length
 
-		int getStart(){ return (((int)getStartX() - 65) * 10) + getStartY(); };
+		int getStart(){ return (length); };
 
 		char getStartX(){ return startX; };
 		int getStartY() { return startY; };
@@ -51,7 +51,7 @@ class Ship{
 
 			this->name = name;	
 		}
-		void Initialize(Board **b);
+		void Initialize(Board **b, int index);
 		
 		int index;
 };
