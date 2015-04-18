@@ -17,5 +17,7 @@ class Computer : public Player{
 		int formulate(int length); 						//Formulates and returns an integer value representing where the computer ships will be oriented
 		int isValidPos(string desPos, int length); 		//Checks if the desired position to place a ship is a valid position
 
+		Board getBoard(){ return *this->board; }; 	//Returns the board
+
 	private:
 };

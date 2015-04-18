@@ -22,7 +22,6 @@ class Player{
 		void setCruiser(bool *addSuccess); 		//Sets the Cruiser ship and changes addSuccess to true if the addition was a success, false otherwise
 		void setDestroyer(bool *addSuccess); 	//Sets the Destroyer ship and changes addSuccess to true if the addition was a success, false otherwise
 
-		Board getBoard(){ return *board; }; 	//Returns the board
 		
 	protected:
 		string desPos; 		//Represents a desired position to place ships

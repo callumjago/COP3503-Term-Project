@@ -21,6 +21,8 @@ class User: public Player{
 		int guess();								//Guesses a position to hit based on user's input
 		int isValidPos(string desPos, int length);	//Checks to see if the user input is a valid position
 
+		Board getBoard(){ return *this->board; }; 	//Returns the board
+
 	private:			
 };
 

@@ -2,6 +2,7 @@
 #include "../include/ship.h"
 #include "../include/user.h"
 #include "../include/display.h"
+#include "../include/turn.h"
 #include <unistd.h>
 
 int main(int argc, char *argv[1]){
@@ -9,6 +10,19 @@ int main(int argc, char *argv[1]){
 	//Creates a user_one to play the game
 	User user_one = User();
 	User user_two = User();
+
+	bool success = false;
+	//Creates a computer to play the game against the user
+	Computer computer = Computer();
+	computer.setCarrier(&success);
+	computer.setBattleship(&success);
+	computer.setSubmarine(&success);
+	computer.setCruiser(&success);
+	computer.setDestroyer(&success);
+
+	//Creates a Turn object in order to play the game after the ships are placed.
+	Turn turn = Turn();
+
 
 	//Creates a Display object in order to display to the terminal
 	Display out = Display();
@@ -23,8 +37,6 @@ int main(int argc, char *argv[1]){
 	//user_two.getBoard().print_board();
 	//user_two.getBoard().print_board();
 
-	
-	
 
 	//Prompts the user_one to enter the ships based on length
 	cout << "\nThere are 5 ships for you to place\n";

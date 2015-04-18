@@ -62,19 +62,23 @@ void Computer::setCarrier(bool *addSuccess){
 	if(orientation == 1){
 		let -= 4;	//Readjusts position to act as "down" orientation with uppermost position put into initializer
 		carrier = new Ship(5, "Carrier", false, let, num);
+		carrier->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 2){
 		carrier = new Ship(5, "Carrier", false, let, num);
+		carrier->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 3){
 		num -= 4;	//Readjusts position to act as "right" orientation with leftmost position put into initializer
 		carrier = new Ship(5, "Carrier", true, let, num);
+		carrier->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 4){
 		carrier = new Ship(5, "Carrier", true, let, num);
+		carrier->Initialize(*&board);
 		*addSuccess = true;
 	}
 }
@@ -90,20 +94,24 @@ void Computer::setBattleship(bool *addSuccess){
 
 	if(orientation == 1){
 		let -= 3;	//Readjusts position to act as "down" orientation with uppermost position put into initializer
-		carrier = new Ship(4, "Battleship", false, let, num);
+		battleship = new Ship(4, "Battleship", false, let, num);
+		battleship->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 2){
-		carrier = new Ship(4, "Battleship", false, let, num);
+		battleship = new Ship(4, "Battleship", false, let, num);
+		battleship->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 3){
 		num -= 3;	//Readjusts position to act as "right" orientation with leftmost position put into initializer
-		carrier = new Ship(4, "Battleship", true, let, num);
+		battleship = new Ship(4, "Battleship", true, let, num);
+		battleship->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 4){
-		carrier = new Ship(4, "Battleship", true, let, num);
+		battleship = new Ship(4, "Battleship", true, let, num);
+		battleship->Initialize(*&board);
 		*addSuccess = true;
 	}
 }
@@ -119,20 +127,24 @@ void Computer::setSubmarine(bool *addSuccess){
 
 	if(orientation == 1){
 		let -= 2;	//Readjusts position to act as "down" orientation with uppermost position put into initializer
-		carrier = new Ship(3, "Submarine", false, let, num);
+		submarine = new Ship(3, "Submarine", false, let, num);
+		submarine->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 2){
-		carrier = new Ship(3, "Submarine", false, let, num);
+		submarine = new Ship(3, "Submarine", false, let, num);
+		submarine->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 3){
 		num -= 2;	//Readjusts position to act as "right" orientation with leftmost position put into initializer
-		carrier = new Ship(3, "Submarine", true, let, num);
+		submarine = new Ship(3, "Submarine", true, let, num);
+		submarine->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 4){
-		carrier = new Ship(3, "Submarine", true, let, num);
+		submarine = new Ship(3, "Submarine", true, let, num);
+		submarine->Initialize(*&board);
 		*addSuccess = true;
 	}
 }
@@ -148,20 +160,24 @@ void Computer::setCruiser(bool *addSuccess){
 
 	if(orientation == 1){
 		let -= 2;	//Readjusts position to act as "down" orientation with uppermost position put into initializer
-		carrier = new Ship(3, "Cruiser", false, let, num);
+		cruiser = new Ship(3, "Cruiser", false, let, num);
+		cruiser->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 2){
-		carrier = new Ship(3, "Cruiser", false, let, num);
+		cruiser = new Ship(3, "Cruiser", false, let, num);
+		cruiser->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 3){
 		num -= 2;	//Readjusts position to act as "right" orientation with leftmost position put into initializer
-		carrier = new Ship(3, "Cruiser", true, let, num);
+		cruiser = new Ship(3, "Cruiser", true, let, num);
+		cruiser->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 4){
-		carrier = new Ship(3, "Cruiser", true, let, num);
+		cruiser = new Ship(3, "Cruiser", true, let, num);
+		cruiser->Initialize(*&board);
 		*addSuccess = true;
 	}
 }
@@ -177,22 +193,27 @@ void Computer::setDestroyer(bool *addSuccess){
 
 	if(orientation == 1){
 		let -= 1;	//Readjusts position to act as "down" orientation with uppermost position put into initializer
-		carrier = new Ship(2, "Destroyer", false, let, num);
+		destroyer = new Ship(2, "Destroyer", false, let, num);
+		destroyer->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 2){
-		carrier = new Ship(2, "Destroyer", false, let, num);
+		destroyer = new Ship(2, "Destroyer", false, let, num);
+		destroyer->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 3){
 		num -= 1;	//Readjusts position to act as "right" orientation with leftmost position put into initializer
-		carrier = new Ship(2, "Destroyer", true, let, num);
+		destroyer = new Ship(2, "Destroyer", true, let, num);
+		destroyer->Initialize(*&board);
 		*addSuccess = true;
 	}
 	else if(orientation == 4){
-		carrier = new Ship(2, "Destroyer", true, let, num);
+		destroyer = new Ship(2, "Destroyer", true, let, num);
+		destroyer->Initialize(*&board);
 		*addSuccess = true;
 	}
+
 }
 
 //Checks to see if the randomly generated desired ship position is a valid position to place the ships

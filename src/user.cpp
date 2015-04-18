@@ -219,25 +219,25 @@ void User::setBattleship(bool *addSuccess){
 
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(4, "Battleship", false, desPos.at(0), 10);
-			carrier->Initialize(*&board);
+			battleship = new Ship(4, "Battleship", false, desPos.at(0), 10);
+			battleship->Initialize(*&board);
 			*addSuccess= true;
 		}
 		else if(desPos.length() == 2){ 
-			carrier = new Ship(4, "Battleship", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			carrier->Initialize(*&board);
+			battleship = new Ship(4, "Battleship", false, desPos.at(0), (int)(desPos.at(1) - 48));
+			battleship->Initialize(*&board);
 			*addSuccess= true;
 		}
 	}
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(4, "Battleship", true, desPos.at(0), 10);
-			carrier->Initialize(*&board);
+			battleship = new Ship(4, "Battleship", true, desPos.at(0), 10);
+			battleship->Initialize(*&board);
 			*addSuccess= true;
 		}
 		else{
-			carrier = new Ship(4, "Battleship", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			carrier->Initialize(*&board);
+			battleship = new Ship(4, "Battleship", true, desPos.at(0), (int)(desPos.at(1) - 48));
+			battleship->Initialize(*&board);
 			*addSuccess= true;
 		}
 	}
@@ -259,26 +259,26 @@ void User::setSubmarine(bool *addSuccess){
 
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(3, "Submarine", false, desPos.at(0), 10);
-			carrier->Initialize(*&board);
+			submarine = new Ship(3, "Submarine", false, desPos.at(0), 10);
+			submarine->Initialize(*&board);
 			*addSuccess= true;
 		}
 		else if(desPos.length() == 2){ 
-			carrier = new Ship(3, "Submarine", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			carrier->Initialize(*&board);
+			submarine = new Ship(3, "Submarine", false, desPos.at(0), (int)(desPos.at(1) - 48));
+			submarine->Initialize(*&board);
 			*addSuccess= true;
 		}
 	}
 	
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(3, "Submarine", true, desPos.at(0), 10);
-			carrier->Initialize(*&board);
+			submarine = new Ship(3, "Submarine", true, desPos.at(0), 10);
+			submarine->Initialize(*&board);
 			*addSuccess= true;
 		}
 		else{
-			carrier = new Ship(3, "Submarine", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			carrier->Initialize(*&board);
+			submarine = new Ship(3, "Submarine", true, desPos.at(0), (int)(desPos.at(1) - 48));
+			submarine->Initialize(*&board);
 			*addSuccess= true;
 		}
 	}
@@ -300,26 +300,26 @@ void User::setCruiser(bool *addSuccess){
 
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(3, "Cruiser", false, desPos.at(0), 10);
-			carrier->Initialize(*&board);
+			cruiser = new Ship(3, "Cruiser", false, desPos.at(0), 10);
+			cruiser->Initialize(*&board);
 			*addSuccess= true;
 		}
 		else if(desPos.length() == 2){ 
-			carrier = new Ship(3, "Cruiser", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			carrier->Initialize(*&board);
+			cruiser = new Ship(3, "Cruiser", false, desPos.at(0), (int)(desPos.at(1) - 48));
+			cruiser->Initialize(*&board);
 			*addSuccess= true;
 		}
 	}
 	
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(3, "Cruiser", true, desPos.at(0), 10);
-			carrier->Initialize(*&board);
+			cruiser = new Ship(3, "Cruiser", true, desPos.at(0), 10);
+			cruiser->Initialize(*&board);
 			*addSuccess= true;
 		}
 		else{
-			carrier = new Ship(3, "Cruiser", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			carrier->Initialize(*&board);
+			cruiser = new Ship(3, "Cruiser", true, desPos.at(0), (int)(desPos.at(1) - 48));
+			cruiser->Initialize(*&board);
 			*addSuccess= true;
 		}
 	}
@@ -341,26 +341,26 @@ void User::setDestroyer(bool *addSuccess){
 
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(2, "Destroyer", false, desPos.at(0), 10);
-			carrier->Initialize(*&board);
+			destroyer = new Ship(2, "Destroyer", false, desPos.at(0), 10);
+			destroyer->Initialize(*&board);
 			*addSuccess= true;
 		}
 		else if(desPos.length() == 2){ 
-			carrier = new Ship(2, "Destroyer", false, desPos.at(0), (int)(desPos.at(1) - 48));
-			carrier->Initialize(*&board);
+			destroyer = new Ship(2, "Destroyer", false, desPos.at(0), (int)(desPos.at(1) - 48));
+			destroyer->Initialize(*&board);
 			*addSuccess= true;
 		}
 	}
 	
 	else if(choice == 3){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){
-			carrier = new Ship(2, "Destroyer", true, desPos.at(0), 10);
-			carrier->Initialize(*&board);
+			destroyer = new Ship(2, "Destroyer", true, desPos.at(0), 10);
+			destroyer->Initialize(*&board);
 			*addSuccess= true;
 		}
 		else{
-			carrier = new Ship(2, "Destroyer", true, desPos.at(0), (int)(desPos.at(1) - 48));
-			carrier->Initialize(*&board);
+			destroyer = new Ship(2, "Destroyer", true, desPos.at(0), (int)(desPos.at(1) - 48));
+			destroyer->Initialize(*&board);
 			*addSuccess= true;
 		}
 	}
