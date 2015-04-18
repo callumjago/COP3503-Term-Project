@@ -44,7 +44,7 @@ int main(int argc, char *argv[1]){
 		cout << "Battleship:  4 \n"; 
 		cout << "Submarine:   3 \n"; 
 		cout << "Cruiser:     3 \n"; 
-		cout << "Destroyer:   2 \n";
+		cout << "Destroyer:   2 \n\n";
 		cout << "Ship Number: "; 
 		cin >> length;
 
@@ -82,18 +82,18 @@ int main(int argc, char *argv[1]){
 					}
 
 					if(addSuccess == false){
-						cout << "\nUnable to set ship.";
+						cout << "\nUnable to set ship.\n\n";
 					}
 					else{
-						cout << "\nShip added - success!";
-						//allowed_lengths[i] = 0;
+						cout << "\nShip added - success!\n\n";
+						allowed_lengths[i] = 0;
 					}
 					break;
 				}
 			}
 			if (allowed_ship == false)			//If length is not allowed or is unavailable
 			{
-				cout << "\nUnavailable ship length.\n";
+				cout << "\nUnavailable ship length. Here are the possible ship lengths to choose from:\n";
 
 				for (int i = 0; i < 5; i++)   	//Print available lengths
 				{

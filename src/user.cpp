@@ -58,10 +58,11 @@ int User::isValidPos(string desPos, int length){
 	int tempIndex = 0;
 
 	if(letter >= 'A' && letter <= 'J' && digit >= 1 && digit <= 10){
+		//Represents if the position desired already has a ship there.
 		if(board->getStatus(index) == 0){
 
 			//Checks to see if down is possible.
-			if(letter + length >= 'J'){
+			if(letter + length <= 'J'){
 				for(int i = 1; i <= length; i++){
 					tempLetter = letter + i;
 					tempDigit = digit;
@@ -74,7 +75,9 @@ int User::isValidPos(string desPos, int length){
 						down = false;
 					}
 				}
-
+			}
+			else{
+				down = false;
 			}
 
 			//Checks to see if right is possible.
@@ -91,7 +94,9 @@ int User::isValidPos(string desPos, int length){
 						right = false;
 					}
 				}
-
+			}
+			else{
+				right = false;
 			}
 
 			//Given the possibilities, asks the user which direction to choose.
@@ -122,12 +127,13 @@ int User::isValidPos(string desPos, int length){
 			}
 		}
 		else{
-			// Keeps choice as -1, invalid position.
+			return -1;
 		}
 	}
 	else{
 		//cout << "Invalid position choice.";
 		//Represents invalid position choice.
+		return -1;
 	}
 
 	return choice;	
