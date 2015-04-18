@@ -103,6 +103,7 @@ int User::isValidPos(string desPos, int length){
 			if(!right && !down){
 				//cout << "Unable to place a ship of this length there.";
 				//Represents that the placement there is unavailable.
+				return -1;
 			}
 			else if(right && down){
 				cout << "Choose to orientate the ship right (R) or down (D): ";
