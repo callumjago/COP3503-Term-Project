@@ -28,24 +28,45 @@ int Computer::guess(){
 	return num;
 }
 
+void Computer::printShips(){
+
+	Display out = Display();
+	char temp[5];
+	for(int r = 0; r < 10; r++){
+		for(int c = 0; c < 10; c++){
+			int temp_int = board->getStatus((r * 10) + c + 1);
+			stringstream ss; 
+			ss << temp_int ;
+			ss >> temp;
+			out.push_to_second_display(temp);
+			memset(&temp[0], 0, sizeof(temp));
+		}
+		out.push_to_second_display("\n");
+	}
+	for (int i = 0; i < 15; ++i)
+	{
+		out.push_to_second_display("-");
+	}
+	out.push_to_second_display("\n");
+}
+
 /*The formulate() function employs the computer's pseudorandom algorithm for picking a location on the board
 to which a ship will be set, and checks accordingly with respect to chosen orientations, returning an int
 corresponding to the chosen orientation for ship-setting; it also leaves desPos class state as this target
 location. This need not be called by any other class but remains public for simplicity. */
-int Computer::formulate(int length){
+int Computer::formulate(int length, int *index_return){
 	desPos = "";
 	char let = 'A';
 	int num = 1;
 	stringstream str;
 	int orientation = -1, counter = 0;
-	int index_return;
 
 	do{
 		let = 'A' + (rand() % 10);
 		num = rand() % 10 + 1;
 		str << let << num;
 		str >> desPos;
-		orientation = isValidPos(desPos, length, &index_return);
+		orientation = isValidCompPos(desPos, length, &index_return);
 		if(++counter > 10000){ return 0; }		//Prevents an infinite loop, but allows ample guessing error if pickings are slim
 	
 	}while(orientation == -1 || orientation == 0);
@@ -54,11 +75,12 @@ int Computer::formulate(int length){
 }
 
 void Computer::setCarrier(bool *addSuccess){
-	int orientation = formulate(5);
+	int index = 0;
+	int orientation = formulate(5, &index);
 	char let = desPos.at(0);
 	int num = (int)desPos.at(1) - 48;
 
-	int index = 0;
+	cout << index;
 
 	if(num == 1 && desPos.length() == 3 && desPos.at(2) == '0'){
 		num = 10;
@@ -86,13 +108,15 @@ void Computer::setCarrier(bool *addSuccess){
 		carrier->Initialize(&board, index);
 		*addSuccess = true;
 	}
+	//printShips();
 }
 
 void Computer::setBattleship(bool *addSuccess){
-	int orientation = formulate(4);
+	int index = 0;
+	int orientation = formulate(4, &index);
 	char let = desPos.at(0);
 	int num = (int)desPos.at(1) - 48;
-	int index = 0;
+
 	if(num == 1 && desPos.length() == 3 && desPos.at(2) == '0'){
 		num = 10;
 	}
@@ -118,13 +142,16 @@ void Computer::setBattleship(bool *addSuccess){
 		battleship = new Ship(4, "Battleship", true, let, num);
 		battleship->Initialize(&board, index);
 		*addSuccess = true;
-	}}
+	}
+	//printShips();
+}
 
 void Computer::setSubmarine(bool *addSuccess){
-	int orientation = formulate(3);
+	int index = 0;
+	int orientation = formulate(3, &index);
 	char let = desPos.at(0);
 	int num = (int)desPos.at(1) - 48;
-	int index = 0;
+
 	if(num == 1 && desPos.length() == 3 && desPos.at(2) == '0'){
 		num = 10;
 	}
@@ -150,13 +177,15 @@ void Computer::setSubmarine(bool *addSuccess){
 		submarine = new Ship(3, "Submarine", true, let, num);
 		submarine->Initialize(&board, index);
 		*addSuccess = true;
-	}}
+	}
+	//printShips();
+}
 
 void Computer::setCruiser(bool *addSuccess){
-	int orientation = formulate(3);
+	int index = 0;
+	int orientation = formulate(3, &index);
 	char let = desPos.at(0);
 	int num = (int)desPos.at(1) - 48;
-	int index = 0;
 
 	if(num == 1 && desPos.length() == 3 && desPos.at(2) == '0'){
 		num = 10;
@@ -183,13 +212,15 @@ void Computer::setCruiser(bool *addSuccess){
 		cruiser = new Ship(3, "Cruiser", true, let, num);
 		cruiser->Initialize(&board, index);
 		*addSuccess = true;
-	}}
+	}
+	//printShips();
+}
 
 void Computer::setDestroyer(bool *addSuccess){
-	int orientation = formulate(2);
+	int index = 0;
+	int orientation = formulate(2, &index);
 	char let = desPos.at(0);
 	int num = (int)desPos.at(1) - 48;
-	int index = 0;
 	if(num == 1 && desPos.length() == 3 && desPos.at(2) == '0'){
 		num = 10;
 	}
@@ -216,10 +247,11 @@ void Computer::setDestroyer(bool *addSuccess){
 		destroyer->Initialize(&board, index);
 		*addSuccess = true;
 	}
+	//printShips();
 }
 
 //Checks to see if the randomly generated desired ship position is a valid position to place the ships
-int Computer::isValidPos(string desPos, int length, int *index_return){
+int Computer::isValidCompPos(string desPos, int length, int **index_return){
 	char let = desPos.at(0);
 	int num = (int)desPos.at(1) - 48;
 
@@ -233,6 +265,7 @@ int Computer::isValidPos(string desPos, int length, int *index_return){
 	bool left = true, right = true, up = true, down = true;
 
 	int ind = ((int)(let - 'A') * 10) + num;
+	**index_return = ((int)(let - 'A') * 10) + num;
 	int tempInd = 0;
 
 	if(let < 'A' || let > 'J' || num < 1 || num > 10){

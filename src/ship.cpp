@@ -15,11 +15,12 @@ void Ship::Initialize(Board **b, int index) {
 	if(getIsHorizontal()) {
 		for(int i = index; i < index + getLength(); i++) {
 			(*b)->setStatus(i, 1); //sets status in sequential tiles to 1 for not hit
+	
 		}
 		//(*b)->setStatus(index, 1);
 	}
 	else {
-		for(int i = index; i <= index + (getLength()*10); i+=10) {
+		for(int i = index; i < index + (getLength()*10); i+=10) {
 			(*b)->setStatus(i, 1); //Sets status in vertically sequetial tiles to 1 for not hit
 		}
 		//(*b)->setStatus(index, 1);

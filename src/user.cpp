@@ -146,6 +146,7 @@ int User::isValidPos(string desPos, int length, int *index_return){
 	//-1 means invalid or error, 0 means "up", 1 means "down", 2 means "left", 3 means "right"
 };
 
+
 //Prints the ships
 void User::printShips(){
 
@@ -175,7 +176,10 @@ void User::setCarrier(bool *addSuccess){
 	string desPos = "";
 
 	cout << "Enter the desired position of your carrier: ";
-	cin >> desPos;
+	while(!(cin >> desPos)){
+		cin.clear(); // LINE 9
+		cout << "Please enter a valid poisition.\n";
+	}
 
 	int index;
 	choice = isValidPos(desPos, 5, &index);
@@ -219,7 +223,10 @@ void User::setBattleship(bool *addSuccess){
 	string desPos = "";
 
 	cout << "\nEnter the desired position of your Battleship: ";
-	cin >> desPos;
+	while(!(cin >> desPos)){
+		cin.clear(); // LINE 9
+		cout << "Please enter a valid poisition.\n";
+	}
 	int index;
 	choice = isValidPos(desPos, 4, &index);
 
@@ -259,7 +266,10 @@ void User::setSubmarine(bool *addSuccess){
 	string desPos = "";
 
 	cout << "\nEnter the desired position of your submarine: ";
-	cin >> desPos;
+	while(!(cin >> desPos)){
+		cin.clear(); // LINE 9
+		cout << "Please enter a valid poisition.\n";
+	}
 
 	int index;
 	choice = isValidPos(desPos, 3, &index);
@@ -301,7 +311,10 @@ void User::setCruiser(bool *addSuccess){
 	string desPos = "";
 
 	cout << "\nEnter the desired position of your cruiser: ";
-	cin >> desPos;
+	while(!(cin >> desPos)){
+		cin.clear(); // LINE 9
+		cout << "Please enter a valid poisition.\n";
+	}
 
 	int index;
 	choice = isValidPos(desPos, 3, &index);
@@ -343,7 +356,10 @@ void User::setDestroyer(bool *addSuccess){
 	string desPos = "";
 
 	cout << "\nEnter the desired position of your destroyer: ";
-	cin >> desPos;
+	while(!(cin >> desPos)){
+		cin.clear(); // LINE 9
+		cout << "Please enter a valid poisition.\n";
+	}
 
 	int index;
 	choice = isValidPos(desPos, 2, &index);

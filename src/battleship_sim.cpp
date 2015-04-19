@@ -9,13 +9,19 @@ int main(int argc, char *argv[1]){
 
 	//Creates a user_one to play the game
 	User user_one = User();
-	User user_two = User();
+	//User user_two = User();
+	//Creates a Turn object in order to play the game after the ships are placed.
+	Turn turn = Turn();
+	//Creates a Display object in order to display to the terminal
+	Display out = Display();
+	Display out_two = Display();
+	//Creates a computer to play the game against the user
+	Computer computer = Computer();
+
 
 	bool addSuccess = false;			//Represents the success of the ship placement
-	//Creates a computer to play the game against the user
 	
-	Computer computer = Computer();
-	/*
+
 	computer.setCarrier(&addSuccess);
 	addSuccess = false;
 	computer.setBattleship(&addSuccess);
@@ -26,17 +32,15 @@ int main(int argc, char *argv[1]){
 	addSuccess = false;
 	computer.setDestroyer(&addSuccess);
 	addSuccess = false;
-	*/
 
+	out_two.push_to_second_display(" The Computer is Placing its Ships\n");
+	for (int i = 0; i < 25; i++)
+	{
+		out_two.push_to_second_display("-");
+		usleep(100000);
+	}
+	out_two.push_to_second_display(" Complete!\n\n");
 	
-
-	//Creates a Turn object in order to play the game after the ships are placed.
-	Turn turn = Turn();
-
-
-	//Creates a Display object in order to display to the terminal
-	Display out = Display();
-	Display out_two = Display();
 	out.push_to_first_display("Player 1 Game Board\n");
 	out.push_to_first_display("---------------\n"); //Creates a buffer between the output
 	out_two.push_to_second_display("Player 2/Computer Game Board\n");
@@ -44,7 +48,7 @@ int main(int argc, char *argv[1]){
 
 	//Prints the board on another screen
 	user_one.getBoard().print_user_board();
-	//computer.getBoard().print_computer_board();
+	computer.getBoard().print_computer_board();
 
 
 	//Prompts the user_one to enter the ships based on length
@@ -67,16 +71,16 @@ int main(int argc, char *argv[1]){
 		cout << "Cruiser:     3 \n"; 
 		cout << "Destroyer:   2 \n\n";
 		cout << "Ship Number: "; 
-		cin >> length;
-
-		//If the input in not an integer, it will trigger an invalid length
-		if(cin.fail()){
-			cin.clear(); // LINE 9
-			cout << "Invalid length.\n";
-		}
 		
 
-		else{
+		//If the input in not an integer, it will trigger an invalid length
+		while(!(cin >> length)){
+			cin.clear();
+        	cin.ignore();
+			cout << "Please enter one of the corresponding ship numbers.\n";
+			cout << "Ship Number: ";
+		}
+		
 			//Loop through allowed length array and see if requested length is allowed and unused
 			for (int i = 0; i < 5; i++){
 
@@ -127,29 +131,17 @@ int main(int argc, char *argv[1]){
 			}
 			allowed_ship = false; //Reset
 			addSuccess = false;
-		}
+		
 		//user_one.getBoard().print_user_board();
 		
 	}
 
-	
-/*
 	User *pointUser = &user_one;
 	Computer *pointComputer = &computer;
 	Board *pointUserBoard = user_one.board;
 	Board *pointComputerBoard = computer.board;
 
+	turn.frame(&pointUser, &pointComputer, &pointUserBoard, &pointComputerBoard);
 
-	turn.frame(pointUser, pointComputer, pointUserBoard, pointComputerBoard);
-		*/
-	//Main loop for runnning program
-		//while(1);
-	/*
-	cout << "How long is this ship? " << test.getLength() << endl;
-	cout << "Is this ship sunk? " << test.getIsSunk() << endl;
-	cout << "Sink this ship! " << test.sinkShip() << endl;
-	cout << "Is this ship sunk? " << test.getIsSunk() << endl << endl;
-	*/
-	
 	return 0;
 }

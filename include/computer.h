@@ -10,6 +10,7 @@ class Computer : public Player{
 			board = new Board(); 	//Defines the Board object
 			choice = -1; 			//Sets the choice of direction of orientation to be -1
 		}
+		void printShips();
 
 		void setCarrier(bool *addSuccess); 		//Sets the Carrier ship and changes addSuccess to true if the addition was a success, false otherwise
 		void setBattleship(bool *addSuccess); 	//Sets the Battleship ship and changes addSuccess to true if the addition was a success, false otherwise
@@ -18,9 +19,9 @@ class Computer : public Player{
 		void setDestroyer(bool *addSuccess); 	//Sets the Destroyer ship and changes addSuccess to true if the addition was a success, false otherwise
 
 		int guess(); 									//Generates a guess position to try to sink the user's ships
-		int formulate(int length); 						//Formulates and returns an integer value representing where the computer ships will be oriented
-		int isValidPos(string desPos, int length, int *index_return); 		//Checks if the desired position to place a ship is a valid position
-
+		int formulate(int length, int *index_return); 						//Formulates and returns an integer value representing where the computer ships will be oriented
+		int isValidPos(string desPos, int length, int *index_return){return 0;}; 		//Checks if the desired position to place a ship is a valid position
+		int isValidCompPos(string desPos, int length, int **index_return);
 		Board getBoard(){ return *this->board; }; 	//Returns the board
 
 	private:

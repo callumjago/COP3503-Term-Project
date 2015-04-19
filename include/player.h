@@ -15,6 +15,7 @@ class Player{
 		/*Represents an abstract method which needs to be implemented by 
 		both User and Computer to determine if a desired position is a valid one*/
 		virtual int isValidPos(string desPos, int length, int *index_return) = 0;
+		virtual int isValidCompPos(string desPos, int length, int **index_return) = 0;
 
 		void setCarrier(bool *addSuccess); 		//Sets the Carrier ship and changes addSuccess to true if the addition was a success, false otherwise
 		void setBattleship(bool *addSuccess); 	//Sets the Battleship ship and changes addSuccess to true if the addition was a success, false otherwise
