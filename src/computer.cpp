@@ -26,6 +26,7 @@ int Computer::guess(){
 	num += (int)(let - 'A') * 10;				//Converts desPos into index value for board
 
 	return num;
+
 }
 
 void Computer::printShips(){

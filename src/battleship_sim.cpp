@@ -148,6 +148,8 @@ int main(int argc, char *argv[1]){
 		
 	}
 
+	
+
 	User *pointUser = &user_one;
 	Computer *pointComputer = &computer;
 	Board *pointUserBoard = user_one.board;

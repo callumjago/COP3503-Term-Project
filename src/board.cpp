@@ -78,6 +78,13 @@ void Board::print_user_board(){
 				out.push_to_first_display(temp);
 				memset(&temp[0], 0, sizeof(temp));
 			}
+
+			else if(values[count].status == 2){
+				ss << "*H" ;
+				ss >> temp;
+				out.push_to_first_display(temp);
+				memset(&temp[0], 0, sizeof(temp));
+			}
 			else{
 				ss << values[count].str ;
 				ss >> temp;
@@ -108,7 +115,7 @@ void Board::print_computer_board(){
 			char temp[100];
 			
 			if(values[count].status == 1){
-				ss << "*S" ;
+				ss << values[count].str;
 				ss >> temp;
 				out.push_to_second_display(temp);
 				memset(&temp[0], 0, sizeof(temp));

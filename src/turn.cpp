@@ -92,6 +92,8 @@ void Turn::computer_hit_ship(User ***user, Computer ***computer, Board ***board_
 
 	do{
 		int a = (**computer)->guess();
+
+		cout << "Computer Guess: " << a << endl;
 	}while(b == 2 || b == 3);
 
 	if((**board_user)->getStatus(a) == 1){
@@ -145,7 +147,7 @@ void Turn::frame(User **user, Computer **computer, Board **board_user, Board **b
 	do{
 		//Refresh board_computer here
 		user_hit_ship(&user, &computer, &board_user, &board_computer, &a);
-		(*board_computer)->print_computer_board();
+		//(*board_computer)->print_computer_board();
 
 		if(a == true){
 			cout<<"You win!";
@@ -156,7 +158,7 @@ void Turn::frame(User **user, Computer **computer, Board **board_user, Board **b
 
 			//Refresh board_user here
 
-			(*board_user)->print_user_board();
+			//(*board_user)->print_user_board();
 
 			if(b == true){
 				cout << "You lose.";

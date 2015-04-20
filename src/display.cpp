@@ -3,7 +3,7 @@
 #include <iostream>
 #include <unistd.h>
 
-int Display::push_to_first_display(char temp[])
+void Display::push_to_first_display(char temp[])
 {
     int fd;
     char * myfifo = "/tmp/myfifo_one";
@@ -19,10 +19,9 @@ int Display::push_to_first_display(char temp[])
     /*Remove the FIFO */
     
     //unlink(myfifo);
-    usleep(5000);
-    return 0;
+    usleep(4000);
 }
-int Display::push_to_second_display(char temp[])
+void Display::push_to_second_display(char temp[])
 {
     int fd;
     char * myfifo = "/tmp/myfifo_two";
@@ -33,11 +32,11 @@ int Display::push_to_second_display(char temp[])
     /*Write "Hi" to the FIFO */
     fd = open(myfifo, O_WRONLY);
     write(fd, temp, sizeof("                                  "));
+
     //close(fd);
 
     /*Remove the FIFO */
     
     //unlink(myfifo);
-    usleep(5000);
-    return 0;
+    usleep(4000);
 }

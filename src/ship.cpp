@@ -46,16 +46,16 @@ bool Ship::getIsSunk(Board *board, int index ){
 	//Checks every element of status array, if any element is not 2(hit), return false
 	bool sunk = true;
 
-	if(isHorizontal) {
-		for(int i = 0; i < length; i++) {
-			if(board->getStatus((10*startY) + startX + i) != 2) {
+	if(getIsHorizontal()) {
+		for(int i = index; i < index + getLength(); i++) {
+			if(board->getStatus(i) != 2) {
 				sunk = false;
 			}
 		}
 	}
 	else {
-		for(int i = 0; i < length; i++) {
-			if(board->getStatus((10*startY) + startX + (10*i)) != 2) {
+		for(int i = index; i < index + (getLength()*10); i+=10) {
+			if(board->getStatus(i) != 2) {
 				sunk = false;
 			}
 		}
