@@ -15,10 +15,13 @@
 using namespace std;
 
 class Display {
+
     public:
-        int push_to_first_display(char temp[]);	//Represents the displaying of the Battleship board
+        int push_to_first_display(char temp[]);
         int push_to_second_display(char temp[]);
+
     private:
+
 };
 
 #endif

@@ -111,17 +111,21 @@ int User::isValidPos(string desPos, int length, int *index_return){
 			else if(right && down){
 				cout << "Choose to orientate the ship right (R) or down (D): ";
 				cin >> direction;
-
+				while(!((direction.compare("R") == 0) || (direction.compare("D") == 0))){
+					cout << "Incorrect Entry\n";
+					cout << "Choose to orientate the ship right (R) or down (D): ";
+					direction = "";
+					cin >> direction;
+				}
 				if(direction.compare("R") == 0){
-					choice = 3;
+						choice = 3;
+						cout << "Placing ship right.";
+					}
+				if(direction.compare("D") == 0){
+						choice = 1;
+						cout << "Placing ship down.";
 				}
-				else if(direction.compare("D") == 0){
-					choice = 1;
-				}
-				else{
-					// Represents that the choice of right/down is invalid.
-					return -1;
-				}
+				direction = "";
 			}
 			else if(down){
 				choice = 1;

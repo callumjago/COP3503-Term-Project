@@ -37,7 +37,7 @@ int main(int argc, char *argv[1]){
 	for (int i = 0; i < 25; i++)
 	{
 		out_two.push_to_second_display("-");
-		usleep(100000);
+		usleep(50000);
 	}
 	out_two.push_to_second_display(" Complete!\n\n");
 	
@@ -77,8 +77,20 @@ int main(int argc, char *argv[1]){
 		while(!(cin >> length)){
 			cin.clear();
         	cin.ignore();
-			cout << "Please enter one of the corresponding ship numbers.\n";
-			cout << "Ship Number: ";
+        	cin.clear();
+        	cin.ignore();
+        	cout << "\nUnavailable ship length. Here are the possible ship lengths to choose from:\n";
+
+				for (int i = 0; i < 5; i++)   	//Print available lengths
+				{
+					if (allowed_lengths[i] != 0)
+					{
+						cout << allowed_lengths[i] << " ";
+					}
+				}
+				cout << endl;
+				cout << "\nEnter the ship that you want to place using the numbers provided \n"; 
+				cout << "Ship Number: "; 
 		}
 		
 			//Loop through allowed length array and see if requested length is allowed and unused
