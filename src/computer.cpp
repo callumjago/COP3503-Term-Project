@@ -3,23 +3,22 @@
 #include <string>
 #include <stdlib.h>
 #include <sstream>
+#include <time.h>
 
 //Represents a generated guess to hit a user's ship
 int Computer::guess(){
-	char let = 'A';
-	int num = 1, counter = 0;
 	desPos = "";
-	int index_return;
+	char let = 'A';
+	int num = 1, counter = 0, index_return;
+	stringstream str;
+	srand(time(NULL));
 
 	do{
 		let = 'A' + (rand() % 10);
 		num = rand() % 10 + 1;
-		stringstream str;
-		desPos = "";
 		str << let << num;
 		str >> desPos;
 		if(++counter > 10000){ return -1; }		//Prevents an infinite loop, but allows ample guessing error if pickings are slim
-	
 	}while(isValidPos(desPos, 1, &index_return) == -1);
 
 	//Guess is now a valid position (regardless of orientation because its ""length"" is 1
@@ -58,9 +57,9 @@ location. This need not be called by any other class but remains public for simp
 int Computer::formulate(int length, int *index_return){
 	desPos = "";
 	char let = 'A';
-	int num = 1;
+	int num = 1, counter = 0, orientation = -1;
 	stringstream str;
-	int orientation = -1, counter = 0;
+	srand(time(NULL));
 
 	do{
 		let = 'A' + (rand() % 10);
@@ -69,7 +68,6 @@ int Computer::formulate(int length, int *index_return){
 		str >> desPos;
 		orientation = isValidCompPos(desPos, length, &index_return);
 		if(++counter > 10000){ return 0; }		//Prevents an infinite loop, but allows ample guessing error if pickings are slim
-	
 	}while(orientation == -1 || orientation == 0);
 
 	return orientation;
