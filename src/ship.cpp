@@ -48,18 +48,19 @@ bool Ship::getIsSunk(Board *board, int index ){
 
 	if(getIsHorizontal()) {
 		for(int i = index; i < index + getLength(); i++) {
-			if(board->getStatus(i) != 2) {
+			if((*board).getStatus(i) != 2){
 				sunk = false;
-			}
+			} 
 		}
 	}
 	else {
 		for(int i = index; i < index + (getLength()*10); i+=10) {
-			if(board->getStatus(i) != 2) {
+			if((*board).getStatus(i) != 2){
 				sunk = false;
 			}
 		}
 	}
+
 	return sunk;
 }
 

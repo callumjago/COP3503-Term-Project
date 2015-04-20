@@ -67,6 +67,7 @@ int Computer::formulate(int length, int *index_return){
 		num = rand() % 10 + 1;
 		str << let << num;
 		str >> desPos;
+		cout << desPos << "\n";
 		orientation = isValidCompPos(desPos, length, &index_return);
 		if(++counter > 10000){ return 0; }		//Prevents an infinite loop, but allows ample guessing error if pickings are slim
 	
