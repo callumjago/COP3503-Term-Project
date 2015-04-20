@@ -42,7 +42,7 @@ bool Ship::sinkShip(){
 }
 
 //Returns true if the ship has been sunk, false otherwise
-bool Ship::getIsSunk(Board *board){
+bool Ship::getIsSunk(Board *board, int index ){
 	//Checks every element of status array, if any element is not 2(hit), return false
 	bool sunk = true;
 

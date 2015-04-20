@@ -13,7 +13,7 @@ class Ship{
 
 	public:
 		bool sinkShip();				//Attempts sinking the Ship (interpret as setter method for state bool isSunk)
-		bool getIsSunk(Board *board);	//Getter method for state bool isSunk
+		bool getIsSunk(Board *board, int index);	//Getter method for state bool isSunk
 		int getLength();				//Getter method for state int length
 
 		int getStart(){ return (length); };

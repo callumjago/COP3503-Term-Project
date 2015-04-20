@@ -34,16 +34,16 @@ class Turn {
 		bool gameover(Computer ***computer, User ***user);
 
 		//Determines if the user has lost by checking if their ships have been sunk
-		bool lose(User ***user);
+		bool lose(User ****user, int index);
 
 		//Determines if the user has won by checking if the computer's ships have been sunk
-		bool win(Computer ***computer);
+		bool win(Computer ****computer, int index);
 
 		//Represents the user hitting a computer's ship
-		void user_hit_ship(User ***user, Computer ***computer, Board ***board_user, Board ***board_computer);
+		void user_hit_ship(User ***user, Computer ***computer, Board ***board_user, Board ***board_computer, bool * a_return);
 		
 		//Represents the computer hitting a user's ship
-		void computer_hit_ship(User ***user, Computer ***computer, Board ***board_user, Board ***board_computer);
+		void computer_hit_ship(User ***user, Computer ***computer, Board ***board_user, Board ***board_computer, bool * b_return);
 		
 		//Represents a turn of the game in which each player makes a guess
 		void turn(User ***user, Computer ***computer, Board ***board_user, Board ***board_computer);

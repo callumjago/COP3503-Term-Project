@@ -24,7 +24,7 @@ int User::guess(){
 		digit = 10;
 	}
 
-	int index = ((letter - 'A') * 10) + digit; //Determines the index of the position in the board.
+	int index = (((letter - 'A') * 10) + digit) - 48; //Determines the index of the position in the board.
 	
 	return index;
 };
