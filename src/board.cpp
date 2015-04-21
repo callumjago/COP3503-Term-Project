@@ -75,34 +75,34 @@ void Board::print_user_board(){
 			if(values[count].status == 1){
 				ss << "*S" ;
 				ss >> temp;
-				//out.push_to_first_display(temp);
-				cout << temp;
+				out.push_to_first_display(temp);
+				//cout << temp;
 				memset(&temp[0], 0, sizeof(temp));
 			}
 
 			else if(values[count].status == 2){
 				ss << "*H" ;
 				ss >> temp;
-				//out.push_to_first_display(temp);
-				cout << temp;
+				out.push_to_first_display(temp);
+				//cout << temp;
 				memset(&temp[0], 0, sizeof(temp));
 			}
 			else{
 				ss << values[count].str ;
 				ss >> temp;
-				//out.push_to_first_display(temp);
-				cout << temp;
+				out.push_to_first_display(temp);
+				//cout << temp;
 				memset(&temp[0], 0, sizeof(temp));
 
 			}
 			count++;
 		}
-		cout << "\n";
-		//out.push_to_first_display("\n");
+		//cout << "\n";
+		out.push_to_first_display("\n");
 	}
 
 	out.push_to_first_display("---------------\n"); //Creates a buffer between the output
-	cout << "---------------\n";
+	//cout << "---------------\n";
 };
 
 //Prints the board to the screen as in Battleship
@@ -119,42 +119,42 @@ void Board::print_computer_board(){
 			char temp[100];
 			
 			if(values[count].status == 1){
-				ss << values[count].str;
+				ss << "*S" ;
 				ss >> temp;
-				//out.push_to_second_display(temp);
-				cout << temp;
+				out.push_to_second_display(temp);
+				//cout << temp;
 				memset(&temp[0], 0, sizeof(temp));
 			}
 			else if(values[count].status == 2){
 				ss << "*H" ;
 				ss >> temp;
-				//out.push_to_second_display(temp);
-				cout << temp;
+				out.push_to_second_display(temp);
+				//cout << temp;
 				memset(&temp[0], 0, sizeof(temp));
 			}
 			else if(values[count].status == 3){
 				ss << "*M" ;
 				ss >> temp;
-				//out.push_to_second_display(temp);
-				cout << temp;
+				out.push_to_second_display(temp);
+				//cout << temp;
 				memset(&temp[0], 0, sizeof(temp));
 			}
 			else{
 				ss << values[count].str ;
 				ss >> temp;
-				//out.push_to_second_display(temp);
-				cout << temp;
+				out.push_to_second_display(temp);
+				//cout << temp;
 				memset(&temp[0], 0, sizeof(temp));
 
 			}
 			count++;
 		}
-		cout << "\n";
-		//out.push_to_second_display("\n");
+		//cout << "\n";
+		out.push_to_second_display("\n");
 	}
 
 	out.push_to_second_display("---------------\n"); //Creates a buffer between the output
-	cout << "---------------\n";
+	//cout << "---------------\n";
 };
 
 //Adds tiles to the board

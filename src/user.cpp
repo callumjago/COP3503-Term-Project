@@ -162,20 +162,20 @@ void User::printShips(){
 			stringstream ss; 
 			ss << temp_int ;
 			ss >> temp;
-			//out.push_to_first_display(temp);
-			cout << temp;
+			out.push_to_first_display(temp);
+			//cout << temp;
 			memset(&temp[0], 0, sizeof(temp));
 		}
-		//out.push_to_first_display("\n');
-		cout << "\n";
+		out.push_to_first_display("\n");
+		//cout << "\n";
 	}
 	for (int i = 0; i < 15; ++i)
 	{
-		//out.push_to_first_display("-");
-		cout << "-";
+		out.push_to_first_display("-");
+		//cout << "-";
 	}
-	//.push_to_first_display("\n");
-	cout << "\n";
+	out.push_to_first_display("\n");
+	//cout << "\n";
 }
 
 void User::setCarrier(bool *addSuccess){

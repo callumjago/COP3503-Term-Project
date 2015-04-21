@@ -38,20 +38,20 @@ void Computer::printShips(){
 			stringstream ss; 
 			ss << temp_int ;
 			ss >> temp;
-			//out.push_to_second_display(temp);
-			cout << temp;
+			out.push_to_second_display(temp);
+			//cout << temp;
 			memset(&temp[0], 0, sizeof(temp));
 		}
-		//out.push_to_second_display("\n");
-		cout << "\n";
+		out.push_to_second_display("\n");
+		//cout << "\n";
 	}
 	for (int i = 0; i < 15; ++i)
 	{
-		//out.push_to_second_display("-");
-		cout << "-";
+		out.push_to_second_display("-");
+		//cout << "-";
 	}
-	//out.push_to_second_display("\n");
-	cout << "\n";
+	out.push_to_second_display("\n");
+	//cout << "\n";
 }
 
 /*The formulate() function employs the computer's pseudorandom algorithm for picking a location on the board
@@ -70,7 +70,7 @@ int Computer::formulate(int length, int *index_return){
 		num = rand() % 10 + 1;
 		str << let << num;
 		str >> desPos;
-		cout << desPos << "\n";
+		//cout << desPos << "\n";
 		orientation = isValidCompPos(desPos, length, &index_return);
 		if(++counter > 10000){ return 0; }		//Prevents an infinite loop, but allows ample guessing error if pickings are slim
 	}while(orientation == -1 || orientation == 0);
@@ -83,8 +83,6 @@ void Computer::setCarrier(bool *addSuccess){
 	int orientation = formulate(5, &index);
 	char let = desPos.at(0);
 	int num = (int)desPos.at(1) - 48;
-
-	cout << index;
 
 	if(num == 1 && desPos.length() == 3 && desPos.at(2) == '0'){
 		num = 10;
@@ -282,7 +280,7 @@ int Computer::isValidCompPos(string desPos, int length, int **index_return){
 		return -1;
 	}
 
-	if(let - length >= 'A'){					//Check for "up" orientation
+	/*if(let - length >= 'A'){					//Check for "up" orientation
 		for(int i = 0; i <= length; i++){
 			tempLet = let - i;
 			tempNum = num;
@@ -293,14 +291,14 @@ int Computer::isValidCompPos(string desPos, int length, int **index_return){
 				up = true;
 			}
 		}
-	}
+	}*/
 
 	if(let - length >= 'A'){					//Check if "up" orientation is possible
 		tempLet = let;
 		tempNum = num;
 		
 		for(int i = 0; i < length; i++){
-			tempInd = ((tempLet-- - 'A') * 10) + tempNum;
+			tempInd = (((tempLet - i) - 'A') * 10) + tempNum;
 
 			if(board->getStatus(tempInd) != 0){ up = false; }
 		}
@@ -312,7 +310,7 @@ int Computer::isValidCompPos(string desPos, int length, int **index_return){
 		tempNum = num;
 		
 		for(int i = 0; i < length; i++){
-			tempInd = ((tempLet++ - 'A') * 10) + tempNum;
+			tempInd = (((tempLet + i) - 'A') * 10) + tempNum;
 
 			if(board->getStatus(tempInd) != 0){ down = false; }
 		}
@@ -324,7 +322,7 @@ int Computer::isValidCompPos(string desPos, int length, int **index_return){
 		tempNum = num;
 		
 		for(int i = 0; i < length; i++){
-			tempInd = ((tempLet - 'A') * 10) + tempNum--;
+			tempInd = ((tempLet - 'A') * 10) + (tempNum - i);
 
 			if(board->getStatus(tempInd) != 0){ left = false; }
 		}
@@ -336,7 +334,7 @@ int Computer::isValidCompPos(string desPos, int length, int **index_return){
 		tempNum = num;
 		
 		for(int i = 0; i < length; i++){
-			tempInd = ((tempLet - 'A') * 10) + tempNum++;
+			tempInd = ((tempLet - 'A') * 10) + (tempNum + i);
 
 			if(board->getStatus(tempInd) != 0){ right = false; }
 		}

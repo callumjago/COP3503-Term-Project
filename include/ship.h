@@ -49,8 +49,20 @@ class Ship{
 
 
 			this->isHorizontal = isHorizontal;
-			this->startX = (int)startX - 65;
-			this->startY = startY;
+
+			if(startX < 'A' || startX > 'J'){
+				this->startX = (int)('A') - 65;
+			}
+			else{
+				this->startX = (int)startX - 65;
+			}
+			
+			if(startY < 1 || startY > 10){
+				this->startY = 1;
+			}
+			else{
+				this->startY = startY;
+			}
 
 			this->name = name;
 
