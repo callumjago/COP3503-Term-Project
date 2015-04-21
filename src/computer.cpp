@@ -38,16 +38,20 @@ void Computer::printShips(){
 			stringstream ss; 
 			ss << temp_int ;
 			ss >> temp;
-			out.push_to_second_display(temp);
+			//out.push_to_second_display(temp);
+			cout << temp;
 			memset(&temp[0], 0, sizeof(temp));
 		}
-		out.push_to_second_display("\n");
+		//out.push_to_second_display("\n");
+		cout << "\n";
 	}
 	for (int i = 0; i < 15; ++i)
 	{
-		out.push_to_second_display("-");
+		//out.push_to_second_display("-");
+		cout << "-";
 	}
-	out.push_to_second_display("\n");
+	//out.push_to_second_display("\n");
+	cout << "\n";
 }
 
 /*The formulate() function employs the computer's pseudorandom algorithm for picking a location on the board

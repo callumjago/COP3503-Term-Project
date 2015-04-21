@@ -5,11 +5,11 @@
 bool Turn::win(Computer ****computer, int index){
 	int sunkNum = 0;
 
-	if((***computer)->carrier->getIsSunk((***computer)->board, index)){ sunkNum++; }
-	if((***computer)->battleship->getIsSunk((***computer)->board, index)){ sunkNum++; }
-	if((***computer)->submarine->getIsSunk((***computer)->board, index)){ sunkNum++; }
-	if((***computer)->cruiser->getIsSunk((***computer)->board, index)){ sunkNum++; }
-	if((***computer)->destroyer->getIsSunk((***computer)->board, index)){ sunkNum++; }
+	if((***computer)->carrier->getIsSunk((***computer)->board, (***computer)->carrier->getStartIndex())){ sunkNum++; }
+	if((***computer)->battleship->getIsSunk((***computer)->board, (***computer)->battleship->getStartIndex())){ sunkNum++; }
+	if((***computer)->submarine->getIsSunk((***computer)->board, (***computer)->submarine->getStartIndex())){ sunkNum++; }
+	if((***computer)->cruiser->getIsSunk((***computer)->board, (***computer)->cruiser->getStartIndex())){ sunkNum++; }
+	if((***computer)->destroyer->getIsSunk((***computer)->board, (***computer)->destroyer->getStartIndex())){ sunkNum++; }
 
 	return (sunkNum == 5);
 }
@@ -18,11 +18,11 @@ bool Turn::win(Computer ****computer, int index){
 bool Turn::lose(User ****user, int index){
 	int sunkNum = 0;
 
-	if((***user)->carrier->getIsSunk((***user)->board, index)){ sunkNum++; }
-	if((***user)->battleship->getIsSunk((***user)->board, index)){ sunkNum++; }
-	if((***user)->submarine->getIsSunk((***user)->board, index)){ sunkNum++; }
-	if((***user)->cruiser->getIsSunk((***user)->board, index)){ sunkNum++; }
-	if((***user)->destroyer->getIsSunk((***user)->board, index)){ sunkNum++; }
+	if((***user)->carrier->getIsSunk((***user)->board, (***user)->carrier->getStartIndex())){ sunkNum++; }
+	if((***user)->battleship->getIsSunk((***user)->board, (***user)->battleship->getStartIndex())){ sunkNum++; }
+	if((***user)->submarine->getIsSunk((***user)->board, (***user)->submarine->getStartIndex())){ sunkNum++; }
+	if((***user)->cruiser->getIsSunk((***user)->board, (***user)->cruiser->getStartIndex())){ sunkNum++; }
+	if((***user)->destroyer->getIsSunk((***user)->board, (***user)->destroyer->getStartIndex())){ sunkNum++; }
 
 	return (sunkNum == 5);
 }
@@ -58,27 +58,27 @@ void Turn::user_hit_ship(User ***user, Computer ***computer, Board ***board_user
 
 	/*Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
 	If it returns false, it attempts to sink it */
-	if(!computer_carrier && (**computer)->carrier->getIsSunk((**computer)->board, a)){
+	if(!computer_carrier && (**computer)->carrier->getIsSunk((**computer)->board, (**computer)->carrier->getStartIndex())){
 		(**computer)->carrier->sinkShip();
 		cout << "You have sunk a ship!\n";
 		computer_carrier = true;
 	}
-	if(!computer_battleship && (**computer)->battleship->getIsSunk((**computer)->board, a)){
+	if(!computer_battleship && (**computer)->battleship->getIsSunk((**computer)->board, (**computer)->battleship->getStartIndex())){
 		(**computer)->battleship->sinkShip();
 		cout << "You have sunk a ship!\n";
 		computer_battleship = true;
 	}
-	if(!computer_submarine && (**computer)->submarine->getIsSunk((**computer)->board, a)){
+	if(!computer_submarine && (**computer)->submarine->getIsSunk((**computer)->board, (**computer)->submarine->getStartIndex())){
 		(**computer)->submarine->sinkShip();
 		cout << "You have sunk a ship!\n";
 		computer_submarine = true;
 	}
-	if(!computer_cruiser && (**computer)->cruiser->getIsSunk((**computer)->board, a)){
+	if(!computer_cruiser && (**computer)->cruiser->getIsSunk((**computer)->board, (**computer)->cruiser->getStartIndex())){
 		(**computer)->cruiser->sinkShip();
 		cout << "You have sunk a ship!\n";
 		computer_cruiser = true;
 	}
-	if(!computer_destroyer && (**computer)->destroyer->getIsSunk((**computer)->board, a)){
+	if(!computer_destroyer && (**computer)->destroyer->getIsSunk((**computer)->board, (**computer)->destroyer->getStartIndex())){
 		(**computer)->destroyer->sinkShip();
 		cout << "You have sunk a ship!\n";
 		computer_destroyer = true;
@@ -109,27 +109,27 @@ void Turn::computer_hit_ship(User ***user, Computer ***computer, Board ***board_
 
 	/*Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
 	If it returns false, it attempts to sink it */
-	if(!user_carrier && (**user)->carrier->getIsSunk((**user)->board, a)){
+	if(!user_carrier && (**user)->carrier->getIsSunk((**user)->board, (**user)->carrier->getStartIndex())){
 		(**user)->carrier->sinkShip();
 		cout << "Computer has sunk a ship!\n";
 		user_carrier = true; 
 	}
-	if(!user_battleship && (**user)->battleship->getIsSunk((**user)->board, a)){
+	if(!user_battleship && (**user)->battleship->getIsSunk((**user)->board, (**user)->battleship->getStartIndex())){
 		(**user)->battleship->sinkShip();
 		cout << "Computer has sunk a ship!\n";
 		user_battleship = true; 
 	}
-	if(!user_submarine && (**user)->submarine->getIsSunk((**user)->board, a)){
+	if(!user_submarine && (**user)->submarine->getIsSunk((**user)->board, (**user)->submarine->getStartIndex())){
 		(**user)->submarine->sinkShip();
 		cout << "Computer has sunk a ship!\n";
 		user_submarine = true;
 	}
-	if(!user_cruiser && (**user)->cruiser->getIsSunk((**user)->board, a)){
+	if(!user_cruiser && (**user)->cruiser->getIsSunk((**user)->board, (**user)->cruiser->getStartIndex())){
 		(**user)->cruiser->sinkShip();
 		cout << "Computer has sunk a ship!\n";
 		user_cruiser = true; 
 	}
-	if(!user_destroyer && (**user)->destroyer->getIsSunk((**user)->board, a)){
+	if(!user_destroyer && (**user)->destroyer->getIsSunk((**user)->board, (**user)->destroyer->getStartIndex())){
 		(**user)->destroyer->sinkShip();
 		cout << "Computer has sunk a ship!\n";
 		user_destroyer = true;
@@ -147,7 +147,7 @@ void Turn::frame(User **user, Computer **computer, Board **board_user, Board **b
 	do{
 		//Refresh board_computer here
 		user_hit_ship(&user, &computer, &board_user, &board_computer, &a);
-		//(*board_computer)->print_computer_board();
+		(*board_computer)->print_computer_board();
 
 		if(a == true){
 			cout<<"You win!";
@@ -158,7 +158,7 @@ void Turn::frame(User **user, Computer **computer, Board **board_user, Board **b
 
 			//Refresh board_user here
 
-			//(*board_user)->print_user_board();
+			(*board_user)->print_user_board();
 
 			if(b == true){
 				cout << "You lose.";

@@ -13,8 +13,12 @@ class Ship{
 
 	public:
 		bool sinkShip();				//Attempts sinking the Ship (interpret as setter method for state bool isSunk)
-		bool getIsSunk(Board *board, int index);	//Getter method for state bool isSunk
+		bool getIsSunk(Board *board, int startIndex);	//Getter method for state bool isSunk
 		int getLength();				//Getter method for state int length
+		int startIndex;
+
+		void Initialize(Board **b, int index);
+		int getStartIndex(){ return startIndex; };
 
 		int getStart(){ return (length); };
 
@@ -43,16 +47,16 @@ class Ship{
 			if(length < 0){ this->length = 0; }
 			else { this->length = length;}
 
-			index = 0;
 
 			this->isHorizontal = isHorizontal;
 			this->startX = (int)startX - 65;
 			this->startY = startY;
 
-			this->name = name;	
+			this->name = name;
+
+			startIndex = ((startX - 'A') * 10) + startY;
 		}
-		void Initialize(Board **b, int index);
 		
-		int index;
+		
 };
 #endif
