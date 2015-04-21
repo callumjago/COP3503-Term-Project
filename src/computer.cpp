@@ -88,23 +88,24 @@ void Computer::setCarrier(bool *addSuccess){
 		num = 10;
 	}
 
-	if(orientation == 1){
+	/*if(orientation == 1){
 		let -= 4;	//Readjusts position to act as "down" orientation with uppermost position put into initializer
 		carrier = new Ship(5, "Carrier", false, let, num);
 		carrier->Initialize(&board, index);
 		*addSuccess = true;
-	}
+	}*/
 	else if(orientation == 2){
 		carrier = new Ship(5, "Carrier", false, let, num);
 		carrier->Initialize(&board, index);
 		*addSuccess = true;
 	}
+	/*
 	else if(orientation == 3){
 		num -= 4;	//Readjusts position to act as "right" orientation with leftmost position put into initializer
 		carrier = new Ship(5, "Carrier", true, let, num);
 		carrier->Initialize(&board, index);
 		*addSuccess = true;
-	}
+	}*/
 	else if(orientation == 4){
 		carrier = new Ship(5, "Carrier", true, let, num);
 		carrier->Initialize(&board, index);
@@ -123,23 +124,24 @@ void Computer::setBattleship(bool *addSuccess){
 		num = 10;
 	}
 
-	if(orientation == 1){
+	/*if(orientation == 1){
 		let -= 3;	//Readjusts position to act as "down" orientation with uppermost position put into initializer
 		battleship = new Ship(4, "Battleship", false, let, num);
 		battleship->Initialize(&board, index);
 		*addSuccess = true;
-	}
+	}*/
 	else if(orientation == 2){
 		battleship = new Ship(4, "Battleship", false, let, num);
 		battleship->Initialize(&board, index);
 		*addSuccess = true;
 	}
+	/*
 	else if(orientation == 3){
 		num -= 3;	//Readjusts position to act as "right" orientation with leftmost position put into initializer
 		battleship = new Ship(4, "Battleship", true, let, num);
 		battleship->Initialize(&board, index);
 		*addSuccess = true;
-	}
+	}*/
 	else if(orientation == 4){
 		battleship = new Ship(4, "Battleship", true, let, num);
 		battleship->Initialize(&board, index);
@@ -158,23 +160,24 @@ void Computer::setSubmarine(bool *addSuccess){
 		num = 10;
 	}
 
-	if(orientation == 1){
+	/*if(orientation == 1){
 		let -= 2;	//Readjusts position to act as "down" orientation with uppermost position put into initializer
 		submarine = new Ship(3, "Submarine", false, let, num);
 		submarine->Initialize(&board, index);
 		*addSuccess = true;
-	}
+	}*/
 	else if(orientation == 2){
 		submarine = new Ship(3, "Submarine", false, let, num);
 		submarine->Initialize(&board, index);
 		*addSuccess = true;
 	}
+	/*
 	else if(orientation == 3){
 		num -= 2;	//Readjusts position to act as "right" orientation with leftmost position put into initializer
 		submarine = new Ship(3, "Submarine", true, let, num);
 		submarine->Initialize(&board, index);
 		*addSuccess = true;
-	}
+	}*/
 	else if(orientation == 4){
 		submarine = new Ship(3, "Submarine", true, let, num);
 		submarine->Initialize(&board, index);
@@ -193,23 +196,24 @@ void Computer::setCruiser(bool *addSuccess){
 		num = 10;
 	}
 
-	if(orientation == 1){
+	/*if(orientation == 1){
 		let -= 2;	//Readjusts position to act as "down" orientation with uppermost position put into initializer
 		cruiser = new Ship(3, "Cruiser", false, let, num);
 		cruiser->Initialize(&board, index);
 		*addSuccess = true;
-	}
+	}*/
 	else if(orientation == 2){
 		cruiser = new Ship(3, "Cruiser", false, let, num);
 		cruiser->Initialize(&board, index);
 		*addSuccess = true;
 	}
+	/*
 	else if(orientation == 3){
 		num -= 2;	//Readjusts position to act as "right" orientation with leftmost position put into initializer
 		cruiser = new Ship(3, "Cruiser", true, let, num);
 		cruiser->Initialize(&board, index);
 		*addSuccess = true;
-	}
+	}*/
 	else if(orientation == 4){
 		cruiser = new Ship(3, "Cruiser", true, let, num);
 		cruiser->Initialize(&board, index);
@@ -227,23 +231,23 @@ void Computer::setDestroyer(bool *addSuccess){
 		num = 10;
 	}
 
-	if(orientation == 1){
+	/*if(orientation == 1){
 		let -= 1;	//Readjusts position to act as "down" orientation with uppermost position put into initializer
 		destroyer = new Ship(2, "Destroyer", false, let, num);
 		destroyer->Initialize(&board, index);
 		*addSuccess = true;
-	}
+	}*/
 	else if(orientation == 2){
 		destroyer = new Ship(2, "Destroyer", false, let, num);
 		destroyer->Initialize(&board, index);
 		*addSuccess = true;
 	}
-	else if(orientation == 3){
+	/*else if(orientation == 3){
 		num -= 1;	//Readjusts position to act as "right" orientation with leftmost position put into initializer
 		destroyer = new Ship(2, "Destroyer", true, let, num);
 		destroyer->Initialize(&board, index);
 		*addSuccess = true;
-	}
+	}*/
 	else if(orientation == 4){
 		destroyer = new Ship(2, "Destroyer", true, let, num);
 		destroyer->Initialize(&board, index);
@@ -293,7 +297,7 @@ int Computer::isValidCompPos(string desPos, int length, int **index_return){
 		}
 	}*/
 
-	if(let - length >= 'A'){					//Check if "up" orientation is possible
+	/*if(let - length >= 'A'){					//Check if "up" orientation is possible
 		tempLet = let;
 		tempNum = num;
 		
@@ -303,7 +307,7 @@ int Computer::isValidCompPos(string desPos, int length, int **index_return){
 			if(board->getStatus(tempInd) != 0){ up = false; }
 		}
 	}
-	else{ up = false; }
+	else{ up = false; }*/
 
 	if(let + length <= 'J'){					//Check if "down" orientation is possible
 		tempLet = let;
@@ -317,7 +321,7 @@ int Computer::isValidCompPos(string desPos, int length, int **index_return){
 	}
 	else{ down = false; }
 
-	if(num - length >= 1){						//Check if "left" orientation is possible
+	/*if(num - length >= 1){						//Check if "left" orientation is possible
 		tempLet = let;
 		tempNum = num;
 		
@@ -327,7 +331,7 @@ int Computer::isValidCompPos(string desPos, int length, int **index_return){
 			if(board->getStatus(tempInd) != 0){ left = false; }
 		}
 	}
-	else{ left = false; }
+	else{ left = false; }*/
 
 	if(num + length <= 10){						//Check if "right" orientation is possible
 		tempLet = let;
@@ -341,26 +345,29 @@ int Computer::isValidCompPos(string desPos, int length, int **index_return){
 	}
 	else{ right = false; }
 
-	bool *option = new bool[4];
-	option[0] = up;
-	option[1] = down;
-	option[2] = left;
-	option[3] = right;
+	bool *option = new bool[2];
+	//option[0] = up;
+	//option[1] = down;
+	//option[2] = left;
+	//option[3] = right;
+
+	option[0] = down;
+	option[1] = right;
 
 	int sum = 0;
-	for(int i = 0; i < 4; i++){ if(option[i]){ sum++; } }
+	for(int i = 0; i < 2; i++){ if(option[i]){ sum++; } }
 
 	if(sum == 0){
 		//cout << "Error: no orientation options." << endl;		/*This is only an error when placing a ship, not when guessing a place to bomb*/
 		return 0;
 	}
 	
-	int randNum = rand() % 24;
-	int m = 0;
+	int randNum = (rand() % 2) + 1;
+	/*int m = 0;
 	while(randNum >= 0){
 		if(option[m++]){ randNum--; }
 		if(m == 4){ m = 0; }
-	}
+	}*/
 
-	return m;	//-1 means invalid or error, 0 means no orientation options, 1 means "up", 2 means "down", 3 means "left", 4 means "right"
+	return randNum * 2;	//-1 means invalid or error, 0 means no orientation options, 1 means "up", 2 means "down", 3 means "left", 4 means "right"
 }
