@@ -3,8 +3,9 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <iostream>
+#include <string.h>
 
-#define MAX_BUF 50
+#define MAX_BUF 1024
 
 int main()
 {
@@ -15,10 +16,11 @@ int main()
 
 	while(1){
 	    /* Open, read, and display the message from the FIFO */
-	    
-		read(fd, buf, MAX_BUF);
+		read(fd, buf, 2*MAX_BUF);
 		std::cout << buf << " ";
 		std::cout.flush();
+		memset(&buf[0], 0, sizeof(buf));
+		fd = open(myfifo, O_RDONLY);
 	}
     
 

@@ -9,17 +9,17 @@ void Display::push_to_first_display(char temp[])
     char * myfifo = "/tmp/myfifo_one";
 
     /*Create the FIFO (named pipe) */
-    mkfifo(myfifo, 0666);
+    mkfifo(myfifo, 0667);
 
     /*Write "Hi" to the FIFO */
     fd = open(myfifo, O_WRONLY);
-    write(fd, temp, sizeof("                    "));
-    //close(fd);
+    write(fd, temp, sizeof("                                 "));
+    close(fd);
 
     /*Remove the FIFO */
     
     //unlink(myfifo);
-    usleep(4000);
+    usleep(6000);
 }
 void Display::push_to_second_display(char temp[])
 {
@@ -33,10 +33,10 @@ void Display::push_to_second_display(char temp[])
     fd = open(myfifo, O_WRONLY);
     write(fd, temp, sizeof("                                  "));
 
-    //close(fd);
+    close(fd);
 
     /*Remove the FIFO */
     
     //unlink(myfifo);
-    usleep(4000);
+    usleep(6000);
 }

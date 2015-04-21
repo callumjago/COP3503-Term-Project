@@ -66,7 +66,7 @@ class Ship{
 
 			this->name = name;
 
-			startIndex = ((startX - 'A') * 10) + startY;
+			this->startIndex = ((startX - 'A') * 10) + startY;
 		}
 		
 		
