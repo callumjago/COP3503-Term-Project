@@ -94,7 +94,7 @@ void Turn::computer_hit_ship(User ***user, Computer ***computer, Board ***board_
 	do{
 		int a = (**computer)->guess();
 
-		cout << "Computer Guess: " << a << endl;
+		cout << "Computer Guess: " << (**board_user)->getId(a) << endl;
 	}while(b == 2 || b == 3);
 
 	if((**board_user)->getStatus(a) == 1){

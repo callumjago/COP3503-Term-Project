@@ -154,7 +154,7 @@ int main(int argc, char *argv[1]){
 		
 	}
 
-	
+	user_one.printShips();
 
 	User *pointUser = &user_one;
 	Computer *pointComputer = &computer;
