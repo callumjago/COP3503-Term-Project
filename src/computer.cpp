@@ -7,6 +7,8 @@
 
 //Represents a generated guess to hit a user's ship
 int Computer::guess(){
+
+	cout << "Computer guess: ";
 	desPos = "";
 	char let = 'A';
 	int num = 1, counter = 0, index_return;
@@ -146,7 +148,7 @@ void Computer::setBattleship(bool *addSuccess){
 	else if(orientation == 4){
 		battleship = new Ship(4, "Battleship", true, let, num);
 		battleship->Initialize(&board, index);
-		
+
 		*addSuccess = true;
 	}
 	//printShips();

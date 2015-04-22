@@ -111,17 +111,11 @@ void Turn::computer_hit_ship(User ***user, Computer ***computer, Board ***board_
 */
 	do{
 		a = (**computer)->guess();
-
-		if(a == -1){
-			cout << "Invalid location, please guess again.\n"; continue;
-		}
-
-		b = (**board_user)->getStatus(a);
-
-		if(b == 2 || b == 3){
-			cout << "Location already guessed, please guess again.\n";
-		}
 	}while(b == 2 || b == 3);
+
+	cout << "Computer Guess: " << (**board_user)->getId(a) << endl;
+
+
 
 	//Need a change status method for board.....
 	if((**board_user)->getStatus(a) == 1){
