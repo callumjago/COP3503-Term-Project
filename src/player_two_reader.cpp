@@ -19,7 +19,7 @@ int main()
 		read(fd, buf, 2*MAX_BUF);
 		std::cout << buf << " ";
 		std::cout.flush();
-		memset(&buf[0], 0, sizeof(buf));
+		memset(&buf[0], 0, sizeof(MAX_BUF));
 		fd = open(myfifo, O_RDONLY);
 	}
     

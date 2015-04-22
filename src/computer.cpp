@@ -8,7 +8,6 @@
 //Represents a generated guess to hit a user's ship
 int Computer::guess(){
 
-	cout << "Computer guess: ";
 	desPos = "";
 	char let = 'A';
 	int num = 1, counter = 0, index_return;
