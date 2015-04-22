@@ -63,7 +63,7 @@ void Turn::user_hit_ship(User ***user, Computer ***computer, Board ***board_user
 		cout << "You have sunk a ship!\n";
 		computer_carrier = true;
 	}
-	/*
+	
 	if(!computer_battleship && (**computer)->battleship->getIsSunk((**computer)->board, (**computer)->battleship->getStartIndex())){
 		(**computer)->battleship->sinkShip();
 		cout << "You have sunk a ship!\n";
@@ -84,13 +84,13 @@ void Turn::user_hit_ship(User ***user, Computer ***computer, Board ***board_user
 		cout << "You have sunk a ship!\n";
 		computer_destroyer = true;
 	}
-	*a_return = win(&computer, a);*/
+	*a_return = win(&computer, a);
 }
 
 //Represents a computer hitting a ship
 void Turn::computer_hit_ship(User ***user, Computer ***computer, Board ***board_user, Board ***board_computer, bool * b_return){
 	int b, a = 0;
-
+/*
 	do{
 		int a = (**computer)->guess();
 
@@ -107,6 +107,35 @@ void Turn::computer_hit_ship(User ***user, Computer ***computer, Board ***board_
 		(**board_user)->setStatus(a, 3);
 		cout << "The computer missed!\n";		
 	}
+
+*/
+	do{
+		a = (**computer)->guess();
+
+		if(a == -1){
+			cout << "Invalid location, please guess again.\n"; continue;
+		}
+
+		b = (**board_user)->getStatus(a);
+
+		if(b == 2 || b == 3){
+			cout << "Location already guessed, please guess again.\n";
+		}
+	}while(b == 2 || b == 3);
+
+	//Need a change status method for board.....
+	if((**board_user)->getStatus(a) == 1){
+
+		(**board_user)->setStatus(a, 2);
+		cout << "Hit!\n";
+	}
+	else if((**board_user)->getStatus(a) == 0){
+
+		(**board_user)->setStatus(a, 3);
+		cout << "Miss!\n";		
+	}
+
+
 
 	/*Checks if it was sunk this turn or not. If it returns false that means it hasn't been sunk left
 	If it returns false, it attempts to sink it */
@@ -149,26 +178,19 @@ void Turn::frame(User **user, Computer **computer, Board **board_user, Board **b
 		//Refresh board_computer here
 		user_hit_ship(&user, &computer, &board_user, &board_computer, &a);
 		(*board_computer)->print_computer_board();
-
-		if(a == true){
-			cout<<"You win!";
-		}
-
-		else{
-			computer_hit_ship(&user, &computer, &board_user, &board_computer, &b);
-
-			//Refresh board_user here
-
-			(*board_user)->print_user_board();
-
-			if(b == true){
-				cout << "You lose.";
-			}
-		}
-
+		computer_hit_ship(&user, &computer, &board_user, &board_computer, &b);
+		(*board_user)->print_user_board();
 		c = a || b;
+
 	} while (c == false);
 
+	if(b == true){
+				cout << "You lose.";
+			}
+
+	if(a == true){
+			cout<<"You win!";
+		}
 
 	if(c == true){
 		cout << "Gameover.";

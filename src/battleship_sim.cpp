@@ -21,31 +21,52 @@ int main(int argc, char *argv[1]){
 
 	bool addSuccess = false;			//Represents the success of the ship placement
 	
+	
+	
 
-	computer.setCarrier(&addSuccess);
-	addSuccess = false;
-	computer.setBattleship(&addSuccess);
-	addSuccess = false;
-	computer.setSubmarine(&addSuccess);
-	addSuccess = false;
-	computer.setCruiser(&addSuccess);
-	addSuccess = false;
-	computer.setDestroyer(&addSuccess);
-	addSuccess = false;
-
-	out_two.push_to_second_display("The Computer is Placing its Ships\n");
+	
 	//cout << " The Computer is Placing its Ships\n";
 	/*for (int i = 0; i < 25; i++)
 	{
 		out_two.push_to_second_display("-");
 		usleep(50000);
 	}*/
-	out_two.push_to_second_display("Complete!\n\n");
+	
 	
 	out.push_to_first_display("Player 1 Game Board\n");
 	out.push_to_first_display("---------------\n"); //Creates a buffer between the output
 	out_two.push_to_second_display("Player 2/Computer Game Board\n");
-	out_two.push_to_second_display("---------------\n"); //Creates a buffer between the output
+	out_two.push_to_second_display("--------------------------------\n"); //Creates a buffer between the output
+
+	out_two.push_to_second_display("The Computer is Placing its Ships\n");
+
+	do{
+		computer.setCarrier(&addSuccess);
+	}while(addSuccess == false);
+	out_two.push_to_second_display("Placed Carrier\n");
+	addSuccess = false;
+	do{
+		computer.setBattleship(&addSuccess);
+	}while(addSuccess == false);
+	out_two.push_to_second_display("Placed Battleship\n");
+	addSuccess = false;
+	do{
+		computer.setSubmarine(&addSuccess);
+	}while(addSuccess == false);
+	out_two.push_to_second_display("Placed Submarine\n");
+	addSuccess = false;
+	do{
+		computer.setCruiser(&addSuccess);
+	}while(addSuccess == false);
+	out_two.push_to_second_display("Placed Cruiser\n");
+	addSuccess = false;
+	do{
+		computer.setDestroyer(&addSuccess);
+
+	}while(addSuccess == false);
+	out_two.push_to_second_display("Placed Destroyer\n");
+	addSuccess = false;
+	out_two.push_to_second_display("Complete!\n\n");
 
 	//cout << "Player 1 Game Board\n";
 	//cout << "Player 1 Game Board\n";

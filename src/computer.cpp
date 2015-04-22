@@ -97,6 +97,7 @@ void Computer::setCarrier(bool *addSuccess){
 	else if(orientation == 2){
 		carrier = new Ship(5, "Carrier", false, let, num);
 		carrier->Initialize(&board, index);
+
 		*addSuccess = true;
 	}
 	/*
@@ -145,6 +146,7 @@ void Computer::setBattleship(bool *addSuccess){
 	else if(orientation == 4){
 		battleship = new Ship(4, "Battleship", true, let, num);
 		battleship->Initialize(&board, index);
+		
 		*addSuccess = true;
 	}
 	//printShips();
