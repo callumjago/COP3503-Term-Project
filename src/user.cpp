@@ -184,20 +184,20 @@ void User::printShips(){
 			stringstream ss; 
 			ss << temp_int ;
 			ss >> temp;
-			out.push_to_first_display(temp);
-			//cout << temp;
+			//out.push_to_first_display(temp);
+			cout << temp << " ";
 			memset(&temp[0], 0, sizeof(temp));
 		}
-		out.push_to_first_display("\n");
-		//cout << "\n";
+		//out.push_to_first_display("\n");
+		cout << "\n";
 	}
 	for (int i = 0; i < 15; ++i)
 	{
-		out.push_to_first_display("-");
-		//cout << "-";
+		//out.push_to_first_display("-");
+		cout << "-";
 	}
-	out.push_to_first_display("\n");
-	//cout << "\n";
+	//out.push_to_first_display("\n");
+	cout << "\n";
 }
 
 void User::setCarrier(bool *addSuccess){
@@ -214,8 +214,8 @@ void User::setCarrier(bool *addSuccess){
 	int index;
 	choice = isValidPos(desPos, 5, &index);
 
-	//cout << (int)(desPos.at(0) - 65);
-	//cout << (int)(desPos.at(1) - 48);
+	cout << (int)(desPos.at(0) - 65);
+	cout << (int)(desPos.at(1) - 48);
 
 	if(choice == 1){
 		if(desPos.length() > 2 && desPos.at(1) == '1' && desPos.at(2) == '0'){

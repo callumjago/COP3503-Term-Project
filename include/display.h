@@ -17,10 +17,35 @@ using namespace std;
 class Display {
 
     public:
+    	Display(){
+            int pass;
+
+    		if (pass == 1)
+    		{
+    			this->myfifo = "/tmp/myfifo_one";
+    			mkfifo(myfifo, 0666);
+    		}
+    		if (pass == 2)
+    		{
+    			this->myfifo = "/tmp/myfifo_two";
+    			mkfifo(myfifo, 1000);
+    		}
+
+    /*Create the FIFO (named pipe) */
+    		
+
+    /*Write "Hi" to the FIFO */
+    		this->fd = open(myfifo, O_WRONLY);
+    	}
+
         void push_to_first_display(char temp[]);
         void push_to_second_display(char temp[]);
 
     private:
+
+    	int fd;
+    	char * myfifo;
+
 
 };
 

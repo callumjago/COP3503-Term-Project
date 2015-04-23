@@ -13,8 +13,8 @@ int main(int argc, char *argv[1]){
 	//Creates a Turn object in order to play the game after the ships are placed.
 	Turn turn = Turn();
 	//Creates a Display object in order to display to the terminal
-	Display out = Display();
-	Display out_two = Display();
+	//Display out = Display();
+	//Display out_two = Display();
 	//Creates a computer to play the game against the user
 	Computer computer = Computer();
 
@@ -28,55 +28,64 @@ int main(int argc, char *argv[1]){
 	//cout << " The Computer is Placing its Ships\n";
 	/*for (int i = 0; i < 25; i++)
 	{
-		out_two.push_to_second_display("-");
+		//out_two.push_to_second_display("-");
 		usleep(50000);
 	}*/
 	
-	
+	/*
 	out.push_to_first_display("Player 1 Game Board\n");
 	out.push_to_first_display("---------------\n"); //Creates a buffer between the output
-	out_two.push_to_second_display("Player 2/Computer Game Board\n");
-	out_two.push_to_second_display("--------------------------------\n"); //Creates a buffer between the output
+	//out_two.push_to_second_display("Player 2/Computer Game Board\n");
+	//out_two.push_to_second_display("--------------------------------\n"); //Creates a buffer between the output
 
-	out_two.push_to_second_display("The Computer is Placing its Ships\n");
+	//out_two.push_to_second_display("The Computer is Placing its Ships\n");
 
+	*/
+	cout << "The computer is placing its ships\n";
 	do{
 		computer.setCarrier(&addSuccess);
 	}while(addSuccess == false);
-	out_two.push_to_second_display("Placed Carrier\n");
+	//out_two.push_to_second_display("Placed Carrier\n");
+	cout << "Placed Carrier\n";
 	addSuccess = false;
 	do{
 		computer.setBattleship(&addSuccess);
 	}while(addSuccess == false);
-	out_two.push_to_second_display("Placed Battleship\n");
+	//out_two.push_to_second_display("Placed Battleship\n");
+	cout << "Placed Battleship\n";
 	addSuccess = false;
 	do{
 		computer.setSubmarine(&addSuccess);
 	}while(addSuccess == false);
-	out_two.push_to_second_display("Placed Submarine\n");
+	//out_two.push_to_second_display("Placed Submarine\n");
+	cout << "Placed Submarine\n";
 	addSuccess = false;
 	do{
 		computer.setCruiser(&addSuccess);
 	}while(addSuccess == false);
-	out_two.push_to_second_display("Placed Cruiser\n");
+	//out_two.push_to_second_display("Placed Cruiser\n");
+	cout << "Placed Cruiser\n";
 	addSuccess = false;
 	do{
 		computer.setDestroyer(&addSuccess);
 
 	}while(addSuccess == false);
-	out_two.push_to_second_display("Placed Destroyer\n");
+	//out_two.push_to_second_display("Placed Destroyer\n");
+	cout << "Placed Destroyer\n";
 	addSuccess = false;
-	out_two.push_to_second_display("Complete!\n\n");
+	//out_two.push_to_second_display("Complete!\n\n");
 
-	//cout << "Player 1 Game Board\n";
-	//cout << "Player 1 Game Board\n";
-	//cout << "Player 2/Computer Game Board\n";
-	//cout << "---------------\n";
+	cout << "Player 1 Game Board\n";
+
+	user_one.getBoard().print_user_board();
+	cout << "---------------\n";
+	cout << "Player 1 Game Board\n";
+	cout << "Player 2/Computer Game Board\n";
+	computer.getBoard().print_computer_board();
+	cout << "---------------\n";
 
 	//Prints the board on another screen
-	user_one.getBoard().print_user_board();
-	computer.getBoard().print_computer_board();
-
+	
 
 	//Prompts the user_one to enter the ships based on length
 	cout << "\nThere are 5 ships for you to place\n";
