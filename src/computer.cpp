@@ -364,13 +364,21 @@ int Computer::isValidCompPos(string desPos, int length, int **index_return){
 		//cout << "Error: no orientation options." << endl;		/*This is only an error when placing a ship, not when guessing a place to bomb*/
 		return 0;
 	}
-	
-	int randNum = (rand() % 2) + 1;
+	else if(sum == 2){
+		int randNum = (rand() % 2) + 1;
+		return randNum * 2;
+	}
+	else if(down && !right){
+		return 2;
+	}
+	else if(right && !down){
+		return 4;
+	}
 	/*int m = 0;
 	while(randNum >= 0){
 		if(option[m++]){ randNum--; }
 		if(m == 4){ m = 0; }
 	}*/
 
-	return randNum * 2;	//-1 means invalid or error, 0 means no orientation options, 1 means "up", 2 means "down", 3 means "left", 4 means "right"
+	//-1 means invalid or error, 0 means no orientation options, 1 means "up", 2 means "down", 3 means "left", 4 means "right"
 }
