@@ -6,10 +6,10 @@ bool Turn::win(Computer ****computer, int index){
 	int sunkNum = 0;
 
 	if((***computer)->carrier->getIsSunk((***computer)->board, (***computer)->carrier->getStartIndex())){ sunkNum = 5; }
-	/*if((***computer)->battleship->getIsSunk((***computer)->board, (***computer)->battleship->getStartIndex())){ sunkNum++; }
+	if((***computer)->battleship->getIsSunk((***computer)->board, (***computer)->battleship->getStartIndex())){ sunkNum++; }
 	if((***computer)->submarine->getIsSunk((***computer)->board, (***computer)->submarine->getStartIndex())){ sunkNum++; }
 	if((***computer)->cruiser->getIsSunk((***computer)->board, (***computer)->cruiser->getStartIndex())){ sunkNum++; }
-	if((***computer)->destroyer->getIsSunk((***computer)->board, (***computer)->destroyer->getStartIndex())){ sunkNum++; }*/
+	if((***computer)->destroyer->getIsSunk((***computer)->board, (***computer)->destroyer->getStartIndex())){ sunkNum++; }
 
 	return (sunkNum == 5);
 }

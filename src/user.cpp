@@ -11,7 +11,29 @@ int User::guess(){
 
 	string guess = "";
 	cout << "Enter your guess: ";
-	cin >> guess;
+	bool isValid = false;
+
+	
+
+	do{
+		cin >> guess;
+		if(guess.length() > 2 || guess.length() > 3){
+			cout << "\nInvalid guess. Try again:\n";	
+		}
+		else if(guess.at(0) < 'A' || guess.at(0) > 'Z'){
+			cout << "\nInvalid guess. Try again:\n";
+		}
+		else if(guess.at(1) < '1' || guess.at(1) > '9'){
+			cout << "\nInvalid guess. Try again:\n";
+		}
+		else if(guess.length() == 3 && guess.at(1) != '1' && guess.at(2) != '0'){
+			cout << "\nInvalid guess. Try again:\n";
+		}
+		else{
+			isValid = true;
+		}
+	}
+	while(!isValid);
 
 	if(guess.length() < 1 || guess.length() > 3){
 		return -1;
